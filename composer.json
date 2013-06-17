@@ -1,0 +1,21 @@
+{
+    "name": "crodas/simple-view-engine",
+    "description": "Simple View engine designed to generate code. Based on Laravel's 4 Blade.",
+    "require": {
+        "symfony/finder": "*",
+        "symfony/console": "*"
+    },
+	"autoload": {
+		"classmap": [
+            "lib/"
+        ]
+    },
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "César D. Rodas",
+            "email": "crodas@php.net"
+        }
+    ],
+    "minimum-stability": "dev"
+}

@@ -44,6 +44,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use crodas\SimpleView\Environment;
 use crodas\SimpleView\Compiler;
+use Symfony\Component\Finder\Finder;
 
 $console = new Application();
 $console
@@ -70,6 +71,24 @@ $console
 
         $output->writeln(sprintf('Created <info>%s</info>', $file));
         file_put_contents($file, $compiler->getCode());
+    });
+
+$console
+    ->register('phar')
+    ->setDescription('Creates a phar file')
+    ->setCode(function (InputInterface $input, OutputInterface $output) {
+        $finder = new Finder();
+        $finder->files()->name("*.php")
+            ->in(__DIR__)
+            ->filter(function($x) {
+                return preg_match("/^(lib|vendor)/", $x->getRelativePath());
+            });
+
+        $phar = new Phar('view-compiler.phar');
+        foreach ($finder as $file) {
+            $phar->addFile($file, $file->getRelativePathname());
+        }
+        $phar->addFile('cli.php', 'index.php');
     });
 
 $console->run();

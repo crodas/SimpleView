@@ -29,13 +29,13 @@ class base_template
         return false;
     }
 
-    public function yield($name, Array $args = array())
+    public function do_yield($name, Array $args = array())
     {
         if ($this->child) {
             // We have a children template, we are their base
             // so let's see if they have implemented by any change
             // this section
-            if ($this->child->yield($name, $args)) {
+            if ($this->child->do_yield($name, $args)) {
                 // yes!
                 return true;
             }
@@ -165,7 +165,7 @@ class class_6fc1db63cd6fae8c0846154c6ebb03e994b41da1 extends base_template
         if ($return) {
             ob_start();
         }
-        echo "\$this->yield(" . ($token[1]) . ");\n";
+        echo "\$this->do_yield(" . ($token[1]) . ");\n";
 
         if ($return) {
             return ob_get_clean();
@@ -263,7 +263,7 @@ class class_70347e2b6cb6d007490afc615d0eebf65328f7b2 extends base_template
         if (!empty($namespace)) {
             echo "namespace " . ($namespace) . ";\n";
         }
-        echo "\nclass base_template\n{\n    protected \$parent;\n    protected \$child;\n    protected \$context;\n\n    public function yield_parent(\$name, \$args)\n    {\n        \$method = \"section_\" . sha1(\$name);\n\n        if (is_callable(array(\$this->parent, \$method))) {\n            \$this->parent->\$method(array_merge(\$this->context, \$args));\n            return true;\n        }\n\n        if (\$this->parent) {\n            return \$this->parent->yield_parent(\$name, \$args);\n        }\n\n        return false;\n    }\n\n    public function yield(\$name, Array \$args = array())\n    {\n        if (\$this->child) {\n            // We have a children template, we are their base\n            // so let's see if they have implemented by any change\n            // this section\n            if (\$this->child->yield(\$name, \$args)) {\n                // yes!\n                return true;\n            }\n        }\n\n        // Do I have this section defined?\n        \$method = \"section_\" . sha1(\$name);\n        if (is_callable(array(\$this, \$method))) {\n            // Yes!\n            \$this->\$method(array_merge(\$this->context, \$args));\n            return true;\n        }\n\n        // No :-(\n        return false;\n    }\n\n}\n\n";
+        echo "\nclass base_template\n{\n    protected \$parent;\n    protected \$child;\n    protected \$context;\n\n    public function yield_parent(\$name, \$args)\n    {\n        \$method = \"section_\" . sha1(\$name);\n\n        if (is_callable(array(\$this->parent, \$method))) {\n            \$this->parent->\$method(array_merge(\$this->context, \$args));\n            return true;\n        }\n\n        if (\$this->parent) {\n            return \$this->parent->yield_parent(\$name, \$args);\n        }\n\n        return false;\n    }\n\n    public function do_yield(\$name, Array \$args = array())\n    {\n        if (\$this->child) {\n            // We have a children template, we are their base\n            // so let's see if they have implemented by any change\n            // this section\n            if (\$this->child->do_yield(\$name, \$args)) {\n                // yes!\n                return true;\n            }\n        }\n\n        // Do I have this section defined?\n        \$method = \"section_\" . sha1(\$name);\n        if (is_callable(array(\$this, \$method))) {\n            // Yes!\n            \$this->\$method(array_merge(\$this->context, \$args));\n            return true;\n        }\n\n        // No :-(\n        return false;\n    }\n\n}\n\n";
         foreach($tpls as $name => $tpl) {
             echo "/** \n *  Template class generated from " . ( $tpl->getSource() ) . "\n */\nclass class_" . (sha1($name)) . " extends base_template\n{\n";
             foreach($tpl->getSections() as $name => $code) {

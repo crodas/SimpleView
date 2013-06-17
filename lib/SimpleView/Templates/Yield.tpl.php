@@ -1,1 +1,1 @@
-$this->yield({{$token[1]}});
+$this->do_yield({{$token[1]}});

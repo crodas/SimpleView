@@ -31,13 +31,13 @@ class base_template
         return false;
     }
 
-    public function yield($name, Array $args = array())
+    public function do_yield($name, Array $args = array())
     {
         if ($this->child) {
             // We have a children template, we are their base
             // so let's see if they have implemented by any change
             // this section
-            if ($this->child->yield($name, $args)) {
+            if ($this->child->do_yield($name, $args)) {
                 // yes!
                 return true;
             }

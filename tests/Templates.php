@@ -29,13 +29,13 @@ class base_template
         return false;
     }
 
-    public function yield($name, Array $args = array())
+    public function do_yield($name, Array $args = array())
     {
         if ($this->child) {
             // We have a children template, we are their base
             // so let's see if they have implemented by any change
             // this section
-            if ($this->child->yield($name, $args)) {
+            if ($this->child->do_yield($name, $args)) {
                 // yes!
                 return true;
             }
@@ -111,9 +111,9 @@ class class_bf6970c3f5699b979a3692d8261f22d15fadad5a extends base_template
             ob_start();
         }
         echo "\n";
-        $this->yield('header');
+        $this->do_yield('header');
         echo "\n<content>\n";
-        $this->yield('foobar');
+        $this->do_yield('foobar');
         echo "</content>\n";
 
         if ($return) {

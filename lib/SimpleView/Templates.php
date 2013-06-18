@@ -56,9 +56,9 @@ class base_template
 }
 
 /** 
- *  Template class generated from lib/SimpleView/Templates/Parent.tpl.php
+ *  Template class generated from Parent.tpl.php
  */
-class class_a69a1a0ac95456ee12de32069bd521b298408844 extends base_template
+class class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e extends base_template
 {
 
     public function render(Array $vars = array(), $return = false)
@@ -79,9 +79,9 @@ class class_a69a1a0ac95456ee12de32069bd521b298408844 extends base_template
 }
 
 /** 
- *  Template class generated from lib/SimpleView/Templates/Echox.tpl.php
+ *  Template class generated from Echox.tpl.php
  */
-class class_c685149e8b111aceac9ab5ae3e70fe7f4c2c1dca extends base_template
+class class_b3f21f4b7452906b330612b966219cc089b11145 extends base_template
 {
 
     public function render(Array $vars = array(), $return = false)
@@ -102,9 +102,9 @@ class class_c685149e8b111aceac9ab5ae3e70fe7f4c2c1dca extends base_template
 }
 
 /** 
- *  Template class generated from lib/SimpleView/Templates/Body.tpl.php
+ *  Template class generated from Body.tpl.php
  */
-class class_6163557841b4d70e97d7b52c2927f643d50ce258 extends base_template
+class class_399877791885ad1a9fde51bca4deb52107f94699 extends base_template
 {
 
     public function render(Array $vars = array(), $return = false)
@@ -127,9 +127,34 @@ class class_6163557841b4d70e97d7b52c2927f643d50ce258 extends base_template
 }
 
 /** 
- *  Template class generated from lib/SimpleView/Templates/Else.tpl.php
+ *  Template class generated from Unless.tpl.php
  */
-class class_b4b3b7fc57bfb78002221cfb0413323adb00d86d extends base_template
+class class_f5ab41dedb21a24081861ee6a36af5e59365a600 extends base_template
+{
+
+    public function render(Array $vars = array(), $return = false)
+    {
+        $this->context = $vars;
+
+        extract($vars);
+        if ($return) {
+            ob_start();
+        }
+        echo "if (!(" . ($token[1]) . ")) {\n";
+        Templates::exec("body", array('tpl' => $token[2]), $this->context);
+        echo "}\n";
+
+        if ($return) {
+            return ob_get_clean();
+        }
+
+    }
+}
+
+/** 
+ *  Template class generated from Else.tpl.php
+ */
+class class_55654f0db518414907f78793b7d027601d43ad01 extends base_template
 {
 
     public function render(Array $vars = array(), $return = false)
@@ -152,9 +177,9 @@ class class_b4b3b7fc57bfb78002221cfb0413323adb00d86d extends base_template
 }
 
 /** 
- *  Template class generated from lib/SimpleView/Templates/Yield.tpl.php
+ *  Template class generated from Yield.tpl.php
  */
-class class_6fc1db63cd6fae8c0846154c6ebb03e994b41da1 extends base_template
+class class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e extends base_template
 {
 
     public function render(Array $vars = array(), $return = false)
@@ -175,9 +200,9 @@ class class_6fc1db63cd6fae8c0846154c6ebb03e994b41da1 extends base_template
 }
 
 /** 
- *  Template class generated from lib/SimpleView/Templates/Include.tpl.php
+ *  Template class generated from Include.tpl.php
  */
-class class_9d3713d49d4c57c19c70ee7cf4ff51e553f0aef1 extends base_template
+class class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156 extends base_template
 {
 
     public function render(Array $vars = array(), $return = false)
@@ -198,9 +223,9 @@ class class_9d3713d49d4c57c19c70ee7cf4ff51e553f0aef1 extends base_template
 }
 
 /** 
- *  Template class generated from lib/SimpleView/Templates/Echo.tpl.php
+ *  Template class generated from Echo.tpl.php
  */
-class class_00d86be24b3cb646a3c8469ae06ef4dba726ebd8 extends base_template
+class class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157 extends base_template
 {
 
     public function render(Array $vars = array(), $return = false)
@@ -221,9 +246,9 @@ class class_00d86be24b3cb646a3c8469ae06ef4dba726ebd8 extends base_template
 }
 
 /** 
- *  Template class generated from lib/SimpleView/Templates/Foreach.tpl.php
+ *  Template class generated from Foreach.tpl.php
  */
-class class_75752c9f08a748ac7a47bfda78f25d350f4cfd46 extends base_template
+class class_55a865e988d24c0d11ce50bc8c11519a2d28b743 extends base_template
 {
 
     public function render(Array $vars = array(), $return = false)
@@ -246,9 +271,9 @@ class class_75752c9f08a748ac7a47bfda78f25d350f4cfd46 extends base_template
 }
 
 /** 
- *  Template class generated from lib/SimpleView/Templates/Class.tpl.php
+ *  Template class generated from Class.tpl.php
  */
-class class_70347e2b6cb6d007490afc615d0eebf65328f7b2 extends base_template
+class class_ed71512c603ba20ba49346284ee12f19b5d744de extends base_template
 {
 
     public function render(Array $vars = array(), $return = false)
@@ -292,9 +317,9 @@ class class_70347e2b6cb6d007490afc615d0eebf65328f7b2 extends base_template
 }
 
 /** 
- *  Template class generated from lib/SimpleView/Templates/If.tpl.php
+ *  Template class generated from If.tpl.php
  */
-class class_42ea18c2eba9076d0d0c9cc19c44740e4cbb8759 extends base_template
+class class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9 extends base_template
 {
 
     public function render(Array $vars = array(), $return = false)
@@ -319,6 +344,31 @@ class class_42ea18c2eba9076d0d0c9cc19c44740e4cbb8759 extends base_template
     }
 }
 
+/** 
+ *  Template class generated from While.tpl.php
+ */
+class class_6b1bcd97e93ed2c0cb9aac64a2ca1db0d5c1bbfd extends base_template
+{
+
+    public function render(Array $vars = array(), $return = false)
+    {
+        $this->context = $vars;
+
+        extract($vars);
+        if ($return) {
+            ob_start();
+        }
+        echo "while (" . ($token[1]) . ") {\n";
+        Templates::exec("body", array('tpl' => $token[2]), $this->context);
+        echo "}\n";
+
+        if ($return) {
+            return ob_get_clean();
+        }
+
+    }
+}
+
 
 class Templates
 {
@@ -331,36 +381,30 @@ class Templates
     public static function get($name, Array $context = array())
     {
         static $classes = array (
-            'parent.tpl.php' => 'class_a69a1a0ac95456ee12de32069bd521b298408844',
-            'parent' => 'class_a69a1a0ac95456ee12de32069bd521b298408844',
-            'lib/simpleview/templates/parent.tpl.php' => 'class_a69a1a0ac95456ee12de32069bd521b298408844',
-            'echox.tpl.php' => 'class_c685149e8b111aceac9ab5ae3e70fe7f4c2c1dca',
-            'echox' => 'class_c685149e8b111aceac9ab5ae3e70fe7f4c2c1dca',
-            'lib/simpleview/templates/echox.tpl.php' => 'class_c685149e8b111aceac9ab5ae3e70fe7f4c2c1dca',
-            'body.tpl.php' => 'class_6163557841b4d70e97d7b52c2927f643d50ce258',
-            'body' => 'class_6163557841b4d70e97d7b52c2927f643d50ce258',
-            'lib/simpleview/templates/body.tpl.php' => 'class_6163557841b4d70e97d7b52c2927f643d50ce258',
-            'else.tpl.php' => 'class_b4b3b7fc57bfb78002221cfb0413323adb00d86d',
-            'else' => 'class_b4b3b7fc57bfb78002221cfb0413323adb00d86d',
-            'lib/simpleview/templates/else.tpl.php' => 'class_b4b3b7fc57bfb78002221cfb0413323adb00d86d',
-            'yield.tpl.php' => 'class_6fc1db63cd6fae8c0846154c6ebb03e994b41da1',
-            'yield' => 'class_6fc1db63cd6fae8c0846154c6ebb03e994b41da1',
-            'lib/simpleview/templates/yield.tpl.php' => 'class_6fc1db63cd6fae8c0846154c6ebb03e994b41da1',
-            'include.tpl.php' => 'class_9d3713d49d4c57c19c70ee7cf4ff51e553f0aef1',
-            'include' => 'class_9d3713d49d4c57c19c70ee7cf4ff51e553f0aef1',
-            'lib/simpleview/templates/include.tpl.php' => 'class_9d3713d49d4c57c19c70ee7cf4ff51e553f0aef1',
-            'echo.tpl.php' => 'class_00d86be24b3cb646a3c8469ae06ef4dba726ebd8',
-            'echo' => 'class_00d86be24b3cb646a3c8469ae06ef4dba726ebd8',
-            'lib/simpleview/templates/echo.tpl.php' => 'class_00d86be24b3cb646a3c8469ae06ef4dba726ebd8',
-            'foreach.tpl.php' => 'class_75752c9f08a748ac7a47bfda78f25d350f4cfd46',
-            'foreach' => 'class_75752c9f08a748ac7a47bfda78f25d350f4cfd46',
-            'lib/simpleview/templates/foreach.tpl.php' => 'class_75752c9f08a748ac7a47bfda78f25d350f4cfd46',
-            'class.tpl.php' => 'class_70347e2b6cb6d007490afc615d0eebf65328f7b2',
-            'class' => 'class_70347e2b6cb6d007490afc615d0eebf65328f7b2',
-            'lib/simpleview/templates/class.tpl.php' => 'class_70347e2b6cb6d007490afc615d0eebf65328f7b2',
-            'if.tpl.php' => 'class_42ea18c2eba9076d0d0c9cc19c44740e4cbb8759',
-            'if' => 'class_42ea18c2eba9076d0d0c9cc19c44740e4cbb8759',
-            'lib/simpleview/templates/if.tpl.php' => 'class_42ea18c2eba9076d0d0c9cc19c44740e4cbb8759',
+            'parent.tpl.php' => 'class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e',
+            'parent' => 'class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e',
+            'echox.tpl.php' => 'class_b3f21f4b7452906b330612b966219cc089b11145',
+            'echox' => 'class_b3f21f4b7452906b330612b966219cc089b11145',
+            'body.tpl.php' => 'class_399877791885ad1a9fde51bca4deb52107f94699',
+            'body' => 'class_399877791885ad1a9fde51bca4deb52107f94699',
+            'unless.tpl.php' => 'class_f5ab41dedb21a24081861ee6a36af5e59365a600',
+            'unless' => 'class_f5ab41dedb21a24081861ee6a36af5e59365a600',
+            'else.tpl.php' => 'class_55654f0db518414907f78793b7d027601d43ad01',
+            'else' => 'class_55654f0db518414907f78793b7d027601d43ad01',
+            'yield.tpl.php' => 'class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e',
+            'yield' => 'class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e',
+            'include.tpl.php' => 'class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156',
+            'include' => 'class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156',
+            'echo.tpl.php' => 'class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157',
+            'echo' => 'class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157',
+            'foreach.tpl.php' => 'class_55a865e988d24c0d11ce50bc8c11519a2d28b743',
+            'foreach' => 'class_55a865e988d24c0d11ce50bc8c11519a2d28b743',
+            'class.tpl.php' => 'class_ed71512c603ba20ba49346284ee12f19b5d744de',
+            'class' => 'class_ed71512c603ba20ba49346284ee12f19b5d744de',
+            'if.tpl.php' => 'class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9',
+            'if' => 'class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9',
+            'while.tpl.php' => 'class_6b1bcd97e93ed2c0cb9aac64a2ca1db0d5c1bbfd',
+            'while' => 'class_6b1bcd97e93ed2c0cb9aac64a2ca1db0d5c1bbfd',
         );
         $name = strtolower($name);
         if (empty($classes[$name])) {

@@ -5,7 +5,7 @@
  *
  */
 
-namespace Tests;
+namespace demo;
 
 class base_template
 {
@@ -154,56 +154,6 @@ class class_19709c42e2300830673895009607ec98d96822ec extends base_template
 }
 
 /** 
- *  Template class generated from while.tpl.php
- */
-class class_6e15d2af65fcf7798021e9323798f193499ac09d extends base_template
-{
-
-    public function render(Array $vars = array(), $return = false)
-    {
-        $this->context = $vars;
-
-        extract($vars);
-        if ($return) {
-            ob_start();
-        }
-        while ($i < 10) {
-            echo "    hi " . (++$i) . "\n";
-        }
-
-        if ($return) {
-            return ob_get_clean();
-        }
-
-    }
-}
-
-/** 
- *  Template class generated from loop.tpl.php
- */
-class class_d481f16a4eb3add789581f97f6600c2a74a9d0a8 extends base_template
-{
-
-    public function render(Array $vars = array(), $return = false)
-    {
-        $this->context = $vars;
-
-        extract($vars);
-        if ($return) {
-            ob_start();
-        }
-        foreach($users as $user) {
-            echo "    hi " . ($user) . "\n";
-        }
-
-        if ($return) {
-            return ob_get_clean();
-        }
-
-    }
-}
-
-/** 
  *  Template class generated from home.tpl.php
  */
 class class_6caefdda43fcb619b729c17289d5237e623d208b extends base_template
@@ -273,32 +223,6 @@ class class_793a0eb11fa5c92b689ad190f2f86f14ac827463 extends base_template
     }
 }
 
-/** 
- *  Template class generated from unless.tpl.php
- */
-class class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8 extends base_template
-{
-
-    public function render(Array $vars = array(), $return = false)
-    {
-        $this->context = $vars;
-
-        extract($vars);
-        if ($return) {
-            ob_start();
-        }
-        echo "Hi " . ($user['name']) . "\n";
-        if (!($user['has_session'])) {
-            echo "    you must login\n";
-        }
-
-        if ($return) {
-            return ob_get_clean();
-        }
-
-    }
-}
-
 
 class Templates
 {
@@ -317,18 +241,12 @@ class Templates
             'layout' => 'class_bf6970c3f5699b979a3692d8261f22d15fadad5a',
             'extends_extends.tpl.php' => 'class_19709c42e2300830673895009607ec98d96822ec',
             'extends_extends' => 'class_19709c42e2300830673895009607ec98d96822ec',
-            'while.tpl.php' => 'class_6e15d2af65fcf7798021e9323798f193499ac09d',
-            'while' => 'class_6e15d2af65fcf7798021e9323798f193499ac09d',
-            'loop.tpl.php' => 'class_d481f16a4eb3add789581f97f6600c2a74a9d0a8',
-            'loop' => 'class_d481f16a4eb3add789581f97f6600c2a74a9d0a8',
             'home.tpl.php' => 'class_6caefdda43fcb619b729c17289d5237e623d208b',
             'home' => 'class_6caefdda43fcb619b729c17289d5237e623d208b',
             'if1.tpl.php' => 'class_253d6a60b264956df48ba486a3d7908285d7ece5',
             'if1' => 'class_253d6a60b264956df48ba486a3d7908285d7ece5',
             'extends.tpl.php' => 'class_793a0eb11fa5c92b689ad190f2f86f14ac827463',
             'extends' => 'class_793a0eb11fa5c92b689ad190f2f86f14ac827463',
-            'unless.tpl.php' => 'class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8',
-            'unless' => 'class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8',
         );
         $name = strtolower($name);
         if (empty($classes[$name])) {

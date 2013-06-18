@@ -51,8 +51,7 @@
 
     function Error($text)
     {
-        die($text);
-        throw new Haanga_Compiler_Exception($text.' in '.$this->file.':'.$this->lex->getLine());
+        throw new \Exception($text);
     }
 
 }
@@ -65,7 +64,7 @@
     foreach ($this->yy_get_expected_tokens($yymajor) as $token) {
         $expect[] = self::$yyTokenName[$token];
     }
-    $this->Error('Unexpected ' . $this->tokenName($yymajor) . '(' . $TOKEN. ')');
+    $this->Error('Unexpected ' . $this->tokenName($yymajor) . '(' . $TOKEN. ') expecting '. print_r($expected, true));
 }
 
 start ::= T_EXTENDS T_PHP_RAW(X) body(A) . { $this->body = array('extends', X, A); }
@@ -81,6 +80,7 @@ code(A) ::= T_TEXT_RAW(X) . { A = array('text', X); }
 
 command(A) ::= T_FOREACH T_PHP_RAW(B) body(C) T_END(X) . { A = array('foreach', B, C, @X); }
 command(A) ::= T_WHILE T_PHP_RAW(B) body(C) T_END(X) . { A = array('while', B, C, @X); }
+command(A) ::= T_UNLESS T_PHP_RAW(B) body(C) T_END(X) . { A = array('unless', B, C, @X); }
 command(A) ::= T_IF T_PHP_RAW(B) body(C) else(X) . { A = array('if', B, C, X); }
 command(A) ::= T_SECTION T_PHP_RAW(B) body(C) T_END(X) . { A = array('section', B, C, @X); }
 command(A) ::= T_SECTION T_PHP_RAW(B) body(C) T_SHOW . { A = array('section_and_show', B, C); }

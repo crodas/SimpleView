@@ -57,6 +57,7 @@ class Tokenizer
         'stop'    => Parser::T_END,
         'while'   => Parser::T_WHILE,
         'yield'   => Parser::T_YIELD,
+        'unless'  => Parser::T_UNLESS,
     );
 
     public function getTokens($text)

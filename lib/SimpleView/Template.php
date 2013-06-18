@@ -121,12 +121,15 @@ class Template
                 $block[] = array('else', new self($stmt[1]));
                 break;
             case 'foreach':
+            case 'unless':
+            case 'while':
+                $end  = 'end' . strtolower($stmt[0]);
                 $body = new Template($stmt[2]);
-                $block[] = array('foreach', $stmt[1], $body);
+                $block[] = array($stmt[0], $stmt[1], $body);
                 switch (strtolower($stmt[3])) {
                 case 'end':
                 case 'stop':
-                case 'endforeach':
+                case $end:
                     break;
                 default:
                     throw new \RuntimeException("Unexpected {$stmt[3]}, expecting @end, @stop or @endforeach");

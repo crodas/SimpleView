@@ -25,4 +25,16 @@ class MainTest extends \phpunit_framework_testcase
         $output = \Tests\Templates::get($tpl)->render($args, true);
         $this->assertEquals($expected, $output);
     }
+
+    public function testLoop() 
+    {
+        $user = array('name' => 'foobar', 'has_session' => false);
+        $output = \Tests\Templates::get('unless')->render(compact('user'), true);
+        $this->assertEquals($output, "Hi foobar\n    you must login\n");
+
+        $user = array('name' => 'foobar', 'has_session' => true);
+        $output = \Tests\Templates::get('unless')->render(compact('user'), true);
+        $this->assertEquals($output, "Hi foobar\n");
+    }
+
 }

@@ -88,7 +88,10 @@ $console
         foreach ($finder as $file) {
             $phar->addFile($file, $file->getRelativePathname());
         }
-        $phar->addFile('cli.php', 'index.php');
+        $phar->addFile('cli.php');
+        $phar->setStub("#!{$_SERVER["_"]}\n"
+            . $phar->createDefaultStub("cli.php")
+        );
     });
 
 $console->run();

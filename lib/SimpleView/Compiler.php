@@ -59,9 +59,13 @@ class Compiler
         $parser    = new Parser($name);
         $tokens = $tokenizer->getTokens($text);
         foreach ($tokens as $token) {
-            $parser->doParse($token[0], $token[1]);
+            try {
+                $parser->doParse($token[0], $token[1]);
+            } catch (Exception $e) {
+                $e->setLine($token[2]);
+                throw $e;
+            }
         }
-        $parser->doParse(0,0);
         $template = new Template($parser->body);
         $template->setSource($name);
         $this->compiled[$name] = $template;
@@ -70,7 +74,12 @@ class Compiler
 
     protected function compile_file(SplFileInfo $file)
     {
-        $this->compile_string($file->getRelativePathname(), file_get_contents($file));
+        try {
+            $this->compile_string($file->getRelativePathname(), file_get_contents($file));
+        } catch (Exception $e) {
+            $e->setFile((string)$file);
+            throw $e;
+        }
         return $this;
     }
 

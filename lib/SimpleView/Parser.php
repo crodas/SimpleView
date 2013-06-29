@@ -131,15 +131,16 @@ class Simple_View_yyStackEntry
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-#line 136 "lib/SimpleView/Parser.php"
+use crodas\SimpleView\Exception;
+#line 137 "lib/SimpleView/Parser.php"
 
 // declare_class is output here
-#line 40 "lib/SimpleView/Parser.y"
- class Simple_View_Parser #line 141 "lib/SimpleView/Parser.php"
+#line 41 "lib/SimpleView/Parser.y"
+ class Simple_View_Parser #line 142 "lib/SimpleView/Parser.php"
 {
 /* First off, code is included which follows the "include_class" declaration
 ** in the input file. */
-#line 42 "lib/SimpleView/Parser.y"
+#line 43 "lib/SimpleView/Parser.y"
 
     protected $lex;
     protected $file;
@@ -151,10 +152,10 @@ class Simple_View_yyStackEntry
 
     function Error($text)
     {
-        throw new \Exception($text);
+        throw new Exception($text, -1);
     }
 
-#line 161 "lib/SimpleView/Parser.php"
+#line 162 "lib/SimpleView/Parser.php"
 
 /* Next is all token values, as class constants
 */
@@ -885,66 +886,66 @@ static public $yy_action = array(
     **   function yy_r0($yymsp){ ... }           // User supplied code
     **  #line <lineno> <thisfile>
     */
-#line 69 "lib/SimpleView/Parser.y"
-    function yy_r0(){ $this->body = array('extends', $this->yystack[$this->yyidx + -1]->minor, $this->yystack[$this->yyidx + 0]->minor);     }
-#line 896 "lib/SimpleView/Parser.php"
 #line 70 "lib/SimpleView/Parser.y"
+    function yy_r0(){ $this->body = array('extends', $this->yystack[$this->yyidx + -1]->minor, $this->yystack[$this->yyidx + 0]->minor);     }
+#line 897 "lib/SimpleView/Parser.php"
+#line 71 "lib/SimpleView/Parser.y"
     function yy_r1(){ $this->body = $this->yystack[$this->yyidx + 0]->minor;     }
-#line 899 "lib/SimpleView/Parser.php"
-#line 72 "lib/SimpleView/Parser.y"
-    function yy_r2(){ $this->_retvalue = $this->yystack[$this->yyidx + -1]->minor; $this->_retvalue[] = $this->yystack[$this->yyidx + 0]->minor;     }
-#line 902 "lib/SimpleView/Parser.php"
+#line 900 "lib/SimpleView/Parser.php"
 #line 73 "lib/SimpleView/Parser.y"
+    function yy_r2(){ $this->_retvalue = $this->yystack[$this->yyidx + -1]->minor; $this->_retvalue[] = $this->yystack[$this->yyidx + 0]->minor;     }
+#line 903 "lib/SimpleView/Parser.php"
+#line 74 "lib/SimpleView/Parser.y"
     function yy_r3(){ $this->_retvalue = array();     }
-#line 905 "lib/SimpleView/Parser.php"
-#line 75 "lib/SimpleView/Parser.y"
-    function yy_r4(){ $this->_retvalue = $this->yystack[$this->yyidx + 0]->minor;     }
-#line 908 "lib/SimpleView/Parser.php"
+#line 906 "lib/SimpleView/Parser.php"
 #line 76 "lib/SimpleView/Parser.y"
-    function yy_r5(){ $this->_retvalue = array('echo', $this->yystack[$this->yyidx + 0]->minor);     }
-#line 911 "lib/SimpleView/Parser.php"
+    function yy_r4(){ $this->_retvalue = $this->yystack[$this->yyidx + 0]->minor;     }
+#line 909 "lib/SimpleView/Parser.php"
 #line 77 "lib/SimpleView/Parser.y"
-    function yy_r6(){ $this->_retvalue = array('echox', $this->yystack[$this->yyidx + 0]->minor);     }
-#line 914 "lib/SimpleView/Parser.php"
+    function yy_r5(){ $this->_retvalue = array('echo', $this->yystack[$this->yyidx + 0]->minor);     }
+#line 912 "lib/SimpleView/Parser.php"
 #line 78 "lib/SimpleView/Parser.y"
+    function yy_r6(){ $this->_retvalue = array('echox', $this->yystack[$this->yyidx + 0]->minor);     }
+#line 915 "lib/SimpleView/Parser.php"
+#line 79 "lib/SimpleView/Parser.y"
     function yy_r7(){ $this->_retvalue = array('text', $this->yystack[$this->yyidx + 0]->minor);     }
-#line 917 "lib/SimpleView/Parser.php"
-#line 80 "lib/SimpleView/Parser.y"
-    function yy_r8(){ $this->_retvalue = array('foreach', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, @$this->yystack[$this->yyidx + 0]->minor);     }
-#line 920 "lib/SimpleView/Parser.php"
+#line 918 "lib/SimpleView/Parser.php"
 #line 81 "lib/SimpleView/Parser.y"
-    function yy_r9(){ $this->_retvalue = array('while', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, @$this->yystack[$this->yyidx + 0]->minor);     }
-#line 923 "lib/SimpleView/Parser.php"
+    function yy_r8(){ $this->_retvalue = array('foreach', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, @$this->yystack[$this->yyidx + 0]->minor);     }
+#line 921 "lib/SimpleView/Parser.php"
 #line 82 "lib/SimpleView/Parser.y"
-    function yy_r10(){ $this->_retvalue = array('unless', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, @$this->yystack[$this->yyidx + 0]->minor);     }
-#line 926 "lib/SimpleView/Parser.php"
+    function yy_r9(){ $this->_retvalue = array('while', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, @$this->yystack[$this->yyidx + 0]->minor);     }
+#line 924 "lib/SimpleView/Parser.php"
 #line 83 "lib/SimpleView/Parser.y"
-    function yy_r11(){ $this->_retvalue = array('if', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, $this->yystack[$this->yyidx + 0]->minor);     }
-#line 929 "lib/SimpleView/Parser.php"
+    function yy_r10(){ $this->_retvalue = array('unless', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, @$this->yystack[$this->yyidx + 0]->minor);     }
+#line 927 "lib/SimpleView/Parser.php"
 #line 84 "lib/SimpleView/Parser.y"
-    function yy_r12(){ $this->_retvalue = array('section', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, @$this->yystack[$this->yyidx + 0]->minor);     }
-#line 932 "lib/SimpleView/Parser.php"
+    function yy_r11(){ $this->_retvalue = array('if', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, $this->yystack[$this->yyidx + 0]->minor);     }
+#line 930 "lib/SimpleView/Parser.php"
 #line 85 "lib/SimpleView/Parser.y"
-    function yy_r13(){ $this->_retvalue = array('section_and_show', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor);     }
-#line 935 "lib/SimpleView/Parser.php"
+    function yy_r12(){ $this->_retvalue = array('section', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, @$this->yystack[$this->yyidx + 0]->minor);     }
+#line 933 "lib/SimpleView/Parser.php"
 #line 86 "lib/SimpleView/Parser.y"
-    function yy_r14(){ $this->_retvalue = array('include', $this->yystack[$this->yyidx + 0]->minor);     }
-#line 938 "lib/SimpleView/Parser.php"
+    function yy_r13(){ $this->_retvalue = array('section_and_show', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor);     }
+#line 936 "lib/SimpleView/Parser.php"
 #line 87 "lib/SimpleView/Parser.y"
-    function yy_r15(){ $this->_retvalue = array('yield', $this->yystack[$this->yyidx + 0]->minor);     }
-#line 941 "lib/SimpleView/Parser.php"
+    function yy_r14(){ $this->_retvalue = array('include', $this->yystack[$this->yyidx + 0]->minor);     }
+#line 939 "lib/SimpleView/Parser.php"
 #line 88 "lib/SimpleView/Parser.y"
+    function yy_r15(){ $this->_retvalue = array('yield', $this->yystack[$this->yyidx + 0]->minor);     }
+#line 942 "lib/SimpleView/Parser.php"
+#line 89 "lib/SimpleView/Parser.y"
     function yy_r16(){ $this->_retvalue = array('parent');     }
-#line 944 "lib/SimpleView/Parser.php"
-#line 91 "lib/SimpleView/Parser.y"
-    function yy_r17(){ $this->_retvalue = array('else if', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, $this->yystack[$this->yyidx + 0]->minor);     }
-#line 947 "lib/SimpleView/Parser.php"
+#line 945 "lib/SimpleView/Parser.php"
 #line 92 "lib/SimpleView/Parser.y"
-    function yy_r18(){ $this->_retvalue = array('else', $this->yystack[$this->yyidx + -1]->minor, @$this->yystack[$this->yyidx + 0]->minor);     }
-#line 950 "lib/SimpleView/Parser.php"
+    function yy_r17(){ $this->_retvalue = array('else if', $this->yystack[$this->yyidx + -2]->minor, $this->yystack[$this->yyidx + -1]->minor, $this->yystack[$this->yyidx + 0]->minor);     }
+#line 948 "lib/SimpleView/Parser.php"
 #line 93 "lib/SimpleView/Parser.y"
+    function yy_r18(){ $this->_retvalue = array('else', $this->yystack[$this->yyidx + -1]->minor, @$this->yystack[$this->yyidx + 0]->minor);     }
+#line 951 "lib/SimpleView/Parser.php"
+#line 94 "lib/SimpleView/Parser.y"
     function yy_r19(){ $this->_retvalue = @$this->yystack[$this->yyidx + 0]->minor;     }
-#line 953 "lib/SimpleView/Parser.php"
+#line 954 "lib/SimpleView/Parser.php"
 
     /**
      * placeholder for the left hand side in a reduce operation.
@@ -1056,14 +1057,14 @@ static public $yy_action = array(
      */
     function yy_syntax_error($yymajor, $TOKEN)
     {
-#line 61 "lib/SimpleView/Parser.y"
+#line 62 "lib/SimpleView/Parser.y"
 
-    $expect = array();
+    $expected = array();
     foreach ($this->yy_get_expected_tokens($yymajor) as $token) {
-        $expect[] = self::$yyTokenName[$token];
+        $expected[] = self::$yyTokenName[$token];
     }
     $this->Error('Unexpected ' . $this->tokenName($yymajor) . '(' . $TOKEN. ') expecting '. print_r($expected, true));
-#line 1073 "lib/SimpleView/Parser.php"
+#line 1074 "lib/SimpleView/Parser.php"
     }
 
     /**
@@ -1081,9 +1082,9 @@ static public $yy_action = array(
         }
         /* Here code is inserted which will be executed whenever the
         ** parser accepts */
-#line 58 "lib/SimpleView/Parser.y"
+#line 59 "lib/SimpleView/Parser.y"
 
-#line 1094 "lib/SimpleView/Parser.php"
+#line 1095 "lib/SimpleView/Parser.php"
     }
 
     /**

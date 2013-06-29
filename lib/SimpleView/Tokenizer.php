@@ -63,9 +63,10 @@ class Tokenizer
     public function getTokens($text)
     {
         ksort($this->commands);
-        $len   = strlen($text);
-        $start = '@'; 
-        $tags  = array(
+        $endline = 1;
+        $len     = strlen($text);
+        $start   = '@'; 
+        $tags    = array(
             'open' => '{{', 'close' => '}}',
             't_open' => '{{{', 't_close' => '}}}',
         );
@@ -73,6 +74,7 @@ class Tokenizer
         $notfound = 0xffffff;
 
         for ($i=0; $i < $len; $i++) {
+            $line = $endline;
             if ($text[$i] == $start) {
                 $found = false;
                 foreach ($this->commands as $command => $value) {
@@ -86,9 +88,9 @@ class Tokenizer
                     }
                 }
                 if (!$found) {
-                    $tokens[] = array(Parser::T_TEXT_RAW, '@');
+                    $tokens[] = array(Parser::T_TEXT_RAW, '@', $line);
                 } else {
-                    $tokens[] = array($value, $command);
+                    $tokens[] = array($value, $command, $line);
                     while (++$i < $len && $text[$i] != "\n" && $text[$i] != "(");
                     if ($i < $len && $text[$i] == '(') {
                         $count = 1;
@@ -102,13 +104,14 @@ class Tokenizer
                                 $count--;
                                 break;
                             case "\n";
-                                throw new \Exception("Unexpected end of line");
+                                throw new Exception("Unexpected end of line", $line);
                             }
                         }
-                        $tokens[] = array(Parser::T_PHP_RAW, substr($text, $i, $e - $i));
+                        $tokens[] = array(Parser::T_PHP_RAW, substr($text, $i, $e - $i), $line);
                         $i = $e;
                         while (++$i < $len && $text[$i] != "\n");
                     }
+                    $endline++;
                 }
             } else if (
                     substr($text, $i, strlen($tags['open'])) == $tags['open'] ||
@@ -125,6 +128,9 @@ class Tokenizer
                 $i  += strlen($tags[$open]);
                 $end = $tags[$close]; 
                 for ($e = $i; $e < $len; $e++) {
+                    if ($text[$e] == "\n") {
+                        $endline++;
+                    }
                     if ($text[$e] == '"' || $text[$e] == "'") {
                         $stop = $text[$e++];
                         for (; $e < $len; $e++) {
@@ -136,9 +142,9 @@ class Tokenizer
                     }
                 }
                 if ($e == $len) {
-                    throw new \Exception("Unexpected end of file");
+                    throw new Exception("Unexpected end of file", $line);
                 }
-                $tokens[] = array($open == 'open' ? Parser::T_ECHO : Parser::T_ESCAPED_ECHO, substr($text, $i, $e - $i));
+                $tokens[] = array($open == 'open' ? Parser::T_ECHO : Parser::T_ESCAPED_ECHO, substr($text, $i, $e - $i), $line);
                 $i = $e + strlen($tags[$close]) - 1;
             } else {
                 $pos = min(array(
@@ -148,7 +154,7 @@ class Tokenizer
                 ));
 
                 if ($pos === $notfound) {
-                    $tokens[] = array(Parser::T_TEXT_RAW, substr($text, $i));
+                    $tokens[] = array(Parser::T_TEXT_RAW, substr($text, $i), $line);
                     $i = $len;
                 } else {
                     $raw_text = substr($text, $i, $pos - $i); 
@@ -156,13 +162,16 @@ class Tokenizer
                         // clean up last line
                         $raw_text = rtrim($raw_text, " \t");
                     }
+                    $endline += substr_count($raw_text, "\n");
                     if (!empty($raw_text)) {
-                        $tokens[] = array(Parser::T_TEXT_RAW, $raw_text);
+                        $tokens[] = array(Parser::T_TEXT_RAW, $raw_text, $line);
                     }
                     $i = $pos-1;
                 }
             }
         }
+
+        $tokens[] = array(0, 0, $endline);
 
         return $tokens;
     }

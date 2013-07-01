@@ -101,9 +101,10 @@ class Compiler
             $zname    = strtolower($name);
             $basename = basename($zname);
             $parts = explode(".", $basename);
-            $classes[$basename] = 'class_' . sha1($name);
-            $classes[$parts[0]] = 'class_' . sha1($name);
-            $classes[$zname]    = 'class_' . sha1($name);
+            $class = 'class_' . sha1($name);
+            $classes[$basename] = $class;
+            $classes[$parts[0]] = $class;
+            $classes[$zname]    = $class;
         }
         $args = array('tpls' => $this->compiled, 'classes' => $classes, 'namespace' => $this->ns);
         return FixCode::fix(Templates\Templates::get("class")->render($args, true));

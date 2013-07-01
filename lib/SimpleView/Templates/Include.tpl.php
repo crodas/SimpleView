@@ -1,1 +1,1 @@
-Templates::exec({{$token[1]}}, $this->context);
+{{$namespace}}\Templates::exec({{$token[1]}}, $this->context);

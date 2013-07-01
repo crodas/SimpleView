@@ -5,11 +5,9 @@
  *
  */
 
-@if (!empty($namespace))
-namespace {{$namespace}};
-@end
+namespace {
 
-class base_template
+class base_template_{{ sha1($namespace) }}
 {
     protected $parent;
     protected $child;
@@ -58,10 +56,10 @@ class base_template
 }
 
 @foreach($tpls as $name => $tpl)
-/** 
- *  Template class generated from {{ $tpl->getSource() }}
- */
-class class_{{sha1($name)}} extends base_template
+    /** 
+     *  Template class generated from {{ $tpl->getSource() }}
+     */
+class class_{{sha1($name)}} extends base_template_{{ sha1($namespace) }}
 {
     @foreach ($tpl->getSections() as $name => $code)
     protected function section_{{sha1($name)}}($context)
@@ -76,7 +74,7 @@ class class_{{sha1($name)}} extends base_template
         $this->context = $vars;
 
         @if ($tpl->getParent())
-        $template = Templates::get({{ $tpl->getParent() }});
+        $template = {{$namespace}}\Templates::get({{ $tpl->getParent() }});
         $template->child = $this;
         $this->parent = $template;
         return $template->render($vars, $return);
@@ -97,6 +95,9 @@ class class_{{sha1($name)}} extends base_template
 }
 
 @end
+}
+
+namespace {{$namespace}} {
 
 class Templates
 {
@@ -113,7 +114,10 @@ class Templates
         if (empty($classes[$name])) {
             throw new \RuntimeException("Cannot find template $name");
         }
-        $class = __NAMESPACE__ .  "\\" . $classes[$name];
+
+        $class = "\\" . $classes[$name];
         return new $class;
     }
+}
+
 }

@@ -71,9 +71,11 @@ class Template
         for ($i=0; $i < $len; $i++) {
             switch ($raw[$i]) {
             case '(':
+            case '[':
                 $ind++;
                 break;
             case ')':
+            case ']':
                 $ind--;
                 break;
             case ',':

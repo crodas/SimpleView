@@ -47,11 +47,13 @@ class Template
     protected $sections = array();
     protected $codes = array();
     protected $parent;
+    protected $loop;
 
-    public function __construct(Array $stmts, $section = null)
+    public function __construct(Array $stmts, $section = null, $loop = false)
     {
         $this->stmts   = $stmts;
         $this->section = $section;
+        $this->loop    = $loop;
         $this->doProcess($stmts);
     }
 
@@ -138,20 +140,20 @@ class Template
                 }
                 break;
             case 'if':
-                $if = array('if', $stmt[1], new self($stmt[2]));
+                $if = array('if', $stmt[1], new self($stmt[2], null, $this->loop));
                 if (!empty($stmt[3]) && !is_string($stmt[3])) {
-                    $if[] = new self([ $stmt[3] ]);
+                    $if[] = new self([ $stmt[3] ], null, $this->loop);
                 }
                 $block[] =  $if;
                 break;
             case 'else':
-                $block[] = array('else', new self($stmt[1]));
+                $block[] = array('else', new self($stmt[1], null, $this->loop));
                 break;
             case 'foreach':
             case 'unless':
             case 'while':
                 $end  = 'end' . strtolower($stmt[0]);
-                $body = new Template($stmt[2]);
+                $body = new Template($stmt[2], null, true);
                 $block[] = array($stmt[0], $stmt[1], $body);
                 switch (strtolower($stmt[3])) {
                 case 'end':
@@ -174,7 +176,14 @@ class Template
                 break;
             case 'yield':
             case 'include':
+                $block[] = $stmt;
+                break;
+
             case 'continue':
+            case 'break';
+                if (!$this->loop) {
+                    throw new \RuntimeException("You cannot call {$stmt[0]} outside of an loop");
+                }
                 $block[] = $stmt;
                 break;
             case 'set':

@@ -195,7 +195,9 @@ namespace {
             foreach($users as $user1) {
                 $user = $user1;
                 echo "    hi " . ($user) . "\n";
-                continue;
+                if ($user == 1) {
+                    continue;
+                }
             }
 
             if ($return) {

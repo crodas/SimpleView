@@ -80,8 +80,8 @@ code(A) ::= T_ESCAPED_ECHO(X) . { A = array('echox', X); }
 code(A) ::= T_TEXT_RAW(X) . { A = array('text', X); }
 
 command(A) ::= T_SET T_PHP_RAW(B) . { A = array('set', B); }
-command(A) ::= T_FOREACH T_PHP_RAW(B) loop_body(C) T_END(X) . { A = array('foreach', B, C, @X); }
-command(A) ::= T_WHILE T_PHP_RAW(B) loop_body(C) T_END(X) . { A = array('while', B, C, @X); }
+command(A) ::= T_FOREACH T_PHP_RAW(B) body(C) T_END(X) . { A = array('foreach', B, C, @X); }
+command(A) ::= T_WHILE T_PHP_RAW(B) body(C) T_END(X) . { A = array('while', B, C, @X); }
 command(A) ::= T_UNLESS T_PHP_RAW(B) body(C) T_END(X) . { A = array('unless', B, C, @X); }
 command(A) ::= T_IF T_PHP_RAW(B) body(C) else(X) . { A = array('if', B, C, X); }
 command(A) ::= T_SECTION T_PHP_RAW(B) body(C) T_END(X) . { A = array('section', B, C, @X); }
@@ -89,10 +89,7 @@ command(A) ::= T_SECTION T_PHP_RAW(B) body(C) T_SHOW . { A = array('section_and_
 command(A) ::= T_INCLUDE T_PHP_RAW(B) . { A = array('include', B); }
 command(A) ::= T_YIELD T_PHP_RAW(B) . { A = array('yield', B); }
 command(A) ::= T_PARENT . { A = array('parent'); }
-
-loop_body(A) ::= loop_body(B) T_CONTINUE . { A = B; A[] = array('continue'); }
-loop_body(A) ::= loop_body(B) code(X) . { A = B; A[] = X; }
-loop_body(A) ::= . { A = array(); }
+command(A) ::= T_BREAK|T_CONTINUE(X) . { A = array(strtolower(@X)); }
 
 
 else(A) ::= T_ELIF T_PHP_RAW(Z) body(C) else(X) . { A = array('else if', Z, C, X); }

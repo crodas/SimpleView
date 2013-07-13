@@ -223,6 +223,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Break.tpl.php
+     */
+    class class_f438effbfd0e1abc280c3a5fd5c49a6b609fdece extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "    break;\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Continue.tpl.php
      */
     class class_a5a85b8b99262519741caf9201827cb2a6a2b36f extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
@@ -440,6 +463,8 @@ namespace crodas\SimpleView\Templates {
                 'yield' => 'class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e',
                 'set.tpl.php' => 'class_c36eec984e05803cb157ccb02bc2517cf30266a3',
                 'set' => 'class_c36eec984e05803cb157ccb02bc2517cf30266a3',
+                'break.tpl.php' => 'class_f438effbfd0e1abc280c3a5fd5c49a6b609fdece',
+                'break' => 'class_f438effbfd0e1abc280c3a5fd5c49a6b609fdece',
                 'continue.tpl.php' => 'class_a5a85b8b99262519741caf9201827cb2a6a2b36f',
                 'continue' => 'class_a5a85b8b99262519741caf9201827cb2a6a2b36f',
                 'include.tpl.php' => 'class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156',

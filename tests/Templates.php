@@ -192,8 +192,10 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            foreach($users as $user) {
+            foreach($users as $user1) {
+                $user = $user1;
                 echo "    hi " . ($user) . "\n";
+                continue;
             }
 
             if ($return) {

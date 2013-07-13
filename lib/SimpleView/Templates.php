@@ -200,6 +200,52 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Set.tpl.php
+     */
+    class class_c36eec984e05803cb157ccb02bc2517cf30266a3 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "    " . ($token[1]) . " = " . ($token[2]) . ";\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Continue.tpl.php
+     */
+    class class_a5a85b8b99262519741caf9201827cb2a6a2b36f extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "    continue;\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Include.tpl.php
      */
     class class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
@@ -392,6 +438,10 @@ namespace crodas\SimpleView\Templates {
                 'else' => 'class_55654f0db518414907f78793b7d027601d43ad01',
                 'yield.tpl.php' => 'class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e',
                 'yield' => 'class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e',
+                'set.tpl.php' => 'class_c36eec984e05803cb157ccb02bc2517cf30266a3',
+                'set' => 'class_c36eec984e05803cb157ccb02bc2517cf30266a3',
+                'continue.tpl.php' => 'class_a5a85b8b99262519741caf9201827cb2a6a2b36f',
+                'continue' => 'class_a5a85b8b99262519741caf9201827cb2a6a2b36f',
                 'include.tpl.php' => 'class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156',
                 'include' => 'class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156',
                 'echo.tpl.php' => 'class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157',

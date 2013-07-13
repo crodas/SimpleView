@@ -60,6 +60,33 @@ class Template
         return $this->parent;
     }
 
+    protected function parseArguments($raw)
+    {
+        $args = [];
+        $len  = strlen($raw);
+        $buf  = 0;
+        $ind  = 0;
+        for ($i=0; $i < $len; $i++) {
+            switch ($raw[$i]) {
+            case '(':
+                $ind++;
+                break;
+            case ')':
+                $ind--;
+                break;
+            case ',':
+                if ($ind == 0) {
+                    $args[] = trim(substr($raw, $buf, $i - $buf)); 
+                    $buf    = $i+1;
+                }
+            }
+        }
+
+        $args[] = trim(substr($raw, $buf, $i - $buf)); 
+
+        return array_filter($args);
+    }
+
     /**
      *  @TODO: Must check the stmt is a string and not an expr.
      */
@@ -147,7 +174,20 @@ class Template
                 break;
             case 'yield':
             case 'include':
-                $block[] = array($stmt[0], $stmt[1]);
+            case 'continue':
+                $block[] = $stmt;
+                break;
+            case 'set':
+                $args = $this->parseArguments($stmt[1]);
+                if (count($args) !== 2) {
+                    throw new \RuntimeException("@set expects two arguments");
+                }
+                if ($args[0][0] !== '$') {
+                    throw new \RuntimeException("@set's first argument must be a variable");
+                }
+
+                $block[] = array('set', $args[0], $args[1]);
+
                 break;
             case 'parent':
                 if (!$this->section) {

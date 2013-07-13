@@ -89,7 +89,7 @@ $console
             $phar->addFile($file, $file->getRelativePathname());
         }
         $phar->addFile('cli.php');
-        $phar->setStub("#!{$_SERVER["_"]}\n"
+        $phar->setStub("#!" . PHP_BINARY . "\n"
             . $phar->createDefaultStub("cli.php")
         );
     });

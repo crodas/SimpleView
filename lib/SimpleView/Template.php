@@ -148,6 +148,13 @@ class Template
                 }
                 $block[] =  $if;
                 break;
+            case 'else if':
+                $if = array('elseif', $stmt[1], new self($stmt[2], null, $this->loop));
+                if (!empty($stmt[3]) && !is_string($stmt[3])) {
+                    $if[] = new self([ $stmt[3] ], null, $this->loop);
+                }
+                $block[] =  $if;
+                break;
             case 'else':
                 $block[] = array('else', new self($stmt[1], null, $this->loop));
                 break;

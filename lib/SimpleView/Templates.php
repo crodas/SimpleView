@@ -434,6 +434,35 @@ namespace {
         }
     }
 
+    /** 
+     *  Template class generated from ElseIf.tpl.php
+     */
+    class class_29c582cf88090afb569826fab26c5ff2408174a6 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "else if (" . ($token[1]) . ") {\n";
+            crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
+            echo "} \n";
+            if (!empty($token[3])) {
+                crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[3]), $this->context);
+            }
+            echo "\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
 }
 
 namespace crodas\SimpleView\Templates {
@@ -479,6 +508,8 @@ namespace crodas\SimpleView\Templates {
                 'if' => 'class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9',
                 'while.tpl.php' => 'class_6b1bcd97e93ed2c0cb9aac64a2ca1db0d5c1bbfd',
                 'while' => 'class_6b1bcd97e93ed2c0cb9aac64a2ca1db0d5c1bbfd',
+                'elseif.tpl.php' => 'class_29c582cf88090afb569826fab26c5ff2408174a6',
+                'elseif' => 'class_29c582cf88090afb569826fab26c5ff2408174a6',
             );
             $name = strtolower($name);
             if (empty($classes[$name])) {

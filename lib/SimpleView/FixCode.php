@@ -63,6 +63,9 @@ class FixCode
                 $code .= $token;
             } else {
                 switch ($token[0]) {
+                case T_CURLY_OPEN:
+                    $tabs++;
+                    break;
                 case T_WHITESPACE:
                     $doTab = strpos($token[1], "\n") !== false
                         || (!empty($tokens[--$id]) && $tokens[$id][0] == T_COMMENT 

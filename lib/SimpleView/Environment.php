@@ -48,16 +48,26 @@ class Environment
 {
     protected $finder;
 
-    public function __construct($dir, $ext = ".tpl.php")
+    public function __construct($dir, $ext = null)
     {
         if ($dir instanceof Finder) {
             $finder = $dir;
         } else { 
-            if (!is_dir($dir)) {
-                throw new \RuntimeException("{$dir} is not a directory");
-            }
             $finder = new Finder;
-            $finder->files()->name("*{$ext}")->in($dir);
+            foreach ((array)$dir as $_dir) {
+                if (!is_dir($_dir)) {
+                    throw new \RuntimeException("{$_dir} is not a directory");
+                }
+                $finder->in($_dir);
+            }
+
+            $finder->files()->in($dir);
+            if (empty($ext)) {
+                $ext = array('.tpl.php', '.tpl', '.html');
+            }
+            foreach ((Array)$ext as $e) {
+                $finder->name("*{$e}");
+            }
         }
         $this->finder = $finder;
     }

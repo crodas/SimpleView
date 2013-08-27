@@ -3,7 +3,8 @@
     "description": "Simple View engine designed to generate code. Based on Laravel's 4 Blade.",
     "require": {
         "symfony/finder": "*",
-        "symfony/console": "*"
+        "symfony/console": "*",
+        "crodas/watch-files": "*"
     },
 	"autoload": {
 		"classmap": [

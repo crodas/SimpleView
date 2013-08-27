@@ -77,6 +77,8 @@ class Runtime
                     $watcher->watchFile($compiled.'');
                     $watcher->watchDir(dirname($compiled));
                 }
+                $compiler->save($this->tmp);
+                $watcher->watchFile($this->tmp);
                 $watcher->watch();
             }
         }

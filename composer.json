@@ -3,7 +3,8 @@
     "description": "Simple View engine designed to generate code. Based on Laravel's 4 Blade.",
     "require": {
         "symfony/finder": "*",
-        "symfony/console": "*"
+        "symfony/console": "*",
+        "crodas/watch-files": "*"
     },
 	"autoload": {
 		"classmap": [
@@ -11,7 +12,7 @@
         ]
     },
     "license": "BSD-4-Clause",
-    "version": "v0.1.1",
+    "version": "v0.1.2",
     "authors": [
         {
             "name": "César D. Rodas",

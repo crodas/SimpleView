@@ -3,8 +3,77 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f1223aaafe6a1185df57d95cf8bcb24e",
+    "hash": "bc11d340aad24b39cb1f0f0197a56732",
     "packages": [
+        {
+            "name": "crodas/artifex",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crodas/Artifex.git",
+                "reference": "c6dfbe63e1968d23ecb9fa52bbc12aa5a51c3881"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crodas/Artifex/zipball/c6dfbe63e1968d23ecb9fa52bbc12aa5a51c3881",
+                "reference": "c6dfbe63e1968d23ecb9fa52bbc12aa5a51c3881",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Artifex": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "César D. Rodas",
+                    "email": "crodas@php.net"
+                }
+            ],
+            "description": "Macros on steroids. The easiest way of generating code.",
+            "time": "2013-04-20 22:36:27"
+        },
+        {
+            "name": "crodas/watch-files",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crodas/WatchFiles.git",
+                "reference": "6ceeed5735fb186fb08f9b3e90bebaea0410c33e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crodas/WatchFiles/zipball/6ceeed5735fb186fb08f9b3e90bebaea0410c33e",
+                "reference": "6ceeed5735fb186fb08f9b3e90bebaea0410c33e",
+                "shasum": ""
+            },
+            "require": {
+                "crodas/artifex": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "WatchFiles": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-4-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "César D. Rodas",
+                    "email": "crodas@php.net"
+                }
+            ],
+            "description": "Watch files and directories for changes",
+            "time": "2013-08-07 09:28:38"
+        },
         {
             "name": "symfony/console",
             "version": "dev-master",

@@ -36,50 +36,24 @@
 */
 namespace crodas\SimpleView;
 
-use Symfony\Component\Finder\SplFileInfo;
-use Simple_View_Parser as Parser;
+use WatchFiles\Watch;
 
-require_once __DIR__ . "/Parser.php";
-
-class Compiler
+class Runtime
 {
-    protected $env;
-    protected $compiled = array();
-    protected $code;
+    protected $tmp;
     protected $ns;
+    protected $loaded;
+    protected $devel;
 
-    public function __construct($env)
+    public function __construct($tpl, $env)
     {
+        $this->tmp = $tpl;
         $this->env = $env;
     }
 
-    public function compile_string($name, $text)
+    public function development()
     {
-        $tokenizer = new Tokenizer($this->env);
-        $parser    = new Parser($name);
-        $tokens = $tokenizer->getTokens($text);
-        foreach ($tokens as $token) {
-            try {
-                $parser->doParse($token[0], $token[1]);
-            } catch (Exception $e) {
-                $e->setLine($token[2]);
-                throw $e;
-            }
-        }
-        $template = new Template($parser->body);
-        $template->setSource($name);
-        $this->compiled[$name] = $template;
-        return $this;
-    }
-
-    protected function compile_file(SplFileInfo $file)
-    {
-        try {
-            $this->compile_string($file->getRelativePathname(), file_get_contents($file));
-        } catch (Exception $e) {
-            $e->setFile((string)$file);
-            throw $e;
-        }
+        $this->devel = true;
         return $this;
     }
 
@@ -89,43 +63,33 @@ class Compiler
         return $this;
     }
 
-    public function getNamespace()
+    public function load()
     {
-        return $this->ns;
-    }
-
-    public function getCode()
-    {
-        $classes = array();
-        foreach ($this->compiled as $name => $tpl) {
-            $zname    = strtolower($name);
-            $basename = basename($zname);
-            $parts = explode(".", $basename);
-            $class = 'class_' . sha1($name);
-            $classes[$basename] = $class;
-            $classes[$parts[0]] = $class;
-            $classes[$zname]    = $class;
+        if ($this->loaded) return $this->ns . "\\Templates";
+        if ($this->devel || !is_file($this->tmp)) {
+            $watcher = new Watch($this->tmp . ".lock");
+            if (!$watcher->isWatching() || $watcher->hasChanged()) {
+                $compiler = new Compiler($this->env);
+                if ($this->ns) {
+                    $compiler->setNamespace($this->ns);
+                }
+                foreach ($compiler->compile() as $compiled) {
+                    $watcher->watchFile($compiled.'');
+                    $watcher->watchDir(dirname($compiled));
+                }
+                $watcher->watch();
+            }
         }
-        $args = array('tpls' => $this->compiled, 'classes' => $classes, 'namespace' => $this->ns);
-        return FixCode::fix(Templates\Templates::get("class")->render($args, true));
+
+        require $this->tmp;
+        $this->loaded = true;
+
+        return $this->ns . "\\Templates";
     }
 
-    public function save($path)
+    public function get($name, $args)
     {
-        if (file_put_contents($path, $this->GetCode(), LOCK_EX) === false) {
-            throw new \RuntimeException("Error while writing to {$path}");
-        }
-        return $this;
+        $class = $this->load();
+        return $class::get($name, $args);
     }
-
-    public function compile()
-    {
-        $done = array();
-        foreach ($this->env->files() as $file) {
-            $this->compile_file($file);
-            $done[] = $file;
-        }
-        return $done;
-    }
-
 }

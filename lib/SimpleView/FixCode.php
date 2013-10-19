@@ -76,6 +76,13 @@ class FixCode
                             $spaces .= str_repeat($tab, $tabs);
                         }
                         $token[1] = $spaces;
+                        if (!empty($tokens[$id+1])) {
+                            switch (strtolower($tokens[$id+1][1])) {
+                            case 'default':
+                            case 'case':
+                                $token[1] = substr($spaces, 0, -1*strlen($tab));
+                            }
+                        }
                     }
                     break;
                 }

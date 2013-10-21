@@ -135,6 +135,10 @@ class Template
                 break;
             case 'echox':
             case 'echo':
+                if ($stmt[1][0]  == '@') {
+                    $stmt[0] = 'var_export';
+                    $stmt[1] = substr($stmt[1], 1);
+                }
                 if (end($block)[0] == $stmt[0]) {
                     $block[ count($block) - 1 ][1] .= " . (" . $stmt[1] . ")";
                 } else {

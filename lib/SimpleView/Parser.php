@@ -919,10 +919,10 @@ static public $yy_action = array(
     function yy_r4(){ $this->_retvalue = $this->yystack[$this->yyidx + 0]->minor;     }
 #line 926 "lib/SimpleView/Parser.php"
 #line 77 "lib/SimpleView/Parser.y"
-    function yy_r5(){ $this->_retvalue = array('echo', $this->yystack[$this->yyidx + 0]->minor);     }
+    function yy_r5(){ $this->_retvalue = array('echo', trim($this->yystack[$this->yyidx + 0]->minor));     }
 #line 929 "lib/SimpleView/Parser.php"
 #line 78 "lib/SimpleView/Parser.y"
-    function yy_r6(){ $this->_retvalue = array('echox', $this->yystack[$this->yyidx + 0]->minor);     }
+    function yy_r6(){ $this->_retvalue = array('echox', trim($this->yystack[$this->yyidx + 0]->minor));     }
 #line 932 "lib/SimpleView/Parser.php"
 #line 79 "lib/SimpleView/Parser.y"
     function yy_r7(){ $this->_retvalue = array('text', $this->yystack[$this->yyidx + 0]->minor);     }

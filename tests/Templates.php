@@ -70,7 +70,10 @@ namespace {
                 ob_start();
             }
             echo "Hi ";
-            echo htmlentities($name, ENT_QUOTES, 'UTF-8', false);
+            $__temporary = $name;
+            if (!empty($__temporary)) {
+                echo htmlentities($__temporary, ENT_QUOTES, 'UTF-8', false);
+            }
             echo "\n";
             if ($age < 18) {
                 echo "    You cannot be here\n";
@@ -78,6 +81,30 @@ namespace {
             else {
                 echo "    Welcome!\n";
             }
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from at.tpl.php
+     */
+    class class_eef20d69ae52eb9005a515c213ab9554791979c9 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            var_export(['foo', 'bar']);
+            echo "\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -320,6 +347,8 @@ namespace Tests {
             static $classes = array (
                 'if.tpl.php' => 'class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00',
                 'if' => 'class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00',
+                'at.tpl.php' => 'class_eef20d69ae52eb9005a515c213ab9554791979c9',
+                'at' => 'class_eef20d69ae52eb9005a515c213ab9554791979c9',
                 'layout.tpl.php' => 'class_bf6970c3f5699b979a3692d8261f22d15fadad5a',
                 'layout' => 'class_bf6970c3f5699b979a3692d8261f22d15fadad5a',
                 'extends_extends.tpl.php' => 'class_19709c42e2300830673895009607ec98d96822ec',

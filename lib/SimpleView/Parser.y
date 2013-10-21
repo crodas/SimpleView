@@ -75,8 +75,8 @@ body(A) ::= body(B) code(C) . { A = B; A[] = C; }
 body(A) ::=  . { A = array(); }
 
 code(A) ::= command(X) . { A = X; }
-code(A) ::= T_ECHO(X) . { A = array('echo', X); }
-code(A) ::= T_ESCAPED_ECHO(X) . { A = array('echox', X); }
+code(A) ::= T_ECHO(X) . { A = array('echo', trim(X)); }
+code(A) ::= T_ESCAPED_ECHO(X) . { A = array('echox', trim(X)); }
 code(A) ::= T_TEXT_RAW(X) . { A = array('text', X); }
 
 command(A) ::= T_SET T_PHP_RAW(B) . { A = array('set', B); }

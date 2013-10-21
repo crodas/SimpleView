@@ -103,8 +103,7 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            //foobar
-            echo var_export(['foo', 'bar'], true);
+            var_export(['foo', 'bar']);
             echo "\n";
 
             if ($return) {
@@ -196,10 +195,7 @@ namespace {
                 ob_start();
             }
             while ($i < 10) {
-                echo "    hi ";
-                //foobar
-                echo ++$i;
-                echo "\n";
+                echo "    hi " . (++$i) . "\n";
             }
 
             if ($return) {
@@ -225,10 +221,7 @@ namespace {
             }
             foreach($users as $user1) {
                 $user = $user1;
-                echo "    hi ";
-                //foobar
-                echo $user;
-                echo "\n";
+                echo "    hi " . ($user) . "\n";
                 if ($user == 1) {
                     continue;
                 }
@@ -325,10 +318,7 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo "Hi ";
-            //foobar
-            echo $user['name'];
-            echo "\n";
+            echo "Hi " . ($user['name']) . "\n";
             if (!($user['has_session'])) {
                 echo "    you must login\n";
             }

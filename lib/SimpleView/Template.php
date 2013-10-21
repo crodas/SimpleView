@@ -127,10 +127,10 @@ class Template
         foreach ($stmts as $stmt) {
             switch ($stmt[0]) {
             case 'text':
-                if (end($block)[0] == 'echo') {
+                if (end($block)[0] == 'echoz') {
                     $block[ count($block) - 1 ][1] .= " . " . $this->stringify($stmt[1]);
                 } else {
-                    $block[] = array('echo', $this->stringify($stmt[1]));
+                    $block[] = array('echoz', $this->stringify($stmt[1]));
                 }
                 break;
             case 'echox':

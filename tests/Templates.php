@@ -336,6 +336,22 @@ namespace Tests {
 
     class Templates
     {
+        public static function getAll()
+        {
+            return array (
+                0 => 'if',
+                1 => 'at',
+                2 => 'layout',
+                3 => 'extends_extends',
+                4 => 'while',
+                5 => 'loop',
+                6 => 'home',
+                7 => 'if1',
+                8 => 'extends',
+                9 => 'unless',
+            );
+        }
+
         public static function exec($name, Array $context = array(), Array $global = array())
         {
             $tpl = self::get($name);

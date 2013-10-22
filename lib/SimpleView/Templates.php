@@ -372,7 +372,11 @@ namespace {
                 }
                 echo "    }\n}\n\n";
             }
-            echo "}\n\nnamespace " . ($namespace) . " {\n\nclass Templates\n{\n    public static function exec(\$name, Array \$context = array(), Array \$global = array())\n    {\n        \$tpl = self::get(\$name);\n        return \$tpl->render(array_merge(\$global, \$context));\n    }\n\n    public static function get(\$name, Array \$context = array())\n    {\n        static \$classes = " . (var_export($classes, true)) . ";\n        \$name = strtolower(\$name);\n        if (empty(\$classes[\$name])) {\n            throw new \\RuntimeException(\"Cannot find template \$name\");\n        }\n\n        \$class = \"\\\\\" . \$classes[\$name];\n        return new \$class;\n    }\n}\n\n}\n";
+            echo "}\n\nnamespace " . ($namespace) . " {\n\nclass Templates\n{\n    public static function getAll()\n    {\n        return ";
+            var_export($list);
+            echo ";\n    }\n\n    public static function exec(\$name, Array \$context = array(), Array \$global = array())\n    {\n        \$tpl = self::get(\$name);\n        return \$tpl->render(array_merge(\$global, \$context));\n    }\n\n    public static function get(\$name, Array \$context = array())\n    {\n        static \$classes = ";
+            var_export($classes);
+            echo ";\n        \$name = strtolower(\$name);\n        if (empty(\$classes[\$name])) {\n            throw new \\RuntimeException(\"Cannot find template \$name\");\n        }\n\n        \$class = \"\\\\\" . \$classes[\$name];\n        return new \$class;\n    }\n}\n\n}\n";
 
             if ($return) {
                 return ob_get_clean();

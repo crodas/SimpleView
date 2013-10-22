@@ -101,6 +101,11 @@ namespace {{$namespace}} {
 
 class Templates
 {
+    public static function getAll()
+    {
+        return {{@$list}};
+    }
+
     public static function exec($name, Array $context = array(), Array $global = array())
     {
         $tpl = self::get($name);
@@ -109,7 +114,7 @@ class Templates
 
     public static function get($name, Array $context = array())
     {
-        static $classes = {{ var_export($classes, true) }};
+        static $classes = {{ @$classes }};
         $name = strtolower($name);
         if (empty($classes[$name])) {
             throw new \RuntimeException("Cannot find template $name");

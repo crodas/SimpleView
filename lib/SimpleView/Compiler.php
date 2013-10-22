@@ -97,16 +97,23 @@ class Compiler
     public function getCode()
     {
         $classes = array();
+        $tpls    = array();
         foreach ($this->compiled as $name => $tpl) {
             $zname    = strtolower($name);
             $basename = basename($zname);
-            $parts = explode(".", $basename);
-            $class = 'class_' . sha1($name);
+            $parts  = explode(".", $basename);
+            $class  = 'class_' . sha1($name);
+            $tpls[] = $parts[0];
             $classes[$basename] = $class;
             $classes[$parts[0]] = $class;
             $classes[$zname]    = $class;
         }
-        $args = array('tpls' => $this->compiled, 'classes' => $classes, 'namespace' => $this->ns);
+        $args = array(
+            'tpls' => $this->compiled, 
+            'classes' => $classes, 
+            'namespace' => $this->ns,
+            'list' => $tpls
+        );
         return FixCode::fix(Templates\Templates::get("class")->render($args, true));
     }
 

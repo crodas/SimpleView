@@ -496,6 +496,29 @@ namespace crodas\SimpleView\Templates {
 
     class Templates
     {
+        public static function getAll()
+        {
+            return array (
+                0 => 'parent',
+                1 => 'echox',
+                2 => 'body',
+                3 => 'unless',
+                4 => 'else',
+                5 => 'yield',
+                6 => 'set',
+                7 => 'break',
+                8 => 'continue',
+                9 => 'include',
+                10 => 'echo',
+                11 => 'foreach',
+                12 => 'class',
+                13 => 'if',
+                14 => 'while',
+                15 => 'elseif',
+                16 => 'var_export',
+            );
+        }
+
         public static function exec($name, Array $context = array(), Array $global = array())
         {
             $tpl = self::get($name);

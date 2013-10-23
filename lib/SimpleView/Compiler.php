@@ -100,11 +100,10 @@ class Compiler
         $tpls    = array();
         foreach ($this->compiled as $name => $tpl) {
             $zname    = strtolower($name);
-            $basename = basename($zname);
-            $parts  = explode(".", $basename);
+            $parts  = explode(".", $zname);
             $class  = 'class_' . sha1($name);
             $tpls[] = $parts[0];
-            $classes[$basename] = $class;
+            $classes[$zname] = $class;
             $classes[$parts[0]] = $class;
             $classes[$zname]    = $class;
         }

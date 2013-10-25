@@ -92,7 +92,7 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo "\$__temporary = " . ($token[1]) . ";\nif (!empty(\$__temporary)) {\n    echo htmlentities(\$__temporary, ENT_QUOTES, 'UTF-8', false);\n}\n";
+            echo "echo htmlentities(" . ($token[1]) . ", ENT_QUOTES, 'UTF-8', false);\n";
 
             if ($return) {
                 return ob_get_clean();

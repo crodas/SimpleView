@@ -42,6 +42,7 @@ use Simple_View_Parser as Parser;
 class Tokenizer
 {
     public $commands = array(
+        'break'      => Parser::T_BREAK,
         'elif'      => Parser::T_ELIF,
         'else'      => Parser::T_ELSE,
         'else if'   => Parser::T_ELIF,

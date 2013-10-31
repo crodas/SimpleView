@@ -70,10 +70,7 @@ namespace {
                 ob_start();
             }
             echo "Hi ";
-            $__temporary = $name;
-            if (!empty($__temporary)) {
-                echo htmlentities($__temporary, ENT_QUOTES, 'UTF-8', false);
-            }
+            echo htmlentities($name, ENT_QUOTES, 'UTF-8', false);
             echo "\n";
             if ($age < 18) {
                 echo "    You cannot be here\n";
@@ -225,6 +222,10 @@ namespace {
                 if ($user == 1) {
                     continue;
                 }
+            }
+            foreach($users as $user1) {
+                echo "    hi " . ($user1) . "\n";
+                break;
             }
 
             if ($return) {

@@ -5,3 +5,7 @@
         @continue
     @end
 @end
+@foreach($users as $user1)
+    hi {{$user1}}
+    @break
+@end

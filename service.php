@@ -5,8 +5,8 @@ namespace crodas\SimpleView;
 /**
  *  @Service(simple-view, {
  *      namespace: {default: NULL},
- *      views: { required: true, type: 'hash'},
- *      temp_dir: { default: '/tmp'} 
+ *      views: { required: true, type: 'array_dir'},
+ *      temp_dir: { default: '/tmp', type: dir} 
  *  }, {shared: true})
  */
 function get_service($config)

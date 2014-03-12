@@ -216,14 +216,20 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            foreach($users as $user1) {
+            foreach($users as $id => $user1) {
+                $this->context['id'] = $id;
+                $this->context['user1'] = $user1;
                 $user = $user1;
+                $this->context['user'] = $user;
                 echo "    hi " . ($user) . "\n";
+                $foo = 'xxx';
+                $this->context['foo'] = $foo;
                 if ($user == 1) {
                     continue;
                 }
             }
             foreach($users as $user1) {
+                $this->context['user1'] = $user1;
                 echo "    hi " . ($user1) . "\n";
                 break;
             }

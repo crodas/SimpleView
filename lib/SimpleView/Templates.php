@@ -214,6 +214,11 @@ namespace {
                 ob_start();
             }
             echo "    " . ($token[1]) . " = " . ($token[2]) . ";\n";
+            if (preg_match("/^\\$[a-z_][a-z_0-9]*$/i", trim($token[1]))) {
+                echo "        \$this->context[";
+                var_export(substr(trim($token[1]), 1));
+                echo "] = " . ($token[1]) . ";\n";
+            }
 
             if ($return) {
                 return ob_get_clean();
@@ -329,6 +334,11 @@ namespace {
                 ob_start();
             }
             echo "foreach(" . ($token[1]) . ") {\n";
+            foreach(explode("=>", explode("as", $token[1], 2)[1]) as $var) {
+                echo "        \$this->context[";
+                var_export(substr(trim($var),1));
+                echo "] = " . (trim($var)) . ";\n";
+            }
             crodas\SimpleView\Templates\Templates::exec('body', array('tpl' => $token[2]), $this->context);
             echo "}\n";
 

@@ -72,6 +72,7 @@ class Tokenizer
         $tags    = array(
             'open' => '{{', 'close' => '}}',
             't_open' => '{{{', 't_close' => '}}}',
+            'php_open' => '{%', 'php_close' => '%}',
         );
         $tokens   = array();
         $notfound = 0xffffff;
@@ -116,13 +117,19 @@ class Tokenizer
                     }
                     $endline++;
                 }
+
             } else if (
+                    substr($text, $i, strlen($tags['php_open'])) == $tags['php_open'] ||
                     substr($text, $i, strlen($tags['open'])) == $tags['open'] ||
                     substr($text, $i, strlen($tags['t_open'])) == $tags['t_open']
                 ) {
+
                 if (substr($text, $i, strlen($tags['t_open'])) == $tags['t_open']) {
                     $open  = 't_open';
                     $close = 't_close';
+                } else if (substr($text, $i, strlen($tags['php_open'])) == $tags['php_open']) {
+                    $open  = 'php_open';
+                    $close = 'php_close';
                 } else {
                     $open  = 'open';
                     $close = 'close';
@@ -147,13 +154,29 @@ class Tokenizer
                 if ($e == $len) {
                     throw new Exception("Unexpected end of file", $line);
                 }
-                $tokens[] = array($open == 'open' ? Parser::T_ECHO : Parser::T_ESCAPED_ECHO, substr($text, $i, $e - $i), $line);
+                if ($open == 'php_open') {
+                    $code = trim(substr($text, $i, $e - $i));
+                    foreach ($this->commands as $command => $value) {
+                        $cmp = strcasecmp($command, substr($code, 0, strlen($command)));
+                        if ($cmp > 0) {
+                            throw new Exception("Unexpected '$code'", $line);
+                        }
+                        if ($cmp === 0) {
+                            $tokens[] = array($value, $command, $line);
+                            $tokens[] = array(Parser::T_PHP_RAW, substr($code, strlen($command)));
+                            break;
+                        }
+                    }
+                } else {
+                    $tokens[] = array($open == 'open' ? Parser::T_ECHO : Parser::T_ESCAPED_ECHO, substr($text, $i, $e - $i), $line);
+                }
                 $i = $e + strlen($tags[$close]) - 1;
             } else {
                 $pos = min(array(
                     strpos($text, $start, $i) ?: $notfound,
                     strpos($text, $tags['open'], $i) ?: $notfound,
                     strpos($text, $tags['t_open'], $i) ?: $notfound,
+                    strpos($text, $tags['php_open'], $i) ?: $notfound,
                 ));
 
                 if ($pos === $notfound) {

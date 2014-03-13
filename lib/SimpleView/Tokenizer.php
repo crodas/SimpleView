@@ -163,7 +163,10 @@ class Tokenizer
                         }
                         if ($cmp === 0) {
                             $tokens[] = array($value, $command, $line);
-                            $tokens[] = array(Parser::T_PHP_RAW, substr($code, strlen($command)));
+                            $code = trim(substr($code, strlen($command)));
+                            if (!empty($code)) {
+                                $tokens[] = array(Parser::T_PHP_RAW, $code);
+                            }
                             break;
                         }
                     }

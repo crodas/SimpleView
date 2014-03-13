@@ -72,12 +72,13 @@ namespace {
             echo "Hi ";
             echo htmlentities($name, ENT_QUOTES, 'UTF-8', false);
             echo "\n";
-            if ( ($age < 18)) {
+            if (($age < 18)) {
                 echo "\n    You cannot be here\n";
             }
             else {
                 echo "    Welcome!\n";
             }
+            echo "\n";
 
             if ($return) {
                 return ob_get_clean();

@@ -80,11 +80,11 @@ code(A) ::= T_ESCAPED_ECHO(X) . { A = array('echox', trim(X)); }
 code(A) ::= T_TEXT_RAW(X) . { A = array('text', X); }
 
 command(A) ::= T_SET T_PHP_RAW(B) . { A = array('set', B); }
-command(A) ::= T_FOREACH T_PHP_RAW(B) body(C) T_END(X) . { A = array('foreach', B, C, @X); }
-command(A) ::= T_WHILE T_PHP_RAW(B) body(C) T_END(X) . { A = array('while', B, C, @X); }
-command(A) ::= T_UNLESS T_PHP_RAW(B) body(C) T_END(X) . { A = array('unless', B, C, @X); }
+command(A) ::= T_FOREACH T_PHP_RAW(B) body(C) block_end(X) . { A = array('foreach', B, C, @X); }
+command(A) ::= T_WHILE T_PHP_RAW(B) body(C) block_end(X) . { A = array('while', B, C, @X); }
+command(A) ::= T_UNLESS T_PHP_RAW(B) body(C) block_end(X) . { A = array('unless', B, C, @X); }
 command(A) ::= T_IF T_PHP_RAW(B) body(C) else(X) . { A = array('if', B, C, X); }
-command(A) ::= T_SECTION T_PHP_RAW(B) body(C) T_END(X) . { A = array('section', B, C, @X); }
+command(A) ::= T_SECTION T_PHP_RAW(B) body(C) block_end(X) . { A = array('section', B, C, @X); }
 command(A) ::= T_SECTION T_PHP_RAW(B) body(C) T_SHOW . { A = array('section_and_show', B, C); }
 command(A) ::= T_INCLUDE T_PHP_RAW(B) . { A = array('include', B); }
 command(A) ::= T_YIELD T_PHP_RAW(B) . { A = array('yield', B); }
@@ -93,5 +93,8 @@ command(A) ::= T_BREAK|T_CONTINUE(X) . { A = array(strtolower(@X)); }
 
 
 else(A) ::= T_ELIF T_PHP_RAW(Z) body(C) else(X) . { A = array('else if', Z, C, X); }
-else(A) ::= T_ELSE body(C) T_END(X) . { A = array('else', C, @X); }
-else(A) ::= T_END(X) . { A = @X; }
+else(A) ::= T_ELSE body(C) block_end(X) . { A = array('else', C, @X); }
+else(A) ::= block_end(X) . { A = @X; }
+
+block_end(A) ::= T_END(X) . { A = X; }
+block_end(A) ::= T_END T_PHP_RAW(X) . { A = X; }

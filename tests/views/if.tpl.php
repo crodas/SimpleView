@@ -3,4 +3,4 @@ Hi {{{$name}}}
     You cannot be here
 @else
     Welcome!
-@endif
+{% endif %}

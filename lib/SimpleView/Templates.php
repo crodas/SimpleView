@@ -79,6 +79,29 @@ namespace {
     }
 
     /** 
+     *  Template class generated from Spaceless.tpl.php
+     */
+    class class_e5f3aacac71e677703efc7f7d2621463a25e5059 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[1]), $this->context);
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from Echox.tpl.php
      */
     class class_b3f21f4b7452906b330612b966219cc089b11145 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
@@ -518,22 +541,23 @@ namespace crodas\SimpleView\Templates {
         {
             return array (
                 0 => 'parent',
-                1 => 'echox',
-                2 => 'body',
-                3 => 'unless',
-                4 => 'else',
-                5 => 'yield',
-                6 => 'set',
-                7 => 'break',
-                8 => 'continue',
-                9 => 'include',
-                10 => 'echo',
-                11 => 'foreach',
-                12 => 'class',
-                13 => 'if',
-                14 => 'while',
-                15 => 'elseif',
-                16 => 'var_export',
+                1 => 'spaceless',
+                2 => 'echox',
+                3 => 'body',
+                4 => 'unless',
+                5 => 'else',
+                6 => 'yield',
+                7 => 'set',
+                8 => 'break',
+                9 => 'continue',
+                10 => 'include',
+                11 => 'echo',
+                12 => 'foreach',
+                13 => 'class',
+                14 => 'if',
+                15 => 'while',
+                16 => 'elseif',
+                17 => 'var_export',
             );
         }
 
@@ -548,6 +572,8 @@ namespace crodas\SimpleView\Templates {
             static $classes = array (
                 'parent.tpl.php' => 'class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e',
                 'parent' => 'class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e',
+                'spaceless.tpl.php' => 'class_e5f3aacac71e677703efc7f7d2621463a25e5059',
+                'spaceless' => 'class_e5f3aacac71e677703efc7f7d2621463a25e5059',
                 'echox.tpl.php' => 'class_b3f21f4b7452906b330612b966219cc089b11145',
                 'echox' => 'class_b3f21f4b7452906b330612b966219cc089b11145',
                 'body.tpl.php' => 'class_399877791885ad1a9fde51bca4deb52107f94699',

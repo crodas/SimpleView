@@ -72,7 +72,7 @@ namespace {
             echo "Hi ";
             echo htmlentities($name, ENT_QUOTES, 'UTF-8', false);
             echo "\n";
-            if (($age < 18)) {
+            if ($age < 18) {
                 echo "\n    You cannot be here\n";
             }
             else {
@@ -362,6 +362,44 @@ namespace {
     }
 
     /** 
+     *  Template class generated from loop2.tpl.php
+     */
+    class class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            foreach($users as $id => $user) {
+                $this->context['id'] = $id;
+                $this->context['user'] = $user;
+                echo "\n";
+                Tests\Templates::exec("loop1-example", $this->context);
+                echo "    ";
+                if ($user == 1) {
+                    echo "\n";
+                    continue;
+                }
+            }
+            foreach($users as $user) {
+                $this->context['user'] = $user;
+                Tests\Templates::exec("loop1-example", $this->context);
+                break;
+            }
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from loop1.tpl.php
      */
     class class_6be9d3fcb52ec7a4482d27fd52c23cd71db0613d extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
@@ -416,7 +454,8 @@ namespace Tests {
                 8 => 'if1',
                 9 => 'extends',
                 10 => 'unless',
-                11 => 'loop1',
+                11 => 'loop2',
+                12 => 'loop1',
             );
         }
 
@@ -451,6 +490,8 @@ namespace Tests {
                 'extends' => 'class_793a0eb11fa5c92b689ad190f2f86f14ac827463',
                 'unless.tpl.php' => 'class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8',
                 'unless' => 'class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8',
+                'loop2.tpl.php' => 'class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4',
+                'loop2' => 'class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4',
                 'loop1.tpl.php' => 'class_6be9d3fcb52ec7a4482d27fd52c23cd71db0613d',
                 'loop1' => 'class_6be9d3fcb52ec7a4482d27fd52c23cd71db0613d',
             );

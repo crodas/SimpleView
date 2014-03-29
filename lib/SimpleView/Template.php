@@ -105,7 +105,11 @@ class Template
     {
         $text = addslashes($stmt);
         if ($this->spaceless) {
-            $regex = array('/>[ \t\r\n]+</smU','/^[ \t\r\n]+</smU','/>[ \t\r\n]+$/smU');
+            $regex = array(
+                '/>[ \t\r\n]+</smU',
+                '/[ \t\r\n]+</smU',
+                '/>[ \t\r\n]/smU',
+            );
             $repl  = array('><', '<', '>');
             $text = preg_replace($regex, $repl, trim($text));
         }

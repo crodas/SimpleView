@@ -166,7 +166,11 @@ class Tokenizer
                             $tokens[] = array($value, $command, $line);
                             $code = trim(substr($code, strlen($command)));
                             if (!empty($code)) {
-                                $tokens[] = array(Parser::T_PHP_RAW, trim(trim($code, '()')));
+                                $code = trim($code);
+                                if ($code[0] == '(' && $code[strlen($code)-1] == ')') {
+                                    $code = substr($code, 1, -1);
+                                }
+                                $tokens[] = array(Parser::T_PHP_RAW, $code);
                             }
                             break;
                         }

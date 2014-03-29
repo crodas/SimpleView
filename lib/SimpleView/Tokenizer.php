@@ -42,6 +42,7 @@ use Simple_View_Parser as Parser;
 class Tokenizer
 {
     public $commands = array(
+        'spaceless'  => Parser::T_SPACELESS,
         'break'      => Parser::T_BREAK,
         'elif'      => Parser::T_ELIF,
         'else'      => Parser::T_ELSE,
@@ -165,7 +166,7 @@ class Tokenizer
                             $tokens[] = array($value, $command, $line);
                             $code = trim(substr($code, strlen($command)));
                             if (!empty($code)) {
-                                $tokens[] = array(Parser::T_PHP_RAW, $code);
+                                $tokens[] = array(Parser::T_PHP_RAW, trim(trim($code, '()')));
                             }
                             break;
                         }

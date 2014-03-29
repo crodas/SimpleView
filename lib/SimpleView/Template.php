@@ -48,12 +48,14 @@ class Template
     protected $codes = array();
     protected $parent;
     protected $loop;
+    protected $spaceless = false;
 
-    public function __construct(Array $stmts, $section = null, $loop = false)
+    public function __construct(Array $stmts, $section = null, $loop = false, $spaceless = false)
     {
         $this->stmts   = $stmts;
         $this->section = $section;
         $this->loop    = $loop;
+        $this->spaceless = $spaceless;
         $this->doProcess($stmts);
     }
 
@@ -102,6 +104,11 @@ class Template
     protected function stringify($stmt)
     {
         $text = addslashes($stmt);
+        if ($this->spaceless) {
+            $regex = array('/>[ \t\r\n]+</smU','/^[ \t\r\n]+</smU','/>[ \t\r\n]+$/smU');
+            $repl  = array('><', '<', '>');
+            $text = preg_replace($regex, $repl, trim($text));
+        }
         return '"' . str_replace(array("\t", "\n", '$', "\\'"), array('\t', '\n','\$', "'"), $text) . '"';
     }
 
@@ -124,6 +131,7 @@ class Template
         }
 
         $block = &$this->codes;
+
         foreach ($stmts as $stmt) {
             switch ($stmt[0]) {
             case 'text':
@@ -133,6 +141,10 @@ class Template
                     $block[] = array('echo', $this->stringify($stmt[1]));
                 }
                 break;
+            case 'spaceless':
+                $block[] = array('spaceless', new self($stmt[1], null, $this->loop, true));
+                break;
+
             case 'echox':
             case 'echo':
                 if ($stmt[1][0]  == '@') {
@@ -146,22 +158,23 @@ class Template
                 }
                 break;
             case 'if':
-                $if = array('if', $stmt[1], new self($stmt[2], null, $this->loop));
+                $if = array('if', $stmt[1], new self($stmt[2], null, $this->loop, $this->spaceless));
                 if (!empty($stmt[3]) && !is_string($stmt[3])) {
-                    $if[] = new self([ $stmt[3] ], null, $this->loop);
+                    $if[] = new self([ $stmt[3] ], null, $this->loop, $this->spaceless);
                 }
                 $block[] =  $if;
                 break;
             case 'else if':
-                $if = array('elseif', $stmt[1], new self($stmt[2], null, $this->loop));
+                $if = array('elseif', $stmt[1], new self($stmt[2], null, $this->loop, $this->spaceless));
                 if (!empty($stmt[3]) && !is_string($stmt[3])) {
-                    $if[] = new self([ $stmt[3] ], null, $this->loop);
+                    $if[] = new self([ $stmt[3] ], null, $this->loop, $this->spaceless);
                 }
                 $block[] =  $if;
                 break;
             case 'else':
-                $block[] = array('else', new self($stmt[1], null, $this->loop));
+                $block[] = array('else', new self($stmt[1], null, $this->loop, $this->spaceless));
                 break;
+
             case 'foreach':
             case 'unless':
             case 'while':

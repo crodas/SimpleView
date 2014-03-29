@@ -90,6 +90,9 @@ command(A) ::= T_INCLUDE T_PHP_RAW(B) . { A = array('include', B); }
 command(A) ::= T_YIELD T_PHP_RAW(B) . { A = array('yield', B); }
 command(A) ::= T_PARENT . { A = array('parent'); }
 command(A) ::= T_BREAK|T_CONTINUE(X) . { A = array(strtolower(@X)); }
+command(A) ::= T_SPACELESS body(X) T_END(Y) . { 
+    A = array('spaceless', X, @Y);
+}
 
 
 else(A) ::= T_ELIF T_PHP_RAW(Z) body(C) else(X) . { A = array('else if', Z, C, X); }

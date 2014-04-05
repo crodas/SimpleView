@@ -88,6 +88,35 @@ namespace {
     }
 
     /** 
+     *  Template class generated from mixed.tpl.php
+     */
+    class class_a1e3a95c79cab9e71f533a0b4f6234e4c760646d extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            foreach([1,2,3] as $auction) {
+                $this->context['auction'] = $auction;
+                echo "      ";
+                Tests\Templates::exec('home.tpl.php', $this->context);
+                echo "\n";
+            }
+            echo " \n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
      *  Template class generated from loop1-example.tpl.php
      */
     class class_f29db6e6f1c21db1b05b51162242fe0eafe8c136 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
@@ -471,19 +500,20 @@ namespace Tests {
         {
             return array (
                 0 => 'if',
-                1 => 'loop1-example',
-                2 => 'at',
-                3 => 'layout',
-                4 => 'extends_extends',
-                5 => 'spaceless',
-                6 => 'while',
-                7 => 'loop',
-                8 => 'home',
-                9 => 'if1',
-                10 => 'extends',
-                11 => 'unless',
-                12 => 'loop2',
-                13 => 'loop1',
+                1 => 'mixed',
+                2 => 'loop1-example',
+                3 => 'at',
+                4 => 'layout',
+                5 => 'extends_extends',
+                6 => 'spaceless',
+                7 => 'while',
+                8 => 'loop',
+                9 => 'home',
+                10 => 'if1',
+                11 => 'extends',
+                12 => 'unless',
+                13 => 'loop2',
+                14 => 'loop1',
             );
         }
 
@@ -498,6 +528,8 @@ namespace Tests {
             static $classes = array (
                 'if.tpl.php' => 'class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00',
                 'if' => 'class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00',
+                'mixed.tpl.php' => 'class_a1e3a95c79cab9e71f533a0b4f6234e4c760646d',
+                'mixed' => 'class_a1e3a95c79cab9e71f533a0b4f6234e4c760646d',
                 'loop1-example.tpl.php' => 'class_f29db6e6f1c21db1b05b51162242fe0eafe8c136',
                 'loop1-example' => 'class_f29db6e6f1c21db1b05b51162242fe0eafe8c136',
                 'at.tpl.php' => 'class_eef20d69ae52eb9005a515c213ab9554791979c9',

@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/crodas/SimpleAssetManager.git",
-                "reference": "e74dab78938e30b602c74a3b86bdc0151e162308"
+                "reference": "01e3fab455124c4ac42f30a09b46a5338f567b29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/crodas/SimpleAssetManager/zipball/e74dab78938e30b602c74a3b86bdc0151e162308",
-                "reference": "e74dab78938e30b602c74a3b86bdc0151e162308",
+                "url": "https://api.github.com/repos/crodas/SimpleAssetManager/zipball/01e3fab455124c4ac42f30a09b46a5338f567b29",
+                "reference": "01e3fab455124c4ac42f30a09b46a5338f567b29",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,7 @@
                 }
             ],
             "description": "Very simple asset manager",
-            "time": "2014-05-18 19:47:01"
+            "time": "2014-05-18 20:06:28"
         },
         {
             "name": "crodas/class-info",

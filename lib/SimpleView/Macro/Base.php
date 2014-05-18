@@ -1,9 +1,7 @@
-%name Simple_View_
-
-%include {
+<?php
 /*
   +---------------------------------------------------------------------------------+
-  | Copyright (c) 2013 César Rodas                                                  |
+  | Copyright (c) 2014 César Rodas                                                  |
   +---------------------------------------------------------------------------------+
   | Redistribution and use in source and binary forms, with or without              |
   | modification, are permitted provided that the following conditions are met:     |
@@ -36,71 +34,88 @@
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-use crodas\SimpleView\Exception;
-}
+namespace crodas\SimpleView\Macro;
 
-%declare_class { class Simple_View_Parser }
+use Simple_View_Parser as Parser;
+use Simple_View_Args as Args;
+use crodas\SimpleView\Template;
 
-%include_class {
-    protected $lex;
-    protected $file;
+abstract class Base
+{
+    protected $body = null;
+    protected $args = [];
 
-    function __construct($file='')
+    public function getType()
     {
-        $this->file = $file;
+        return Parser::T_PRE;
     }
 
-    function Error($text)
+    public function setBody(Template $body)
     {
-        throw new Exception($text, -1);
+        $this->body = $body;
+        return $this;
     }
 
-}
-
-%parse_accept {
-}
-
-%syntax_error {
-    $expected = array();
-    foreach ($this->yy_get_expected_tokens($yymajor) as $token) {
-        $expected[] = self::$yyTokenName[$token];
+    public function getBody()
+    {
+        return $this->body;
     }
-    $this->Error('Unexpected ' . $this->tokenName($yymajor) . '(' . $TOKEN. ') expecting '. print_r($expected, true));
+
+    public function parseArgs($text)
+    {
+        $parser = new Args;
+        $len    = strlen($text);
+        for($i = 0; $i < $len; $i++) {
+            switch ($text[$i]) {
+            case ' ': case "\t": case "\n": 
+                /* ignore whitespace */
+                break;
+            case ',':
+                $parser->doParse(Args::T_COMMA, ',');
+                break;
+            case '=':
+                $parser->doParse(Args::T_EQ, '=');
+                break;
+            case '"':
+            case "'":
+                $start  = $text[$i];
+                $string = "";
+                for (; ++$i < $len;) {
+                    switch ($text[$i]) {
+                    case $start:
+                        break 2;
+                    case '\\':
+                        break;
+                    default: 
+                        $string .= $text[$i];
+                    }
+                }
+                $parser->doParse(Args::T_STRING, $string);
+                break;
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
+                $start = $i;
+                while (ctype_digit($text[++$i]) || $text[$i] == '.');
+                $parser->doParse(Args::T_NUMBER, substr($text, $start, $i - $start));
+                $i--;
+                break;
+            default:
+                $start = $i;
+                while (ctype_alpha($text[++$i]));
+                $parser->doParse(Args::T_STRING, substr($text, $start, $i - $start));
+                $i--;
+            }
+        }
+
+        $parser->doParse(0, 0);
+
+        $this->args = $parser->args;
+
+        return $this;
+    }
+
+    abstract public function getNames();
+
+    abstract public function run($context);
+
 }
-
-start ::= T_EXTENDS T_PHP_RAW(X) body(A) . { $this->body = array('extends', X, A); }
-start ::= body(A) . { $this->body = A; }
-
-body(A) ::= body(B) code(C) . { A = B; A[] = C; }
-body(A) ::=  . { A = array(); }
-
-code(A) ::= command(X) . { A = X; }
-code(A) ::= T_ECHO(X) . { A = array('echo', trim(X)); }
-code(A) ::= T_ESCAPED_ECHO(X) . { A = array('echox', trim(X)); }
-code(A) ::= T_TEXT_RAW(X) . { A = array('text', X); }
-
-command(A) ::= T_SET T_PHP_RAW(B) . { A = array('set', B); }
-command(A) ::= T_FOREACH T_PHP_RAW(B) body(C) block_end(X) . { A = array('foreach', B, C, @X); }
-command(A) ::= T_WHILE T_PHP_RAW(B) body(C) block_end(X) . { A = array('while', B, C, @X); }
-command(A) ::= T_UNLESS T_PHP_RAW(B) body(C) block_end(X) . { A = array('unless', B, C, @X); }
-command(A) ::= T_IF T_PHP_RAW(B) body(C) else(X) . { A = array('if', B, C, X); }
-command(A) ::= T_SECTION T_PHP_RAW(B) body(C) block_end(X) . { A = array('section', B, C, @X); }
-command(A) ::= T_SECTION T_PHP_RAW(B) body(C) T_SHOW . { A = array('section_and_show', B, C); }
-command(A) ::= T_INCLUDE T_PHP_RAW(B) . { A = array('include', B); }
-command(A) ::= T_YIELD T_PHP_RAW(B) . { A = array('yield', B); }
-command(A) ::= pre_processor(B) . { A = B; }
-command(A) ::= T_PARENT . { A = array('parent'); }
-command(A) ::= T_BREAK|T_CONTINUE(X) . { A = array(strtolower(@X)); }
-command(A) ::= T_SPACELESS body(X) T_END(Y) . { 
-    A = array('spaceless', X, @Y);
-}
-
-pre_processor(A) ::= T_PRE(Y) T_PHP_RAW(XX) body(C)   block_end(X) . { A = array('pre', @Y, XX, C, @X); }
-pre_processor(A) ::= T_PRE(Y) body(C)   block_end(X) . { A = array('pre', @Y, NULL, C, @X); }
-
-else(A) ::= T_ELIF T_PHP_RAW(Z) body(C) else(X) . { A = array('else if', Z, C, X); }
-else(A) ::= T_ELSE body(C) block_end(X) . { A = array('else', C, @X); }
-else(A) ::= block_end(X) . { A = @X; }
-
-block_end(A) ::= T_END(X) . { A = X; }
-block_end(A) ::= T_END T_PHP_RAW(X) . { A = X; }

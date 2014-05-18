@@ -1,7 +1,7 @@
 <?php
 /*
   +---------------------------------------------------------------------------------+
-  | Copyright (c) 2013 César Rodas                                                  |
+  | Copyright (c) 2014 César Rodas                                                  |
   +---------------------------------------------------------------------------------+
   | Redistribution and use in source and binary forms, with or without              |
   | modification, are permitted provided that the following conditions are met:     |
@@ -34,7 +34,6 @@
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-
 namespace crodas\SimpleView;
 
 use Simple_View_Parser as Parser;
@@ -64,6 +63,46 @@ class Tokenizer
         'continue'  => Parser::T_CONTINUE,
     );
 
+    protected $macros = array();
+
+    protected $env;
+
+    public function __construct($env)
+    {
+        $this->commands = array_merge($this->commands, $env->getMacros());
+    }
+
+    public function getString($text, &$i, $start, $end, $line)
+    {
+        $count = 1;
+        $e   = $i;
+        $len = strlen($text);
+        while ($count > 0 && ++$e < $len) {
+            switch ($text[$e]) {
+            case $start: 
+                $count++;
+                break;
+            case $end:
+                $count--;
+                break;
+            case '"':
+            case "'":
+                $zstart = $text[$e];
+                while (++$e < $len) {
+                    if ($text[$e] == $zstart) break;
+                }
+                break;
+            case "\n";
+                throw new Exception("Unexpected end of line", $line);
+            }
+        }
+
+        $part = substr($text, ++$i, $e - $i);
+        $i    = $e;
+
+        return $part;
+    }
+
     public function getTokens($text)
     {
         ksort($this->commands);
@@ -88,32 +127,17 @@ class Tokenizer
                         break;
                     }
                     if ($cmp === 0) {
-                        $found = true;
+                        $found = 1;
                         break;
                     }
                 }
                 if (!$found) {
                     $tokens[] = array(Parser::T_TEXT_RAW, '@', $line);
-                } else {
+                } else if ($found == 1) {
                     $tokens[] = array($value, $command, $line);
-                    while (++$i < $len && $text[$i] != "\n" && $text[$i] != "(");
+                    while (++$i < $len && $text[$i] != "\n" && $text[$i] != "(" && $text[$i] != '[');
                     if ($i < $len && $text[$i] == '(') {
-                        $count = 1;
-                        $e = $i++;
-                        while ($count > 0) {
-                            switch ($text[++$e]) {
-                            case '(': 
-                                $count++;
-                                break;
-                            case ')':
-                                $count--;
-                                break;
-                            case "\n";
-                                throw new Exception("Unexpected end of line", $line);
-                            }
-                        }
-                        $tokens[] = array(Parser::T_PHP_RAW, substr($text, $i, $e - $i), $line);
-                        $i = $e;
+                        $tokens[] = array(Parser::T_PHP_RAW, $this->getString($text, $i, '(', ')', $line), $line);
                         while (++$i < $len && $text[$i] != "\n");
                     }
                     $endline++;

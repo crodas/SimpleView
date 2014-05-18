@@ -4,12 +4,65 @@ State 0:
           body ::= * body code
       (3) body ::= *
 
-                     T_EXTENDS shift  25
+                     T_EXTENDS shift  29
                          start accept
-                          body shift  9
+                          body shift  12
                      {default} reduce 3
 
 State 1:
+          body ::= body * code
+          code ::= * command
+          code ::= * T_ECHO
+          code ::= * T_ESCAPED_ECHO
+          code ::= * T_TEXT_RAW
+          command ::= * T_SET T_PHP_RAW
+          command ::= * T_FOREACH T_PHP_RAW body block_end
+          command ::= * T_WHILE T_PHP_RAW body block_end
+          command ::= * T_UNLESS T_PHP_RAW body block_end
+          command ::= * T_IF T_PHP_RAW body else
+          command ::= * T_SECTION T_PHP_RAW body block_end
+          command ::= * T_SECTION T_PHP_RAW body T_SHOW
+          command ::= * T_INCLUDE T_PHP_RAW
+          command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
+          command ::= * T_PARENT
+          command ::= * T_BREAK|T_CONTINUE
+          command ::= * T_SPACELESS body T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
+          else ::= * T_ELIF T_PHP_RAW body else
+          else ::= T_ELIF T_PHP_RAW body * else
+          else ::= * T_ELSE body block_end
+          else ::= * block_end
+          block_end ::= * T_END
+          block_end ::= * T_END T_PHP_RAW
+
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_END shift  27
+                         T_PRE shift  13
+                        T_ELIF shift  32
+                        T_ELSE shift  20
+                          code shift  57
+                       command shift  47
+                     block_end shift  35
+                          else shift  38
+                 pre_processor shift  51
+
+State 2:
           body ::= body * code
           code ::= * command
           code ::= * T_ECHO
@@ -25,85 +78,42 @@ State 1:
           command ::= * T_SECTION T_PHP_RAW body T_SHOW
           command ::= * T_INCLUDE T_PHP_RAW
           command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
           command ::= * T_PARENT
           command ::= * T_BREAK|T_CONTINUE
           command ::= * T_SPACELESS body T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
           else ::= * T_ELIF T_PHP_RAW body else
           else ::= * T_ELSE body block_end
           else ::= * block_end
           block_end ::= * T_END
           block_end ::= * T_END T_PHP_RAW
 
-                        T_ECHO shift  41
-                T_ESCAPED_ECHO shift  40
-                    T_TEXT_RAW shift  38
-                         T_SET shift  28
-                     T_FOREACH shift  26
-                       T_WHILE shift  23
-                      T_UNLESS shift  27
-                          T_IF shift  30
-                     T_SECTION shift  20
-                     T_INCLUDE shift  22
-                       T_YIELD shift  24
-                      T_PARENT shift  51
-                       T_BREAK shift  32
-                    T_CONTINUE shift  32
-                   T_SPACELESS shift  13
-                         T_END shift  21
-                        T_ELIF shift  29
-                        T_ELSE shift  17
-                          code shift  42
-                       command shift  43
-                     block_end shift  31
-                          else shift  37
-
-State 2:
-          body ::= body * code
-          code ::= * command
-          code ::= * T_ECHO
-          code ::= * T_ESCAPED_ECHO
-          code ::= * T_TEXT_RAW
-          command ::= * T_SET T_PHP_RAW
-          command ::= * T_FOREACH T_PHP_RAW body block_end
-          command ::= * T_WHILE T_PHP_RAW body block_end
-          command ::= * T_UNLESS T_PHP_RAW body block_end
-          command ::= * T_IF T_PHP_RAW body else
-          command ::= * T_SECTION T_PHP_RAW body block_end
-          command ::= * T_SECTION T_PHP_RAW body T_SHOW
-          command ::= * T_INCLUDE T_PHP_RAW
-          command ::= * T_YIELD T_PHP_RAW
-          command ::= * T_PARENT
-          command ::= * T_BREAK|T_CONTINUE
-          command ::= * T_SPACELESS body T_END
-          else ::= * T_ELIF T_PHP_RAW body else
-          else ::= T_ELIF T_PHP_RAW body * else
-          else ::= * T_ELSE body block_end
-          else ::= * block_end
-          block_end ::= * T_END
-          block_end ::= * T_END T_PHP_RAW
-
-                        T_ECHO shift  41
-                T_ESCAPED_ECHO shift  40
-                    T_TEXT_RAW shift  38
-                         T_SET shift  28
-                     T_FOREACH shift  26
-                       T_WHILE shift  23
-                      T_UNLESS shift  27
-                          T_IF shift  30
-                     T_SECTION shift  20
-                     T_INCLUDE shift  22
-                       T_YIELD shift  24
-                      T_PARENT shift  51
-                       T_BREAK shift  32
-                    T_CONTINUE shift  32
-                   T_SPACELESS shift  13
-                         T_END shift  21
-                        T_ELIF shift  29
-                        T_ELSE shift  17
-                          code shift  42
-                       command shift  43
-                     block_end shift  31
-                          else shift  33
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_END shift  27
+                         T_PRE shift  13
+                        T_ELIF shift  32
+                        T_ELSE shift  20
+                          code shift  57
+                       command shift  47
+                     block_end shift  35
+                          else shift  50
+                 pre_processor shift  51
 
 State 3:
           body ::= body * code
@@ -122,32 +132,37 @@ State 3:
           command ::= T_SECTION T_PHP_RAW body * T_SHOW
           command ::= * T_INCLUDE T_PHP_RAW
           command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
           command ::= * T_PARENT
           command ::= * T_BREAK|T_CONTINUE
           command ::= * T_SPACELESS body T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
           block_end ::= * T_END
           block_end ::= * T_END T_PHP_RAW
 
-                        T_ECHO shift  41
-                T_ESCAPED_ECHO shift  40
-                    T_TEXT_RAW shift  38
-                         T_SET shift  28
-                     T_FOREACH shift  26
-                       T_WHILE shift  23
-                      T_UNLESS shift  27
-                          T_IF shift  30
-                     T_SECTION shift  20
-                        T_SHOW shift  48
-                     T_INCLUDE shift  22
-                       T_YIELD shift  24
-                      T_PARENT shift  51
-                       T_BREAK shift  32
-                    T_CONTINUE shift  32
-                   T_SPACELESS shift  13
-                         T_END shift  21
-                          code shift  42
-                       command shift  43
-                     block_end shift  49
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                        T_SHOW shift  41
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_END shift  27
+                         T_PRE shift  13
+                          code shift  57
+                       command shift  47
+                     block_end shift  56
+                 pre_processor shift  51
 
 State 4:
           body ::= body * code
@@ -165,75 +180,38 @@ State 4:
           command ::= * T_SECTION T_PHP_RAW body T_SHOW
           command ::= * T_INCLUDE T_PHP_RAW
           command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
           command ::= * T_PARENT
           command ::= * T_BREAK|T_CONTINUE
           command ::= * T_SPACELESS body T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
           block_end ::= * T_END
           block_end ::= * T_END T_PHP_RAW
 
-                        T_ECHO shift  41
-                T_ESCAPED_ECHO shift  40
-                    T_TEXT_RAW shift  38
-                         T_SET shift  28
-                     T_FOREACH shift  26
-                       T_WHILE shift  23
-                      T_UNLESS shift  27
-                          T_IF shift  30
-                     T_SECTION shift  20
-                     T_INCLUDE shift  22
-                       T_YIELD shift  24
-                      T_PARENT shift  51
-                       T_BREAK shift  32
-                    T_CONTINUE shift  32
-                   T_SPACELESS shift  13
-                         T_END shift  21
-                          code shift  42
-                       command shift  43
-                     block_end shift  44
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_END shift  27
+                         T_PRE shift  13
+                          code shift  57
+                       command shift  47
+                     block_end shift  43
+                 pre_processor shift  51
 
 State 5:
-          body ::= body * code
-          code ::= * command
-          code ::= * T_ECHO
-          code ::= * T_ESCAPED_ECHO
-          code ::= * T_TEXT_RAW
-          command ::= * T_SET T_PHP_RAW
-          command ::= * T_FOREACH T_PHP_RAW body block_end
-          command ::= * T_WHILE T_PHP_RAW body block_end
-          command ::= * T_UNLESS T_PHP_RAW body block_end
-          command ::= T_UNLESS T_PHP_RAW body * block_end
-          command ::= * T_IF T_PHP_RAW body else
-          command ::= * T_SECTION T_PHP_RAW body block_end
-          command ::= * T_SECTION T_PHP_RAW body T_SHOW
-          command ::= * T_INCLUDE T_PHP_RAW
-          command ::= * T_YIELD T_PHP_RAW
-          command ::= * T_PARENT
-          command ::= * T_BREAK|T_CONTINUE
-          command ::= * T_SPACELESS body T_END
-          block_end ::= * T_END
-          block_end ::= * T_END T_PHP_RAW
-
-                        T_ECHO shift  41
-                T_ESCAPED_ECHO shift  40
-                    T_TEXT_RAW shift  38
-                         T_SET shift  28
-                     T_FOREACH shift  26
-                       T_WHILE shift  23
-                      T_UNLESS shift  27
-                          T_IF shift  30
-                     T_SECTION shift  20
-                     T_INCLUDE shift  22
-                       T_YIELD shift  24
-                      T_PARENT shift  51
-                       T_BREAK shift  32
-                    T_CONTINUE shift  32
-                   T_SPACELESS shift  13
-                         T_END shift  21
-                          code shift  42
-                       command shift  43
-                     block_end shift  50
-
-State 6:
           body ::= body * code
           code ::= * command
           code ::= * T_ECHO
@@ -249,31 +227,83 @@ State 6:
           command ::= * T_SECTION T_PHP_RAW body T_SHOW
           command ::= * T_INCLUDE T_PHP_RAW
           command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
           command ::= * T_PARENT
           command ::= * T_BREAK|T_CONTINUE
           command ::= * T_SPACELESS body T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
           block_end ::= * T_END
           block_end ::= * T_END T_PHP_RAW
 
-                        T_ECHO shift  41
-                T_ESCAPED_ECHO shift  40
-                    T_TEXT_RAW shift  38
-                         T_SET shift  28
-                     T_FOREACH shift  26
-                       T_WHILE shift  23
-                      T_UNLESS shift  27
-                          T_IF shift  30
-                     T_SECTION shift  20
-                     T_INCLUDE shift  22
-                       T_YIELD shift  24
-                      T_PARENT shift  51
-                       T_BREAK shift  32
-                    T_CONTINUE shift  32
-                   T_SPACELESS shift  13
-                         T_END shift  21
-                          code shift  42
-                       command shift  43
-                     block_end shift  45
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_END shift  27
+                         T_PRE shift  13
+                          code shift  57
+                       command shift  47
+                     block_end shift  44
+                 pre_processor shift  51
+
+State 6:
+          body ::= body * code
+          code ::= * command
+          code ::= * T_ECHO
+          code ::= * T_ESCAPED_ECHO
+          code ::= * T_TEXT_RAW
+          command ::= * T_SET T_PHP_RAW
+          command ::= * T_FOREACH T_PHP_RAW body block_end
+          command ::= * T_WHILE T_PHP_RAW body block_end
+          command ::= * T_UNLESS T_PHP_RAW body block_end
+          command ::= T_UNLESS T_PHP_RAW body * block_end
+          command ::= * T_IF T_PHP_RAW body else
+          command ::= * T_SECTION T_PHP_RAW body block_end
+          command ::= * T_SECTION T_PHP_RAW body T_SHOW
+          command ::= * T_INCLUDE T_PHP_RAW
+          command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
+          command ::= * T_PARENT
+          command ::= * T_BREAK|T_CONTINUE
+          command ::= * T_SPACELESS body T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
+          block_end ::= * T_END
+          block_end ::= * T_END T_PHP_RAW
+
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_END shift  27
+                         T_PRE shift  13
+                          code shift  57
+                       command shift  47
+                     block_end shift  49
+                 pre_processor shift  51
 
 State 7:
           body ::= body * code
@@ -290,32 +320,37 @@ State 7:
           command ::= * T_SECTION T_PHP_RAW body T_SHOW
           command ::= * T_INCLUDE T_PHP_RAW
           command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
           command ::= * T_PARENT
           command ::= * T_BREAK|T_CONTINUE
           command ::= * T_SPACELESS body T_END
-          else ::= T_ELSE body * block_end
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
+          pre_processor ::= T_PRE body * block_end
           block_end ::= * T_END
           block_end ::= * T_END T_PHP_RAW
 
-                        T_ECHO shift  41
-                T_ESCAPED_ECHO shift  40
-                    T_TEXT_RAW shift  38
-                         T_SET shift  28
-                     T_FOREACH shift  26
-                       T_WHILE shift  23
-                      T_UNLESS shift  27
-                          T_IF shift  30
-                     T_SECTION shift  20
-                     T_INCLUDE shift  22
-                       T_YIELD shift  24
-                      T_PARENT shift  51
-                       T_BREAK shift  32
-                    T_CONTINUE shift  32
-                   T_SPACELESS shift  13
-                         T_END shift  21
-                          code shift  42
-                       command shift  43
-                     block_end shift  35
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_END shift  27
+                         T_PRE shift  13
+                          code shift  57
+                       command shift  47
+                     block_end shift  40
+                 pre_processor shift  51
 
 State 8:
           body ::= body * code
@@ -332,32 +367,39 @@ State 8:
           command ::= * T_SECTION T_PHP_RAW body T_SHOW
           command ::= * T_INCLUDE T_PHP_RAW
           command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
           command ::= * T_PARENT
           command ::= * T_BREAK|T_CONTINUE
           command ::= * T_SPACELESS body T_END
-          command ::= T_SPACELESS body * T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= T_PRE T_PHP_RAW body * block_end
+          pre_processor ::= * T_PRE body block_end
+          block_end ::= * T_END
+          block_end ::= * T_END T_PHP_RAW
 
-                        T_ECHO shift  41
-                T_ESCAPED_ECHO shift  40
-                    T_TEXT_RAW shift  38
-                         T_SET shift  28
-                     T_FOREACH shift  26
-                       T_WHILE shift  23
-                      T_UNLESS shift  27
-                          T_IF shift  30
-                     T_SECTION shift  20
-                     T_INCLUDE shift  22
-                       T_YIELD shift  24
-                      T_PARENT shift  51
-                       T_BREAK shift  32
-                    T_CONTINUE shift  32
-                   T_SPACELESS shift  13
-                         T_END shift  34
-                          code shift  42
-                       command shift  43
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_END shift  27
+                         T_PRE shift  13
+                          code shift  57
+                       command shift  47
+                     block_end shift  37
+                 pre_processor shift  51
 
 State 9:
-      (1) start ::= body *
           body ::= body * code
           code ::= * command
           code ::= * T_ECHO
@@ -372,30 +414,83 @@ State 9:
           command ::= * T_SECTION T_PHP_RAW body T_SHOW
           command ::= * T_INCLUDE T_PHP_RAW
           command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
           command ::= * T_PARENT
           command ::= * T_BREAK|T_CONTINUE
           command ::= * T_SPACELESS body T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
+          else ::= T_ELSE body * block_end
+          block_end ::= * T_END
+          block_end ::= * T_END T_PHP_RAW
 
-                        T_ECHO shift  41
-                T_ESCAPED_ECHO shift  40
-                    T_TEXT_RAW shift  38
-                         T_SET shift  28
-                     T_FOREACH shift  26
-                       T_WHILE shift  23
-                      T_UNLESS shift  27
-                          T_IF shift  30
-                     T_SECTION shift  20
-                     T_INCLUDE shift  22
-                       T_YIELD shift  24
-                      T_PARENT shift  51
-                       T_BREAK shift  32
-                    T_CONTINUE shift  32
-                   T_SPACELESS shift  13
-                          code shift  42
-                       command shift  43
-                     {default} reduce 1
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_END shift  27
+                         T_PRE shift  13
+                          code shift  57
+                       command shift  47
+                     block_end shift  36
+                 pre_processor shift  51
 
 State 10:
+          body ::= body * code
+          code ::= * command
+          code ::= * T_ECHO
+          code ::= * T_ESCAPED_ECHO
+          code ::= * T_TEXT_RAW
+          command ::= * T_SET T_PHP_RAW
+          command ::= * T_FOREACH T_PHP_RAW body block_end
+          command ::= * T_WHILE T_PHP_RAW body block_end
+          command ::= * T_UNLESS T_PHP_RAW body block_end
+          command ::= * T_IF T_PHP_RAW body else
+          command ::= * T_SECTION T_PHP_RAW body block_end
+          command ::= * T_SECTION T_PHP_RAW body T_SHOW
+          command ::= * T_INCLUDE T_PHP_RAW
+          command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
+          command ::= * T_PARENT
+          command ::= * T_BREAK|T_CONTINUE
+          command ::= * T_SPACELESS body T_END
+          command ::= T_SPACELESS body * T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
+
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_END shift  58
+                         T_PRE shift  13
+                          code shift  57
+                       command shift  47
+                 pre_processor shift  51
+
+State 11:
       (0) start ::= T_EXTENDS T_PHP_RAW body *
           body ::= body * code
           code ::= * command
@@ -411,38 +506,121 @@ State 10:
           command ::= * T_SECTION T_PHP_RAW body T_SHOW
           command ::= * T_INCLUDE T_PHP_RAW
           command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
           command ::= * T_PARENT
           command ::= * T_BREAK|T_CONTINUE
           command ::= * T_SPACELESS body T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
 
-                        T_ECHO shift  41
-                T_ESCAPED_ECHO shift  40
-                    T_TEXT_RAW shift  38
-                         T_SET shift  28
-                     T_FOREACH shift  26
-                       T_WHILE shift  23
-                      T_UNLESS shift  27
-                          T_IF shift  30
-                     T_SECTION shift  20
-                     T_INCLUDE shift  22
-                       T_YIELD shift  24
-                      T_PARENT shift  51
-                       T_BREAK shift  32
-                    T_CONTINUE shift  32
-                   T_SPACELESS shift  13
-                          code shift  42
-                       command shift  43
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_PRE shift  13
+                          code shift  57
+                       command shift  47
+                 pre_processor shift  51
                      {default} reduce 0
 
-State 11:
+State 12:
+      (1) start ::= body *
+          body ::= body * code
+          code ::= * command
+          code ::= * T_ECHO
+          code ::= * T_ESCAPED_ECHO
+          code ::= * T_TEXT_RAW
+          command ::= * T_SET T_PHP_RAW
+          command ::= * T_FOREACH T_PHP_RAW body block_end
+          command ::= * T_WHILE T_PHP_RAW body block_end
+          command ::= * T_UNLESS T_PHP_RAW body block_end
+          command ::= * T_IF T_PHP_RAW body else
+          command ::= * T_SECTION T_PHP_RAW body block_end
+          command ::= * T_SECTION T_PHP_RAW body T_SHOW
+          command ::= * T_INCLUDE T_PHP_RAW
+          command ::= * T_YIELD T_PHP_RAW
+          command ::= * pre_processor
+          command ::= * T_PARENT
+          command ::= * T_BREAK|T_CONTINUE
+          command ::= * T_SPACELESS body T_END
+          pre_processor ::= * T_PRE T_PHP_RAW body block_end
+          pre_processor ::= * T_PRE body block_end
+
+                        T_ECHO shift  48
+                T_ESCAPED_ECHO shift  46
+                    T_TEXT_RAW shift  45
+                         T_SET shift  34
+                     T_FOREACH shift  25
+                       T_WHILE shift  30
+                      T_UNLESS shift  28
+                          T_IF shift  31
+                     T_SECTION shift  33
+                     T_INCLUDE shift  24
+                       T_YIELD shift  26
+                      T_PARENT shift  52
+                       T_BREAK shift  53
+                    T_CONTINUE shift  53
+                   T_SPACELESS shift  15
+                         T_PRE shift  13
+                          code shift  57
+                       command shift  47
+                 pre_processor shift  51
+                     {default} reduce 1
+
+State 13:
+          body ::= * body code
+      (3) body ::= *
+          pre_processor ::= T_PRE * T_PHP_RAW body block_end
+          pre_processor ::= T_PRE * body block_end
+
+                     T_PHP_RAW shift  16
+                          body shift  7
+                     {default} reduce 3
+
+State 14:
+          body ::= * body code
+      (3) body ::= *
+          command ::= T_IF T_PHP_RAW * body else
+
+                          body shift  2
+                     {default} reduce 3
+
+State 15:
+          body ::= * body code
+      (3) body ::= *
+          command ::= T_SPACELESS * body T_END
+
+                          body shift  10
+                     {default} reduce 3
+
+State 16:
+          body ::= * body code
+      (3) body ::= *
+          pre_processor ::= T_PRE T_PHP_RAW * body block_end
+
+                          body shift  8
+                     {default} reduce 3
+
+State 17:
           body ::= * body code
       (3) body ::= *
           command ::= T_UNLESS T_PHP_RAW * body block_end
 
-                          body shift  5
+                          body shift  6
                      {default} reduce 3
 
-State 12:
+State 18:
           body ::= * body code
       (3) body ::= *
           command ::= T_SECTION T_PHP_RAW * body block_end
@@ -451,47 +629,31 @@ State 12:
                           body shift  3
                      {default} reduce 3
 
-State 13:
-          body ::= * body code
-      (3) body ::= *
-          command ::= T_SPACELESS * body T_END
-
-                          body shift  8
-                     {default} reduce 3
-
-State 14:
-          body ::= * body code
-      (3) body ::= *
-          command ::= T_WHILE T_PHP_RAW * body block_end
-
-                          body shift  6
-                     {default} reduce 3
-
-State 15:
-          body ::= * body code
-      (3) body ::= *
-          command ::= T_IF T_PHP_RAW * body else
-
-                          body shift  1
-                     {default} reduce 3
-
-State 16:
+State 19:
           body ::= * body code
       (3) body ::= *
           else ::= T_ELIF T_PHP_RAW * body else
 
-                          body shift  2
+                          body shift  1
                      {default} reduce 3
 
-State 17:
+State 20:
           body ::= * body code
       (3) body ::= *
           else ::= T_ELSE * body block_end
 
-                          body shift  7
+                          body shift  9
                      {default} reduce 3
 
-State 18:
+State 21:
+          body ::= * body code
+      (3) body ::= *
+          command ::= T_WHILE T_PHP_RAW * body block_end
+
+                          body shift  5
+                     {default} reduce 3
+
+State 22:
           body ::= * body code
       (3) body ::= *
           command ::= T_FOREACH T_PHP_RAW * body block_end
@@ -499,174 +661,189 @@ State 18:
                           body shift  4
                      {default} reduce 3
 
-State 19:
+State 23:
           start ::= T_EXTENDS T_PHP_RAW * body
           body ::= * body code
       (3) body ::= *
 
-                          body shift  10
+                          body shift  11
                      {default} reduce 3
 
-State 20:
-          command ::= T_SECTION * T_PHP_RAW body block_end
-          command ::= T_SECTION * T_PHP_RAW body T_SHOW
-
-                     T_PHP_RAW shift  12
-
-State 21:
-     (23) block_end ::= T_END *
-          block_end ::= T_END * T_PHP_RAW
-
-                     T_PHP_RAW shift  36
-                     {default} reduce 23
-
-State 22:
+State 24:
           command ::= T_INCLUDE * T_PHP_RAW
 
-                     T_PHP_RAW shift  46
+                     T_PHP_RAW shift  55
 
-State 23:
+State 25:
+          command ::= T_FOREACH * T_PHP_RAW body block_end
+
+                     T_PHP_RAW shift  22
+
+State 26:
+          command ::= T_YIELD * T_PHP_RAW
+
+                     T_PHP_RAW shift  54
+
+State 27:
+     (26) block_end ::= T_END *
+          block_end ::= T_END * T_PHP_RAW
+
+                     T_PHP_RAW shift  39
+                     {default} reduce 26
+
+State 28:
+          command ::= T_UNLESS * T_PHP_RAW body block_end
+
+                     T_PHP_RAW shift  17
+
+State 29:
+          start ::= T_EXTENDS * T_PHP_RAW body
+
+                     T_PHP_RAW shift  23
+
+State 30:
           command ::= T_WHILE * T_PHP_RAW body block_end
+
+                     T_PHP_RAW shift  21
+
+State 31:
+          command ::= T_IF * T_PHP_RAW body else
 
                      T_PHP_RAW shift  14
 
-State 24:
-          command ::= T_YIELD * T_PHP_RAW
-
-                     T_PHP_RAW shift  47
-
-State 25:
-          start ::= T_EXTENDS * T_PHP_RAW body
+State 32:
+          else ::= T_ELIF * T_PHP_RAW body else
 
                      T_PHP_RAW shift  19
 
-State 26:
-          command ::= T_FOREACH * T_PHP_RAW body block_end
+State 33:
+          command ::= T_SECTION * T_PHP_RAW body block_end
+          command ::= T_SECTION * T_PHP_RAW body T_SHOW
 
                      T_PHP_RAW shift  18
 
-State 27:
-          command ::= T_UNLESS * T_PHP_RAW body block_end
-
-                     T_PHP_RAW shift  11
-
-State 28:
+State 34:
           command ::= T_SET * T_PHP_RAW
 
-                     T_PHP_RAW shift  39
-
-State 29:
-          else ::= T_ELIF * T_PHP_RAW body else
-
-                     T_PHP_RAW shift  16
-
-State 30:
-          command ::= T_IF * T_PHP_RAW body else
-
-                     T_PHP_RAW shift  15
-
-State 31:
-     (22) else ::= block_end *
-
-                     {default} reduce 22
-
-State 32:
-     (18) command ::= T_BREAK|T_CONTINUE *
-
-                     {default} reduce 18
-
-State 33:
-     (20) else ::= T_ELIF T_PHP_RAW body else *
-
-                     {default} reduce 20
-
-State 34:
-     (19) command ::= T_SPACELESS body T_END *
-
-                     {default} reduce 19
+                     T_PHP_RAW shift  42
 
 State 35:
-     (21) else ::= T_ELSE body block_end *
+     (25) else ::= block_end *
 
-                     {default} reduce 21
+                     {default} reduce 25
 
 State 36:
-     (24) block_end ::= T_END T_PHP_RAW *
+     (24) else ::= T_ELSE body block_end *
 
                      {default} reduce 24
 
 State 37:
-     (12) command ::= T_IF T_PHP_RAW body else *
+     (21) pre_processor ::= T_PRE T_PHP_RAW body block_end *
 
-                     {default} reduce 12
+                     {default} reduce 21
 
 State 38:
-      (7) code ::= T_TEXT_RAW *
+     (23) else ::= T_ELIF T_PHP_RAW body else *
 
-                     {default} reduce 7
+                     {default} reduce 23
 
 State 39:
-      (8) command ::= T_SET T_PHP_RAW *
+     (27) block_end ::= T_END T_PHP_RAW *
 
-                     {default} reduce 8
+                     {default} reduce 27
 
 State 40:
-      (6) code ::= T_ESCAPED_ECHO *
+     (22) pre_processor ::= T_PRE body block_end *
 
-                     {default} reduce 6
+                     {default} reduce 22
 
 State 41:
-      (5) code ::= T_ECHO *
-
-                     {default} reduce 5
-
-State 42:
-      (2) body ::= body code *
-
-                     {default} reduce 2
-
-State 43:
-      (4) code ::= command *
-
-                     {default} reduce 4
-
-State 44:
-      (9) command ::= T_FOREACH T_PHP_RAW body block_end *
-
-                     {default} reduce 9
-
-State 45:
-     (10) command ::= T_WHILE T_PHP_RAW body block_end *
-
-                     {default} reduce 10
-
-State 46:
-     (15) command ::= T_INCLUDE T_PHP_RAW *
-
-                     {default} reduce 15
-
-State 47:
-     (16) command ::= T_YIELD T_PHP_RAW *
-
-                     {default} reduce 16
-
-State 48:
      (14) command ::= T_SECTION T_PHP_RAW body T_SHOW *
 
                      {default} reduce 14
 
+State 42:
+      (8) command ::= T_SET T_PHP_RAW *
+
+                     {default} reduce 8
+
+State 43:
+      (9) command ::= T_FOREACH T_PHP_RAW body block_end *
+
+                     {default} reduce 9
+
+State 44:
+     (10) command ::= T_WHILE T_PHP_RAW body block_end *
+
+                     {default} reduce 10
+
+State 45:
+      (7) code ::= T_TEXT_RAW *
+
+                     {default} reduce 7
+
+State 46:
+      (6) code ::= T_ESCAPED_ECHO *
+
+                     {default} reduce 6
+
+State 47:
+      (4) code ::= command *
+
+                     {default} reduce 4
+
+State 48:
+      (5) code ::= T_ECHO *
+
+                     {default} reduce 5
+
 State 49:
-     (13) command ::= T_SECTION T_PHP_RAW body block_end *
-
-                     {default} reduce 13
-
-State 50:
      (11) command ::= T_UNLESS T_PHP_RAW body block_end *
 
                      {default} reduce 11
 
+State 50:
+     (12) command ::= T_IF T_PHP_RAW body else *
+
+                     {default} reduce 12
+
 State 51:
-     (17) command ::= T_PARENT *
+     (17) command ::= pre_processor *
 
                      {default} reduce 17
+
+State 52:
+     (18) command ::= T_PARENT *
+
+                     {default} reduce 18
+
+State 53:
+     (19) command ::= T_BREAK|T_CONTINUE *
+
+                     {default} reduce 19
+
+State 54:
+     (16) command ::= T_YIELD T_PHP_RAW *
+
+                     {default} reduce 16
+
+State 55:
+     (15) command ::= T_INCLUDE T_PHP_RAW *
+
+                     {default} reduce 15
+
+State 56:
+     (13) command ::= T_SECTION T_PHP_RAW body block_end *
+
+                     {default} reduce 13
+
+State 57:
+      (2) body ::= body code *
+
+                     {default} reduce 2
+
+State 58:
+     (20) command ::= T_SPACELESS body T_END *
+
+                     {default} reduce 20
 

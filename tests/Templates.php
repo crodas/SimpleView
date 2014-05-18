@@ -56,9 +56,9 @@ namespace {
     }
 
     /** 
-     *  Template class generated from if.tpl.php
+     *  Template class generated from loop1.tpl.php
      */
-    class class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    class class_6be9d3fcb52ec7a4482d27fd52c23cd71db0613d extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -69,16 +69,191 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo "Hi ";
-            echo htmlentities($name, ENT_QUOTES, 'UTF-8', false);
-            echo "\n";
-            if ($age < 18) {
-                echo "\n    You cannot be here\n";
+            foreach($users as $id => $user) {
+                $this->context['id'] = $id;
+                $this->context['user'] = $user;
+                Tests\Templates::exec("loop1-example", $this->context);
+                if ($user == 1) {
+                    continue;
+                }
             }
-            else {
-                echo "    Welcome!\n";
+            foreach($users as $user) {
+                $this->context['user'] = $user;
+                Tests\Templates::exec("loop1-example", $this->context);
+                break;
             }
-            echo "\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from if1.tpl.php
+     */
+    class class_253d6a60b264956df48ba486a3d7908285d7ece5 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            Tests\Templates::exec('if', $this->context);
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from loop.tpl.php
+     */
+    class class_d481f16a4eb3add789581f97f6600c2a74a9d0a8 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            foreach($users as $id => $user1) {
+                $this->context['id'] = $id;
+                $this->context['user1'] = $user1;
+                $user = $user1;
+                $this->context['user'] = $user;
+                echo "    hi " . ($user) . "\n";
+                $foo = 'xxx';
+                $this->context['foo'] = $foo;
+                if ($user == 1) {
+                    continue;
+                }
+            }
+            foreach($users as $user1) {
+                $this->context['user1'] = $user1;
+                echo "    hi " . ($user1) . "\n";
+                break;
+            }
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from extends.tpl.php
+     */
+    class class_793a0eb11fa5c92b689ad190f2f86f14ac827463 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+        protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
+        {
+            extract($context);
+            $this->yield_parent('foobar', $context);
+            echo "    hi there!\n";
+        }
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            $template = Tests\Templates::get("layout.tpl.php");
+            $template->child = $this;
+            $this->parent = $template;
+            return $template->render($vars, $return);
+
+        }
+    }
+
+    /** 
+     *  Template class generated from while.tpl.php
+     */
+    class class_6e15d2af65fcf7798021e9323798f193499ac09d extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            while ($i < 10) {
+                echo "    hi " . (++$i) . "\n";
+            }
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from home.tpl.php
+     */
+    class class_6caefdda43fcb619b729c17289d5237e623d208b extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "Hello world\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from loop2.tpl.php
+     */
+    class class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            foreach($users as $id => $user) {
+                $this->context['id'] = $id;
+                $this->context['user'] = $user;
+                echo "\n";
+                Tests\Templates::exec("loop1-example", $this->context);
+                echo "    ";
+                if ($user == 1) {
+                    echo "\n";
+                    continue;
+                }
+            }
+            foreach($users as $user) {
+                $this->context['user'] = $user;
+                Tests\Templates::exec("loop1-example", $this->context);
+                break;
+            }
 
             if ($return) {
                 return ob_get_clean();
@@ -117,9 +292,9 @@ namespace {
     }
 
     /** 
-     *  Template class generated from loop1-example.tpl.php
+     *  Template class generated from unless.tpl.php
      */
-    class class_f29db6e6f1c21db1b05b51162242fe0eafe8c136 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    class class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -130,7 +305,42 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo "    hi " . ($user) . "\n";
+            echo "Hi " . ($user['name']) . "\n";
+            if (!($user['has_session'])) {
+                echo "    you must login\n";
+            }
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from if.tpl.php
+     */
+    class class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "Hi ";
+            echo htmlentities($name, ENT_QUOTES, 'UTF-8', false);
+            echo "\n";
+            if ($age < 18) {
+                echo "\n    You cannot be here\n";
+            }
+            else {
+                echo "    Welcome!\n";
+            }
+            echo "\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -201,31 +411,49 @@ namespace {
     }
 
     /** 
-     *  Template class generated from extends_extends.tpl.php
+     *  Template class generated from asset.tpl.php
      */
-    class class_19709c42e2300830673895009607ec98d96822ec extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    class class_5c4c356a54a8ae3f2564a8edd5d2c39440cf8eed extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
-        protected function section_594fd1615a341c77829e83ed988f137e1ba96231($context)
-        {
-            extract($context);
-            $this->yield_parent('header', $context);
-            echo "<h1>Bye</h1>\n";
-        }
-        protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
-        {
-            extract($context);
-            $this->yield_parent('foobar', $context);
-            echo "    Bye there!\n";
-        }
 
         public function render(Array $vars = array(), $return = false)
         {
             $this->context = $vars;
 
-            $template = Tests\Templates::get("extends");
-            $template->child = $this;
-            $this->parent = $template;
-            return $template->render($vars, $return);
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            $asset_url = 'css/out.653d843f.css';
+            echo "     <link href=\"" . ($asset_url) . "\" type=\"text/css\" rel=\"stylesheet\" />\n";
+
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from loop1-example.tpl.php
+     */
+    class class_f29db6e6f1c21db1b05b51162242fe0eafe8c136 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "    hi " . ($user) . "\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
 
         }
     }
@@ -258,234 +486,31 @@ namespace {
     }
 
     /** 
-     *  Template class generated from while.tpl.php
+     *  Template class generated from extends_extends.tpl.php
      */
-    class class_6e15d2af65fcf7798021e9323798f193499ac09d extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    class class_19709c42e2300830673895009607ec98d96822ec extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
-
-        public function render(Array $vars = array(), $return = false)
+        protected function section_594fd1615a341c77829e83ed988f137e1ba96231($context)
         {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            while ($i < 10) {
-                echo "    hi " . (++$i) . "\n";
-            }
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
+            extract($context);
+            $this->yield_parent('header', $context);
+            echo "<h1>Bye</h1>\n";
         }
-    }
-
-    /** 
-     *  Template class generated from loop.tpl.php
-     */
-    class class_d481f16a4eb3add789581f97f6600c2a74a9d0a8 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            foreach($users as $id => $user1) {
-                $this->context['id'] = $id;
-                $this->context['user1'] = $user1;
-                $user = $user1;
-                $this->context['user'] = $user;
-                echo "    hi " . ($user) . "\n";
-                $foo = 'xxx';
-                $this->context['foo'] = $foo;
-                if ($user == 1) {
-                    continue;
-                }
-            }
-            foreach($users as $user1) {
-                $this->context['user1'] = $user1;
-                echo "    hi " . ($user1) . "\n";
-                break;
-            }
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from home.tpl.php
-     */
-    class class_6caefdda43fcb619b729c17289d5237e623d208b extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "Hello world\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from if1.tpl.php
-     */
-    class class_253d6a60b264956df48ba486a3d7908285d7ece5 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            Tests\Templates::exec('if', $this->context);
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from extends.tpl.php
-     */
-    class class_793a0eb11fa5c92b689ad190f2f86f14ac827463 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
-    {
         protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
         {
             extract($context);
             $this->yield_parent('foobar', $context);
-            echo "    hi there!\n";
+            echo "    Bye there!\n";
         }
 
         public function render(Array $vars = array(), $return = false)
         {
             $this->context = $vars;
 
-            $template = Tests\Templates::get("layout.tpl.php");
+            $template = Tests\Templates::get("extends");
             $template->child = $this;
             $this->parent = $template;
             return $template->render($vars, $return);
-
-        }
-    }
-
-    /** 
-     *  Template class generated from unless.tpl.php
-     */
-    class class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "Hi " . ($user['name']) . "\n";
-            if (!($user['has_session'])) {
-                echo "    you must login\n";
-            }
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from loop2.tpl.php
-     */
-    class class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            foreach($users as $id => $user) {
-                $this->context['id'] = $id;
-                $this->context['user'] = $user;
-                echo "\n";
-                Tests\Templates::exec("loop1-example", $this->context);
-                echo "    ";
-                if ($user == 1) {
-                    echo "\n";
-                    continue;
-                }
-            }
-            foreach($users as $user) {
-                $this->context['user'] = $user;
-                Tests\Templates::exec("loop1-example", $this->context);
-                break;
-            }
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from loop1.tpl.php
-     */
-    class class_6be9d3fcb52ec7a4482d27fd52c23cd71db0613d extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            foreach($users as $id => $user) {
-                $this->context['id'] = $id;
-                $this->context['user'] = $user;
-                Tests\Templates::exec("loop1-example", $this->context);
-                if ($user == 1) {
-                    continue;
-                }
-            }
-            foreach($users as $user) {
-                $this->context['user'] = $user;
-                Tests\Templates::exec("loop1-example", $this->context);
-                break;
-            }
-
-            if ($return) {
-                return ob_get_clean();
-            }
 
         }
     }
@@ -499,21 +524,22 @@ namespace Tests {
         public static function getAll()
         {
             return array (
-                0 => 'if',
-                1 => 'mixed',
-                2 => 'loop1-example',
-                3 => 'at',
-                4 => 'layout',
-                5 => 'extends_extends',
-                6 => 'spaceless',
-                7 => 'while',
-                8 => 'loop',
-                9 => 'home',
-                10 => 'if1',
-                11 => 'extends',
-                12 => 'unless',
-                13 => 'loop2',
-                14 => 'loop1',
+                0 => 'loop1',
+                1 => 'if1',
+                2 => 'loop',
+                3 => 'extends',
+                4 => 'while',
+                5 => 'home',
+                6 => 'loop2',
+                7 => 'mixed',
+                8 => 'unless',
+                9 => 'if',
+                10 => 'at',
+                11 => 'layout',
+                12 => 'asset',
+                13 => 'loop1-example',
+                14 => 'spaceless',
+                15 => 'extends_extends',
             );
         }
 
@@ -526,36 +552,38 @@ namespace Tests {
         public static function get($name, Array $context = array())
         {
             static $classes = array (
-                'if.tpl.php' => 'class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00',
-                'if' => 'class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00',
+                'loop1.tpl.php' => 'class_6be9d3fcb52ec7a4482d27fd52c23cd71db0613d',
+                'loop1' => 'class_6be9d3fcb52ec7a4482d27fd52c23cd71db0613d',
+                'if1.tpl.php' => 'class_253d6a60b264956df48ba486a3d7908285d7ece5',
+                'if1' => 'class_253d6a60b264956df48ba486a3d7908285d7ece5',
+                'loop.tpl.php' => 'class_d481f16a4eb3add789581f97f6600c2a74a9d0a8',
+                'loop' => 'class_d481f16a4eb3add789581f97f6600c2a74a9d0a8',
+                'extends.tpl.php' => 'class_793a0eb11fa5c92b689ad190f2f86f14ac827463',
+                'extends' => 'class_793a0eb11fa5c92b689ad190f2f86f14ac827463',
+                'while.tpl.php' => 'class_6e15d2af65fcf7798021e9323798f193499ac09d',
+                'while' => 'class_6e15d2af65fcf7798021e9323798f193499ac09d',
+                'home.tpl.php' => 'class_6caefdda43fcb619b729c17289d5237e623d208b',
+                'home' => 'class_6caefdda43fcb619b729c17289d5237e623d208b',
+                'loop2.tpl.php' => 'class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4',
+                'loop2' => 'class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4',
                 'mixed.tpl.php' => 'class_a1e3a95c79cab9e71f533a0b4f6234e4c760646d',
                 'mixed' => 'class_a1e3a95c79cab9e71f533a0b4f6234e4c760646d',
-                'loop1-example.tpl.php' => 'class_f29db6e6f1c21db1b05b51162242fe0eafe8c136',
-                'loop1-example' => 'class_f29db6e6f1c21db1b05b51162242fe0eafe8c136',
+                'unless.tpl.php' => 'class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8',
+                'unless' => 'class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8',
+                'if.tpl.php' => 'class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00',
+                'if' => 'class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00',
                 'at.tpl.php' => 'class_eef20d69ae52eb9005a515c213ab9554791979c9',
                 'at' => 'class_eef20d69ae52eb9005a515c213ab9554791979c9',
                 'layout.tpl.php' => 'class_bf6970c3f5699b979a3692d8261f22d15fadad5a',
                 'layout' => 'class_bf6970c3f5699b979a3692d8261f22d15fadad5a',
-                'extends_extends.tpl.php' => 'class_19709c42e2300830673895009607ec98d96822ec',
-                'extends_extends' => 'class_19709c42e2300830673895009607ec98d96822ec',
+                'asset.tpl.php' => 'class_5c4c356a54a8ae3f2564a8edd5d2c39440cf8eed',
+                'asset' => 'class_5c4c356a54a8ae3f2564a8edd5d2c39440cf8eed',
+                'loop1-example.tpl.php' => 'class_f29db6e6f1c21db1b05b51162242fe0eafe8c136',
+                'loop1-example' => 'class_f29db6e6f1c21db1b05b51162242fe0eafe8c136',
                 'spaceless.tpl.php' => 'class_066a64416ed54365eebbe9d553e59243995aa6ae',
                 'spaceless' => 'class_066a64416ed54365eebbe9d553e59243995aa6ae',
-                'while.tpl.php' => 'class_6e15d2af65fcf7798021e9323798f193499ac09d',
-                'while' => 'class_6e15d2af65fcf7798021e9323798f193499ac09d',
-                'loop.tpl.php' => 'class_d481f16a4eb3add789581f97f6600c2a74a9d0a8',
-                'loop' => 'class_d481f16a4eb3add789581f97f6600c2a74a9d0a8',
-                'home.tpl.php' => 'class_6caefdda43fcb619b729c17289d5237e623d208b',
-                'home' => 'class_6caefdda43fcb619b729c17289d5237e623d208b',
-                'if1.tpl.php' => 'class_253d6a60b264956df48ba486a3d7908285d7ece5',
-                'if1' => 'class_253d6a60b264956df48ba486a3d7908285d7ece5',
-                'extends.tpl.php' => 'class_793a0eb11fa5c92b689ad190f2f86f14ac827463',
-                'extends' => 'class_793a0eb11fa5c92b689ad190f2f86f14ac827463',
-                'unless.tpl.php' => 'class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8',
-                'unless' => 'class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8',
-                'loop2.tpl.php' => 'class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4',
-                'loop2' => 'class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4',
-                'loop1.tpl.php' => 'class_6be9d3fcb52ec7a4482d27fd52c23cd71db0613d',
-                'loop1' => 'class_6be9d3fcb52ec7a4482d27fd52c23cd71db0613d',
+                'extends_extends.tpl.php' => 'class_19709c42e2300830673895009607ec98d96822ec',
+                'extends_extends' => 'class_19709c42e2300830673895009607ec98d96822ec',
             );
             $name = strtolower($name);
             if (empty($classes[$name])) {

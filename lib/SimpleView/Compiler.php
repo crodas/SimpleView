@@ -50,6 +50,7 @@ class Compiler
 
     public function __construct($env)
     {
+        $env->addMacro(new Macro\Asset);
         $this->env = $env;
     }
 
@@ -66,7 +67,7 @@ class Compiler
                 throw $e;
             }
         }
-        $template = new Template($parser->body);
+        $template = new Template($parser->body, $this->env);
         $template->setSource($name);
         $this->compiled[$name] = $template;
         return $this;

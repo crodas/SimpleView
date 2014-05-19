@@ -141,7 +141,7 @@ class Template
         foreach ($stmts as $stmt) {
             switch ($stmt[0]) {
             case 'text':
-                if (end($block)[0] == 'echo') {
+                if (is_array(end($block)) && end($block)[0] == 'echo') {
                     $block[ count($block) - 1 ][1] .= " . " . $this->stringify($stmt[1]);
                 } else {
                     $block[] = array('echo', $this->stringify($stmt[1]));

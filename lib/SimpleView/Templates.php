@@ -56,101 +56,6 @@ namespace {
     }
 
     /** 
-     *  Template class generated from Parent.tpl.php
-     */
-    class class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "\$this->yield_parent(" . ($token[1]) . ", \$context);\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Spaceless.tpl.php
-     */
-    class class_e5f3aacac71e677703efc7f7d2621463a25e5059 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[1]), $this->context);
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Echox.tpl.php
-     */
-    class class_b3f21f4b7452906b330612b966219cc089b11145 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "echo htmlentities(" . ($token[1]) . ", ENT_QUOTES, 'UTF-8', false);\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Body.tpl.php
-     */
-    class class_399877791885ad1a9fde51bca4deb52107f94699 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            foreach($tpl->getStmts() as $token) {
-                $this->context['token'] = $token;
-                crodas\SimpleView\Templates\Templates::exec($token[0], array('token' => $token ), $this->context);
-            }
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
      *  Template class generated from Unless.tpl.php
      */
     class class_f5ab41dedb21a24081861ee6a36af5e59365a600 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
@@ -167,174 +72,6 @@ namespace {
             echo "if (!(" . ($token[1]) . ")) {\n";
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
             echo "}\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Else.tpl.php
-     */
-    class class_55654f0db518414907f78793b7d027601d43ad01 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "else {\n";
-            crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[1]), $this->context);
-            echo "}\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Yield.tpl.php
-     */
-    class class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "\$this->do_yield(" . ($token[1]) . ");\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Set.tpl.php
-     */
-    class class_c36eec984e05803cb157ccb02bc2517cf30266a3 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "    " . ($token[1]) . " = " . ($token[2]) . ";\n";
-            if (preg_match("/^\\$[a-z_][a-z_0-9]*$/i", trim($token[1]))) {
-                echo "        \$this->context[";
-                var_export(substr(trim($token[1]), 1));
-                echo "] = " . ($token[1]) . ";\n";
-            }
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Break.tpl.php
-     */
-    class class_f438effbfd0e1abc280c3a5fd5c49a6b609fdece extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "    break;\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Continue.tpl.php
-     */
-    class class_a5a85b8b99262519741caf9201827cb2a6a2b36f extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "    continue;\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Include.tpl.php
-     */
-    class class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo $namespace . "\\Templates::exec(" . ($token[1]) . ", \$this->context);\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from Echo.tpl.php
-     */
-    class class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
-    {
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-            echo "echo " . ($token[1]) . ";\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -368,6 +105,34 @@ namespace {
             }
             crodas\SimpleView\Templates\Templates::exec('body', array('tpl' => $token[2]), $this->context);
             echo "}\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Set.tpl.php
+     */
+    class class_c36eec984e05803cb157ccb02bc2517cf30266a3 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "    " . ($token[1]) . " = " . ($token[2]) . ";\n";
+            if (preg_match("/^\\$[a-z_][a-z_0-9]*$/i", trim($token[1]))) {
+                echo "        \$this->context[";
+                var_export(substr(trim($token[1]), 1));
+                echo "] = " . ($token[1]) . ";\n";
+            }
 
             if ($return) {
                 return ob_get_clean();
@@ -427,9 +192,9 @@ namespace {
     }
 
     /** 
-     *  Template class generated from If.tpl.php
+     *  Template class generated from Echo.tpl.php
      */
-    class class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    class class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
         public function render(Array $vars = array(), $return = false)
@@ -440,12 +205,55 @@ namespace {
             if ($return) {
                 ob_start();
             }
-            echo "if (" . ($token[1]) . ") {\n";
-            crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
-            echo "} \n";
-            if (!empty($token[3])) {
-                crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[3]), $this->context);
+            echo "echo " . ($token[1]) . ";\n";
+
+            if ($return) {
+                return ob_get_clean();
             }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Else.tpl.php
+     */
+    class class_55654f0db518414907f78793b7d027601d43ad01 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "else {\n";
+            crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[1]), $this->context);
+            echo "}\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Spaceless.tpl.php
+     */
+    class class_e5f3aacac71e677703efc7f7d2621463a25e5059 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[1]), $this->context);
 
             if ($return) {
                 return ob_get_clean();
@@ -471,6 +279,80 @@ namespace {
             echo "while (" . ($token[1]) . ") {\n";
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
             echo "}\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Yield.tpl.php
+     */
+    class class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "\$this->do_yield(" . ($token[1]) . ");\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Echox.tpl.php
+     */
+    class class_b3f21f4b7452906b330612b966219cc089b11145 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "echo htmlentities(" . ($token[1]) . ", ENT_QUOTES, 'UTF-8', false);\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from If.tpl.php
+     */
+    class class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "if (" . ($token[1]) . ") {\n";
+            crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
+            echo "} \n";
+            if (!empty($token[3])) {
+                crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[3]), $this->context);
+            }
 
             if ($return) {
                 return ob_get_clean();
@@ -531,6 +413,129 @@ namespace {
         }
     }
 
+    /** 
+     *  Template class generated from Body.tpl.php
+     */
+    class class_399877791885ad1a9fde51bca4deb52107f94699 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            foreach($tpl->getStmts() as $token) {
+                $this->context['token'] = $token;
+                if ($token instanceof \crodas\SimpleView\Macro\Base) {
+                    echo "        " . ($token->run($this->context)) . "\n";
+                }
+                else {
+                    crodas\SimpleView\Templates\Templates::exec($token[0], array('token' => $token ), $this->context);
+                }
+            }
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Break.tpl.php
+     */
+    class class_f438effbfd0e1abc280c3a5fd5c49a6b609fdece extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "    break;\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Continue.tpl.php
+     */
+    class class_a5a85b8b99262519741caf9201827cb2a6a2b36f extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "    continue;\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Parent.tpl.php
+     */
+    class class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo "\$this->yield_parent(" . ($token[1]) . ", \$context);\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Include.tpl.php
+     */
+    class class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            echo $namespace . "\\Templates::exec(" . ($token[1]) . ", \$this->context);\n";
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
 }
 
 namespace crodas\SimpleView\Templates {
@@ -540,24 +545,24 @@ namespace crodas\SimpleView\Templates {
         public static function getAll()
         {
             return array (
-                0 => 'parent',
-                1 => 'spaceless',
-                2 => 'echox',
-                3 => 'body',
-                4 => 'unless',
+                0 => 'unless',
+                1 => 'foreach',
+                2 => 'set',
+                3 => 'class',
+                4 => 'echo',
                 5 => 'else',
-                6 => 'yield',
-                7 => 'set',
-                8 => 'break',
-                9 => 'continue',
-                10 => 'include',
-                11 => 'echo',
-                12 => 'foreach',
-                13 => 'class',
-                14 => 'if',
-                15 => 'while',
-                16 => 'elseif',
-                17 => 'var_export',
+                6 => 'spaceless',
+                7 => 'while',
+                8 => 'yield',
+                9 => 'echox',
+                10 => 'if',
+                11 => 'elseif',
+                12 => 'var_export',
+                13 => 'body',
+                14 => 'break',
+                15 => 'continue',
+                16 => 'parent',
+                17 => 'include',
             );
         }
 
@@ -570,42 +575,42 @@ namespace crodas\SimpleView\Templates {
         public static function get($name, Array $context = array())
         {
             static $classes = array (
-                'parent.tpl.php' => 'class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e',
-                'parent' => 'class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e',
-                'spaceless.tpl.php' => 'class_e5f3aacac71e677703efc7f7d2621463a25e5059',
-                'spaceless' => 'class_e5f3aacac71e677703efc7f7d2621463a25e5059',
-                'echox.tpl.php' => 'class_b3f21f4b7452906b330612b966219cc089b11145',
-                'echox' => 'class_b3f21f4b7452906b330612b966219cc089b11145',
-                'body.tpl.php' => 'class_399877791885ad1a9fde51bca4deb52107f94699',
-                'body' => 'class_399877791885ad1a9fde51bca4deb52107f94699',
                 'unless.tpl.php' => 'class_f5ab41dedb21a24081861ee6a36af5e59365a600',
                 'unless' => 'class_f5ab41dedb21a24081861ee6a36af5e59365a600',
-                'else.tpl.php' => 'class_55654f0db518414907f78793b7d027601d43ad01',
-                'else' => 'class_55654f0db518414907f78793b7d027601d43ad01',
-                'yield.tpl.php' => 'class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e',
-                'yield' => 'class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e',
-                'set.tpl.php' => 'class_c36eec984e05803cb157ccb02bc2517cf30266a3',
-                'set' => 'class_c36eec984e05803cb157ccb02bc2517cf30266a3',
-                'break.tpl.php' => 'class_f438effbfd0e1abc280c3a5fd5c49a6b609fdece',
-                'break' => 'class_f438effbfd0e1abc280c3a5fd5c49a6b609fdece',
-                'continue.tpl.php' => 'class_a5a85b8b99262519741caf9201827cb2a6a2b36f',
-                'continue' => 'class_a5a85b8b99262519741caf9201827cb2a6a2b36f',
-                'include.tpl.php' => 'class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156',
-                'include' => 'class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156',
-                'echo.tpl.php' => 'class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157',
-                'echo' => 'class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157',
                 'foreach.tpl.php' => 'class_55a865e988d24c0d11ce50bc8c11519a2d28b743',
                 'foreach' => 'class_55a865e988d24c0d11ce50bc8c11519a2d28b743',
+                'set.tpl.php' => 'class_c36eec984e05803cb157ccb02bc2517cf30266a3',
+                'set' => 'class_c36eec984e05803cb157ccb02bc2517cf30266a3',
                 'class.tpl.php' => 'class_ed71512c603ba20ba49346284ee12f19b5d744de',
                 'class' => 'class_ed71512c603ba20ba49346284ee12f19b5d744de',
-                'if.tpl.php' => 'class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9',
-                'if' => 'class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9',
+                'echo.tpl.php' => 'class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157',
+                'echo' => 'class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157',
+                'else.tpl.php' => 'class_55654f0db518414907f78793b7d027601d43ad01',
+                'else' => 'class_55654f0db518414907f78793b7d027601d43ad01',
+                'spaceless.tpl.php' => 'class_e5f3aacac71e677703efc7f7d2621463a25e5059',
+                'spaceless' => 'class_e5f3aacac71e677703efc7f7d2621463a25e5059',
                 'while.tpl.php' => 'class_6b1bcd97e93ed2c0cb9aac64a2ca1db0d5c1bbfd',
                 'while' => 'class_6b1bcd97e93ed2c0cb9aac64a2ca1db0d5c1bbfd',
+                'yield.tpl.php' => 'class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e',
+                'yield' => 'class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e',
+                'echox.tpl.php' => 'class_b3f21f4b7452906b330612b966219cc089b11145',
+                'echox' => 'class_b3f21f4b7452906b330612b966219cc089b11145',
+                'if.tpl.php' => 'class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9',
+                'if' => 'class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9',
                 'elseif.tpl.php' => 'class_29c582cf88090afb569826fab26c5ff2408174a6',
                 'elseif' => 'class_29c582cf88090afb569826fab26c5ff2408174a6',
                 'var_export.tpl.php' => 'class_4c7ae9b989b5399767f582c58a57086e7e11e353',
                 'var_export' => 'class_4c7ae9b989b5399767f582c58a57086e7e11e353',
+                'body.tpl.php' => 'class_399877791885ad1a9fde51bca4deb52107f94699',
+                'body' => 'class_399877791885ad1a9fde51bca4deb52107f94699',
+                'break.tpl.php' => 'class_f438effbfd0e1abc280c3a5fd5c49a6b609fdece',
+                'break' => 'class_f438effbfd0e1abc280c3a5fd5c49a6b609fdece',
+                'continue.tpl.php' => 'class_a5a85b8b99262519741caf9201827cb2a6a2b36f',
+                'continue' => 'class_a5a85b8b99262519741caf9201827cb2a6a2b36f',
+                'parent.tpl.php' => 'class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e',
+                'parent' => 'class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e',
+                'include.tpl.php' => 'class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156',
+                'include' => 'class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156',
             );
             $name = strtolower($name);
             if (empty($classes[$name])) {

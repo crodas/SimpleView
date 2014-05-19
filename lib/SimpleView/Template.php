@@ -44,14 +44,16 @@ class Template
 
     protected $source = '';
 
+    protected $env;
     protected $sections = array();
     protected $codes = array();
     protected $parent;
     protected $loop;
     protected $spaceless = false;
 
-    public function __construct(Array $stmts, $section = null, $loop = false, $spaceless = false)
+    public function __construct(Array $stmts, Environment $env, $section = null, $loop = false, $spaceless = false)
     {
+        $this->env     = $env;
         $this->stmts   = $stmts;
         $this->section = $section;
         $this->loop    = $loop;
@@ -134,7 +136,7 @@ class Template
             $stmts = $stmts[2];
         }
 
-        $block = &$this->codes;
+        $block  = &$this->codes;
 
         foreach ($stmts as $stmt) {
             switch ($stmt[0]) {
@@ -146,7 +148,7 @@ class Template
                 }
                 break;
             case 'spaceless':
-                $block[] = array('spaceless', new self($stmt[1], null, $this->loop, true));
+                $block[] = array('spaceless', new self($stmt[1], $this->env, null, $this->loop, true));
                 break;
 
             case 'echox':
@@ -162,28 +164,28 @@ class Template
                 }
                 break;
             case 'if':
-                $if = array('if', $stmt[1], new self($stmt[2], null, $this->loop, $this->spaceless));
+                $if = array('if', $stmt[1], new self($stmt[2], $this->env, null, $this->loop, $this->spaceless));
                 if (!empty($stmt[3]) && !is_string($stmt[3])) {
-                    $if[] = new self([ $stmt[3] ], null, $this->loop, $this->spaceless);
+                    $if[] = new self([ $stmt[3] ], $this->env, null, $this->loop, $this->spaceless);
                 }
                 $block[] =  $if;
                 break;
             case 'else if':
-                $if = array('elseif', $stmt[1], new self($stmt[2], null, $this->loop, $this->spaceless));
+                $if = array('elseif', $stmt[1], new self($stmt[2], $this->env, null, $this->loop, $this->spaceless));
                 if (!empty($stmt[3]) && !is_string($stmt[3])) {
-                    $if[] = new self([ $stmt[3] ], null, $this->loop, $this->spaceless);
+                    $if[] = new self([ $stmt[3] ], $this->env, null, $this->loop, $this->spaceless);
                 }
                 $block[] =  $if;
                 break;
             case 'else':
-                $block[] = array('else', new self($stmt[1], null, $this->loop, $this->spaceless));
+                $block[] = array('else', new self($stmt[1], $this->env, null, $this->loop, $this->spaceless));
                 break;
 
             case 'foreach':
             case 'unless':
             case 'while':
                 $end  = 'end' . strtolower($stmt[0]);
-                $body = new Template($stmt[2], null, true);
+                $body = new Template($stmt[2], $this->env, null, true);
                 $block[] = array($stmt[0], $stmt[1], $body);
                 switch (strtolower($stmt[3])) {
                 case 'end':
@@ -196,13 +198,13 @@ class Template
                 break;
             case 'section_and_show':
                 $section = $this->getString($stmt[1]);
-                $this->sections[$section] = new Template($stmt[2], $section);
+                $this->sections[$section] = new Template($stmt[2], $this->env, $section);
                 $block[] = array('yield', var_Export($section, true));
 
                 break;
             case 'section':
                 $section = $this->getString($stmt[1]);
-                $this->sections[$section] = new Template($stmt[2], $section);
+                $this->sections[$section] = new Template($stmt[2], $this->env, $section);
                 break;
             case 'yield':
             case 'include':
@@ -234,6 +236,22 @@ class Template
                 }
                 $block[] = array('parent', var_export($this->section, true));
 
+                break;
+            case 'pre':
+                $macros = $this->env->getMacrosObjects();
+                if (empty($macros[$stmt[1]])) {
+                    throw new \RuntimeException("Cannot find Macro for {$stmt[1]}");
+                }
+                $macro = $macros[$stmt[1]];
+                $new   = new $macro;
+                if (!empty($stmt[2])) {
+                    $new->parseArgs($stmt[2]);
+                }
+                if (!empty($stmt[3])) {
+                    $child = new self($stmt[3], $this->env, null, $this->loop, $this->spaceless);
+                    $new->setBody($child);
+                }
+                $block[] = $new;
                 break;
             default:
                 throw new \Exception("{$stmt[0]} is not implemented yet. " . print_r($stmt, true));

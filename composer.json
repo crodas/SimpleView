@@ -4,7 +4,8 @@
     "require": {
         "symfony/finder": "*",
         "symfony/console": "*",
-        "crodas/watch-files": "*"
+        "crodas/watch-files": "*",
+        "crodas/asset": "dev-master"
     },
 	"autoload": {
 		"classmap": [
@@ -12,12 +13,11 @@
         ]
     },
     "license": "BSD-4-Clause",
-    "version": "v0.1.18",
+    "version": "v0.1.19",
     "authors": [
         {
             "name": "César D. Rodas",
             "email": "crodas@php.net"
         }
-    ],
-    "minimum-stability": "dev"
+    ]
 }

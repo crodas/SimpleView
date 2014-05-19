@@ -1,4 +1,4 @@
-%name Simple_View_
+%name Simple_View_Args_
 
 %include {
 /*
@@ -39,23 +39,7 @@
 use crodas\SimpleView\Exception;
 }
 
-%declare_class { class Simple_View_Parser }
-
-%include_class {
-    protected $lex;
-    protected $file;
-
-    function __construct($file='')
-    {
-        $this->file = $file;
-    }
-
-    function Error($text)
-    {
-        throw new Exception($text, -1);
-    }
-
-}
+%declare_class { class Simple_View_Args }
 
 %parse_accept {
 }
@@ -65,42 +49,18 @@ use crodas\SimpleView\Exception;
     foreach ($this->yy_get_expected_tokens($yymajor) as $token) {
         $expected[] = self::$yyTokenName[$token];
     }
-    $this->Error('Unexpected ' . $this->tokenName($yymajor) . '(' . $TOKEN. ') expecting '. print_r($expected, true));
+    throw new \RuntimeException('Unexpected ' . $this->tokenName($yymajor) . '(' . $TOKEN. ') expecting '. print_r($expected, true));
 }
 
-start ::= T_EXTENDS T_PHP_RAW(X) body(A) . { $this->body = array('extends', X, A); }
-start ::= body(A) . { $this->body = A; }
 
-body(A) ::= body(B) code(C) . { A = B; A[] = C; }
-body(A) ::=  . { A = array(); }
+start ::= args(A) . { $this->args = A; }
 
-code(A) ::= command(X) . { A = X; }
-code(A) ::= T_ECHO(X) . { A = array('echo', trim(X)); }
-code(A) ::= T_ESCAPED_ECHO(X) . { A = array('echox', trim(X)); }
-code(A) ::= T_TEXT_RAW(X) . { A = array('text', X); }
+args(A) ::= args(B)  T_COMMA arg(C) . { A = array_merge(B, C); }
+args(A) ::= arg(B) . { A = B; }
+args(A) ::= . { A = array(); }
 
-command(A) ::= T_SET T_PHP_RAW(B) . { A = array('set', B); }
-command(A) ::= T_FOREACH T_PHP_RAW(B) body(C) block_end(X) . { A = array('foreach', B, C, @X); }
-command(A) ::= T_WHILE T_PHP_RAW(B) body(C) block_end(X) . { A = array('while', B, C, @X); }
-command(A) ::= T_UNLESS T_PHP_RAW(B) body(C) block_end(X) . { A = array('unless', B, C, @X); }
-command(A) ::= T_IF T_PHP_RAW(B) body(C) else(X) . { A = array('if', B, C, X); }
-command(A) ::= T_SECTION T_PHP_RAW(B) body(C) block_end(X) . { A = array('section', B, C, @X); }
-command(A) ::= T_SECTION T_PHP_RAW(B) body(C) T_SHOW . { A = array('section_and_show', B, C); }
-command(A) ::= T_INCLUDE T_PHP_RAW(B) . { A = array('include', B); }
-command(A) ::= T_YIELD T_PHP_RAW(B) . { A = array('yield', B); }
-command(A) ::= pre_processor(B) . { A = B; }
-command(A) ::= T_PARENT . { A = array('parent'); }
-command(A) ::= T_BREAK|T_CONTINUE(X) . { A = array(strtolower(@X)); }
-command(A) ::= T_SPACELESS body(X) T_END(Y) . { 
-    A = array('spaceless', X, @Y);
-}
+arg(A) ::= term(K) T_EQ term(C) . { A = array(K => C); }
+arg(A) ::= term(C) . { A = array(C); }
 
-pre_processor(A) ::= T_PRE(Y) T_PHP_RAW(XX) body(C)   block_end(X) . { A = array('pre', @Y, XX, C, @X); }
-pre_processor(A) ::= T_PRE(Y) body(C)   block_end(X) . { A = array('pre', @Y, NULL, C, @X); }
-
-else(A) ::= T_ELIF T_PHP_RAW(Z) body(C) else(X) . { A = array('else if', Z, C, X); }
-else(A) ::= T_ELSE body(C) block_end(X) . { A = array('else', C, @X); }
-else(A) ::= block_end(X) . { A = @X; }
-
-block_end(A) ::= T_END(X) . { A = X; }
-block_end(A) ::= T_END T_PHP_RAW(X) . { A = X; }
+term(A) ::= T_STRING(B) . { A = B; }
+term(A) ::= T_NUMBER(X) . { A = X + 0; }

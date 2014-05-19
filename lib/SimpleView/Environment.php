@@ -1,7 +1,7 @@
 <?php
 /*
   +---------------------------------------------------------------------------------+
-  | Copyright (c) 2013 César Rodas                                                  |
+  | Copyright (c) 2014 César Rodas                                                  |
   +---------------------------------------------------------------------------------+
   | Redistribution and use in source and binary forms, with or without              |
   | modification, are permitted provided that the following conditions are met:     |
@@ -47,6 +47,7 @@ use Symfony\Component\Finder\Finder;
 class Environment
 {
     protected $finder;
+    protected $macros = array();
 
     public function __construct($dir, $ext = null)
     {
@@ -70,6 +71,31 @@ class Environment
             }
         }
         $this->finder = $finder;
+    }
+
+    public function getMacros()
+    {
+        return array_map(function($obj) {
+            return $obj->getType();
+        }, $this->getMacrosObjects());
+    }
+
+    public function getMacrosObjects()
+    {
+        $macros = [];
+        foreach ($this->macros as $macro) {
+            foreach ($macro->getNames() as $name) {
+                $macros[$name] = $macro;
+            }
+        }
+
+        return $macros;
+    }
+
+    public function addMacro(Macro\Base $macro)
+    {
+        $this->macros[] = $macro;
+        return $this;
     }
 
     public function files()

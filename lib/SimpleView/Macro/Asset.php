@@ -1,9 +1,7 @@
-%name Simple_View_
-
-%include {
+<?php
 /*
   +---------------------------------------------------------------------------------+
-  | Copyright (c) 2013 César Rodas                                                  |
+  | Copyright (c) 2014 César Rodas                                                  |
   +---------------------------------------------------------------------------------+
   | Redistribution and use in source and binary forms, with or without              |
   | modification, are permitted provided that the following conditions are met:     |
@@ -36,71 +34,37 @@
   | Authors: César Rodas <crodas@php.net>                                           |
   +---------------------------------------------------------------------------------+
 */
-use crodas\SimpleView\Exception;
-}
+namespace crodas\SimpleView\Macro;
 
-%declare_class { class Simple_View_Parser }
+use Simple_View_Parser as Parser;
+use crodas\SimpleView\Templates\Templates;
+use Asset as CAsset;
 
-%include_class {
-    protected $lex;
-    protected $file;
-
-    function __construct($file='')
+class Asset extends Base
+{
+    public function getNames()
     {
-        $this->file = $file;
+        return ['style', 'css'];
     }
 
-    function Error($text)
+    public function run($context)
     {
-        throw new Exception($text, -1);
+        if (empty($this->args['output'])) {
+            throw new \RuntimeException("output argument is missing");
+        }
+
+        $output = $this->args['output'];
+        unset($this->args['output']);
+
+        $output = CAsset::prepare(getcwd(), $this->args, $output);
+
+        $body = "\$asset_url = " . var_export($output, true) . ";\n";
+        if (!empty($this->body)) {
+            $body .= Templates::get('body')
+                ->render(array_merge($context, array('tpl' => $this->body)), true);
+        }
+
+        return $body;
     }
-
 }
 
-%parse_accept {
-}
-
-%syntax_error {
-    $expected = array();
-    foreach ($this->yy_get_expected_tokens($yymajor) as $token) {
-        $expected[] = self::$yyTokenName[$token];
-    }
-    $this->Error('Unexpected ' . $this->tokenName($yymajor) . '(' . $TOKEN. ') expecting '. print_r($expected, true));
-}
-
-start ::= T_EXTENDS T_PHP_RAW(X) body(A) . { $this->body = array('extends', X, A); }
-start ::= body(A) . { $this->body = A; }
-
-body(A) ::= body(B) code(C) . { A = B; A[] = C; }
-body(A) ::=  . { A = array(); }
-
-code(A) ::= command(X) . { A = X; }
-code(A) ::= T_ECHO(X) . { A = array('echo', trim(X)); }
-code(A) ::= T_ESCAPED_ECHO(X) . { A = array('echox', trim(X)); }
-code(A) ::= T_TEXT_RAW(X) . { A = array('text', X); }
-
-command(A) ::= T_SET T_PHP_RAW(B) . { A = array('set', B); }
-command(A) ::= T_FOREACH T_PHP_RAW(B) body(C) block_end(X) . { A = array('foreach', B, C, @X); }
-command(A) ::= T_WHILE T_PHP_RAW(B) body(C) block_end(X) . { A = array('while', B, C, @X); }
-command(A) ::= T_UNLESS T_PHP_RAW(B) body(C) block_end(X) . { A = array('unless', B, C, @X); }
-command(A) ::= T_IF T_PHP_RAW(B) body(C) else(X) . { A = array('if', B, C, X); }
-command(A) ::= T_SECTION T_PHP_RAW(B) body(C) block_end(X) . { A = array('section', B, C, @X); }
-command(A) ::= T_SECTION T_PHP_RAW(B) body(C) T_SHOW . { A = array('section_and_show', B, C); }
-command(A) ::= T_INCLUDE T_PHP_RAW(B) . { A = array('include', B); }
-command(A) ::= T_YIELD T_PHP_RAW(B) . { A = array('yield', B); }
-command(A) ::= pre_processor(B) . { A = B; }
-command(A) ::= T_PARENT . { A = array('parent'); }
-command(A) ::= T_BREAK|T_CONTINUE(X) . { A = array(strtolower(@X)); }
-command(A) ::= T_SPACELESS body(X) T_END(Y) . { 
-    A = array('spaceless', X, @Y);
-}
-
-pre_processor(A) ::= T_PRE(Y) T_PHP_RAW(XX) body(C)   block_end(X) . { A = array('pre', @Y, XX, C, @X); }
-pre_processor(A) ::= T_PRE(Y) body(C)   block_end(X) . { A = array('pre', @Y, NULL, C, @X); }
-
-else(A) ::= T_ELIF T_PHP_RAW(Z) body(C) else(X) . { A = array('else if', Z, C, X); }
-else(A) ::= T_ELSE body(C) block_end(X) . { A = array('else', C, @X); }
-else(A) ::= block_end(X) . { A = @X; }
-
-block_end(A) ::= T_END(X) . { A = X; }
-block_end(A) ::= T_END T_PHP_RAW(X) . { A = X; }

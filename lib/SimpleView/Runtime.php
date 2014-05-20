@@ -70,6 +70,7 @@ class Runtime
             $watcher = new Watch($this->tmp . ".lock");
             if (!$watcher->isWatching() || $watcher->hasChanged()) {
                 $compiler = new Compiler($this->env);
+                $this->env->set('watcher', $watcher);
                 if ($this->ns) {
                     $compiler->setNamespace($this->ns);
                 }

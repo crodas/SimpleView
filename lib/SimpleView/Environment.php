@@ -47,7 +47,22 @@ use Symfony\Component\Finder\Finder;
 class Environment
 {
     protected $finder;
+    protected $obj = array();
     protected $macros = array();
+
+    public function set($name, $value)
+    {
+        $this->obj[$name] = $value;
+        return $this;
+    }
+
+    public function get($name)
+    {
+        if (!array_key_exists($name, $this->obj)) {
+            throw new \RuntimeException("Cannot find property {$name}");
+        }
+        return $this->obj[$name];
+    }
 
     public function __construct($dir, $ext = null)
     {
@@ -76,7 +91,7 @@ class Environment
     public function getMacros()
     {
         return array_map(function($obj) {
-            return $obj->getType();
+            return $obj::getType();
         }, $this->getMacrosObjects());
     }
 
@@ -84,7 +99,7 @@ class Environment
     {
         $macros = [];
         foreach ($this->macros as $macro) {
-            foreach ($macro->getNames() as $name) {
+            foreach ($macro::getNames() as $name) {
                 $macros[$name] = $macro;
             }
         }
@@ -92,7 +107,7 @@ class Environment
         return $macros;
     }
 
-    public function addMacro(Macro\Base $macro)
+    public function addMacro($macro)
     {
         $this->macros[] = $macro;
         return $this;

@@ -50,8 +50,9 @@ class Compiler
 
     public function __construct($env)
     {
-        $env->addMacro(new Macro\Asset);
         $this->env = $env;
+        $env->addMacro(__NAMESPACE__ .  '\Macro\Asset');
+        $env->addMacro(__NAMESPACE__ .  '\Macro\AssetInline');
     }
 
     public function compile_string($name, $text)

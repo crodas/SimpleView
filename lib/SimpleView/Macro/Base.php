@@ -44,8 +44,14 @@ abstract class Base
 {
     protected $body = null;
     protected $args = [];
+    protected $env;
 
-    public function getType()
+    public function __construct($env)
+    {
+        $this->env = $env;
+    }
+
+    public static function getType()
     {
         return Parser::T_PRE;
     }
@@ -114,7 +120,11 @@ abstract class Base
         return $this;
     }
 
-    abstract public function getNames();
+    public function prepare()
+    {
+    }
+
+    abstract static public function getNames();
 
     abstract public function run($context);
 

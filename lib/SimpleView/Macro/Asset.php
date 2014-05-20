@@ -42,9 +42,9 @@ use Asset as CAsset;
 
 class Asset extends Base
 {
-    public function getNames()
+    public static function getNames()
     {
-        return ['style', 'css'];
+        return ['style', 'css', 'js'];
     }
 
     public function run($context)
@@ -55,6 +55,13 @@ class Asset extends Base
 
         $output = $this->args['output'];
         unset($this->args['output']);
+
+        $fs = $this->env->get('watcher');
+
+        CAsset::on('file', function($file) use ($fs) {
+            $args = $file->getArguments();
+            $fs->watchFile($args[0]);
+        });
 
         $output = CAsset::prepare(getcwd(), $this->args, $output);
 
@@ -68,3 +75,41 @@ class Asset extends Base
     }
 }
 
+class AssetInline extends Asset
+{
+    public static $assets = [];
+
+    public static function getNames()
+    {
+        return ['asset'];
+    }
+
+    public static function getType()
+    {
+        return Parser::T_PRE_INLINE;
+    }
+
+    public function prepare()
+    {
+        if (empty($this->args['output'])) {
+            throw new \RuntimeException("output argument is missing");
+        }
+
+        $output = $this->args['output'];
+        unset($this->args['output']);
+
+        $fs = $this->env->get('watcher');
+
+        CAsset::on('file', function($file) use ($fs) {
+            $args = $file->getArguments();
+            $fs->watchFile($args[0]);
+        });
+
+        self::$assets[trim($output)] = var_export(CAsset::prepare(getcwd(), $this->args, $output), true);
+    }
+    
+    public function run($context)
+    {
+        return "";
+    }
+}

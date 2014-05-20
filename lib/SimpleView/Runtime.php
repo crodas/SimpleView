@@ -37,9 +37,12 @@
 namespace crodas\SimpleView;
 
 use WatchFiles\Watch;
+use ServiceProvider\EventEmitter;
 
 class Runtime
 {
+    use EventEmitter;
+
     protected $tmp;
     protected $ns;
     protected $loaded;
@@ -74,10 +77,12 @@ class Runtime
                 if ($this->ns) {
                     $compiler->setNamespace($this->ns);
                 }
+                self::trigger('preCompile');
                 foreach ($compiler->compile() as $compiled) {
                     $watcher->watchFile($compiled.'');
                     $watcher->watchDir(dirname($compiled));
                 }
+                self::trigger('ppostCompile');
                 $compiler->save($this->tmp);
                 $watcher->watchFile($this->tmp);
                 $watcher->watch();

@@ -426,10 +426,10 @@ namespace {
             }
         
             echo "cesar\n";
-            $asset_url = '//foobar.com/assets/css/out.653d843f.css';
+            $asset_url = '//foobar.com/assets/css/out.653d843f.min.css';
             echo "     <link href=\"" . ($asset_url) . "\" type=\"text/css\" rel=\"stylesheet\" />\n";
 
-            echo "     <link href=\"" . ('//foobar.com/assets/css/out1.653d843f.css') . "\" type=\"text/css\" rel=\"stylesheet\" />\nrodas\n";
+            echo "     <link href=\"" . ('//foobar.com/assets/css/out1.653d843f.min.css') . "\" type=\"text/css\" rel=\"stylesheet\" />\nrodas\n";
 
             if ($return) {
                 return ob_get_clean();

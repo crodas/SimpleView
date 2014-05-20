@@ -92,8 +92,6 @@ class Tokenizer
                     if ($text[$e] == $zstart) break;
                 }
                 break;
-            case "\n";
-                throw new Exception("Unexpected end of line", $line);
             }
         }
 

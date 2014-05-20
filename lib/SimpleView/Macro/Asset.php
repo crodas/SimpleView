@@ -42,9 +42,9 @@ use Asset as CAsset;
 
 class Asset extends Base
 {
-    public function getNames()
+    public static function getNames()
     {
-        return ['style', 'css'];
+        return ['style', 'css', 'asset', 'js'];
     }
 
     public function run($context)
@@ -55,6 +55,13 @@ class Asset extends Base
 
         $output = $this->args['output'];
         unset($this->args['output']);
+
+        $fs = $this->env->get('watcher');
+
+        CAsset::on('file', function($file) use ($fs) {
+            $args = $file->getArguments();
+            $fs->watchFile($args[0]);
+        });
 
         $output = CAsset::prepare(getcwd(), $this->args, $output);
 

@@ -243,7 +243,7 @@ class Template
                     throw new \RuntimeException("Cannot find Macro for {$stmt[1]}");
                 }
                 $macro = $macros[$stmt[1]];
-                $new   = new $macro;
+                $new   = new $macro($this->env);
                 if (!empty($stmt[2])) {
                     $new->parseArgs($stmt[2]);
                 }

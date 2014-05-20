@@ -120,6 +120,10 @@ abstract class Base
         return $this;
     }
 
+    public function prepare()
+    {
+    }
+
     abstract static public function getNames();
 
     abstract public function run($context);

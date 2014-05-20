@@ -75,7 +75,10 @@ body(A) ::= body(B) code(C) . { A = B; A[] = C; }
 body(A) ::=  . { A = array(); }
 
 code(A) ::= command(X) . { A = X; }
-code(A) ::= T_ECHO(X) . { A = array('echo', trim(X)); }
+code(A) ::= T_ECHO(X) . { 
+    X = trim(X); 
+    A = array('echo', X);
+}
 code(A) ::= T_ESCAPED_ECHO(X) . { A = array('echox', trim(X)); }
 code(A) ::= T_TEXT_RAW(X) . { A = array('text', X); }
 
@@ -95,6 +98,7 @@ command(A) ::= T_SPACELESS body(X) T_END(Y) . {
     A = array('spaceless', X, @Y);
 }
 
+pre_processor(A) ::= T_PRE_INLINE(Y) T_PHP_RAW(XX). { A = array('pre', @Y, XX, NULL, NULL); }
 pre_processor(A) ::= T_PRE(Y) T_PHP_RAW(XX) body(C)   block_end(X) . { A = array('pre', @Y, XX, C, @X); }
 pre_processor(A) ::= T_PRE(Y) body(C)   block_end(X) . { A = array('pre', @Y, NULL, C, @X); }
 

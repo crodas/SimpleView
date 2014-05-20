@@ -37,6 +37,8 @@
 
 namespace crodas\SimpleView;
 
+use crodas\SimpleView\Macro\AssetInline;
+
 class Template
 {
     protected $stmts;
@@ -157,7 +159,10 @@ class Template
                     $stmt[0] = 'var_export';
                     $stmt[1] = substr($stmt[1], 1);
                 }
-                if (end($block)[0] == $stmt[0]) {
+                if (!empty(AssetInline::$assets[$stmt[1]])) {
+                    $stmt[1] = AssetInline::$assets[$stmt[1]];
+                }
+                if (is_array(end($block)) && end($block)[0] == $stmt[0]) {
                     $block[ count($block) - 1 ][1] .= " . (" . $stmt[1] . ")";
                 } else {
                     $block[] = array($stmt[0], $stmt[1]);
@@ -251,8 +256,10 @@ class Template
                     $child = new self($stmt[3], $this->env, null, $this->loop, $this->spaceless);
                     $new->setBody($child);
                 }
+                $new->prepare();
                 $block[] = $new;
                 break;
+
             default:
                 throw new \Exception("{$stmt[0]} is not implemented yet. " . print_r($stmt, true));
             }

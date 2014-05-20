@@ -4,6 +4,7 @@ use crodas\SimpleView\Runtime;
 
 require __DIR__ . "/../vendor/autoload.php";
 
+Asset::prod();
 Asset::on('output', function($ev) {
     $args = $ev->getArguments();
     $args[0] = "//foobar.com/assets/" . $args[0];

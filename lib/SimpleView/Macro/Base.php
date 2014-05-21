@@ -73,7 +73,7 @@ abstract class Base
         $len    = strlen($text);
         for($i = 0; $i < $len; $i++) {
             switch ($text[$i]) {
-            case ' ': case "\t": case "\n": 
+            case ' ': case "\t": case "\n": case "\r":
                 /* ignore whitespace */
                 break;
             case ',':

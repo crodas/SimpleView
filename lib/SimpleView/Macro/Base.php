@@ -124,7 +124,9 @@ abstract class Base
     {
     }
 
-    abstract static public function getNames();
+    static public function getNames()
+    {
+    }
 
     abstract public function run($context);
 

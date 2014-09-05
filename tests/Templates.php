@@ -70,6 +70,7 @@ namespace {
                 ob_start();
             }
             foreach($users as $id => $user) {
+
                 $this->context['id'] = $id;
                 $this->context['user'] = $user;
                 Tests\Templates::exec("loop1-example", $this->context);
@@ -78,6 +79,7 @@ namespace {
                 }
             }
             foreach($users as $user) {
+
                 $this->context['user'] = $user;
                 Tests\Templates::exec("loop1-example", $this->context);
                 break;
@@ -128,6 +130,7 @@ namespace {
                 ob_start();
             }
             foreach($users as $id => $user1) {
+
                 $this->context['id'] = $id;
                 $this->context['user1'] = $user1;
                 $user = $user1;
@@ -140,6 +143,7 @@ namespace {
                 }
             }
             foreach($users as $user1) {
+
                 $this->context['user1'] = $user1;
                 echo "    hi " . ($user1) . "\n";
                 break;
@@ -239,6 +243,7 @@ namespace {
                 ob_start();
             }
             foreach($users as $id => $user) {
+
                 $this->context['id'] = $id;
                 $this->context['user'] = $user;
                 echo "\n";
@@ -250,6 +255,7 @@ namespace {
                 }
             }
             foreach($users as $user) {
+
                 $this->context['user'] = $user;
                 Tests\Templates::exec("loop1-example", $this->context);
                 break;
@@ -277,6 +283,7 @@ namespace {
                 ob_start();
             }
             foreach([1,2,3] as $auction) {
+
                 $this->context['auction'] = $auction;
                 echo "      ";
                 Tests\Templates::exec('home.tpl.php', $this->context);

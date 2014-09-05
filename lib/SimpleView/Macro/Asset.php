@@ -98,6 +98,10 @@ class AssetInline extends Asset
         $output = $this->args['output'];
         unset($this->args['output']);
 
+        if (!empty($this->args['outputpath'])) {
+            $output = $this->args['outputpath'] . '/' . trim($output);
+        }
+
         $fs = $this->env->get('watcher');
 
         CAsset::on('file', function($file) use ($fs) {

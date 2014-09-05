@@ -71,49 +71,8 @@ namespace {
             }
             foreach($users as $id => $user) {
 
-                Warning: explode() expects parameter 2 to be string, array given in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 98
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0461    3872480  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0462    3873520  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0462    3883864  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0462    3885016  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0462    3895456  17. explode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:98
-
-
-
-                Warning: Invalid argument supplied for foreach() in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 103
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0461    3872480  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0462    3873520  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0462    3883864  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0462    3885016  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-
+                $this->context['id'] = $id;
+                $this->context['user'] = $user;
                 Tests\Templates::exec("loop1-example", $this->context);
                 if ($user == 1) {
                     continue;
@@ -121,49 +80,7 @@ namespace {
             }
             foreach($users as $user) {
 
-                Warning: explode() expects parameter 2 to be string, array given in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 98
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0461    3872480  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0462    3873520  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0468    3885112  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0468    3886080  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0469    3896432  17. explode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:98
-
-
-
-                Warning: Invalid argument supplied for foreach() in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 103
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0461    3872480  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0462    3873520  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0468    3885112  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0468    3886080  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-
+                $this->context['user'] = $user;
                 Tests\Templates::exec("loop1-example", $this->context);
                 break;
             }
@@ -214,49 +131,8 @@ namespace {
             }
             foreach($users as $id => $user1) {
 
-                Warning: explode() expects parameter 2 to be string, array given in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 98
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0475    3874024  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0475    3874904  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0475    3885168  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0475    3886136  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0475    3896488  17. explode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:98
-
-
-
-                Warning: Invalid argument supplied for foreach() in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 103
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0475    3874024  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0475    3874904  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0475    3885168  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0475    3886136  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-
+                $this->context['id'] = $id;
+                $this->context['user1'] = $user1;
                 $user = $user1;
                 $this->context['user'] = $user;
                 echo "    hi " . ($user) . "\n";
@@ -268,49 +144,7 @@ namespace {
             }
             foreach($users as $user1) {
 
-                Warning: explode() expects parameter 2 to be string, array given in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 98
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0475    3874024  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0475    3874904  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0481    3901704  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0481    3902672  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0481    3913024  17. explode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:98
-
-
-
-                Warning: Invalid argument supplied for foreach() in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 103
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0475    3874024  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0475    3874904  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0481    3901704  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0481    3902672  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-
+                $this->context['user1'] = $user1;
                 echo "    hi " . ($user1) . "\n";
                 break;
             }
@@ -410,49 +244,8 @@ namespace {
             }
             foreach($users as $id => $user) {
 
-                Warning: explode() expects parameter 2 to be string, array given in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 98
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0488    3890944  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0488    3891912  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0488    3902496  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0488    3903552  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0488    3914136  17. explode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:98
-
-
-
-                Warning: Invalid argument supplied for foreach() in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 103
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0488    3890944  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0488    3891912  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0488    3902496  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0488    3903552  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-
+                $this->context['id'] = $id;
+                $this->context['user'] = $user;
                 echo "\n";
                 Tests\Templates::exec("loop1-example", $this->context);
                 echo "    ";
@@ -463,49 +256,7 @@ namespace {
             }
             foreach($users as $user) {
 
-                Warning: explode() expects parameter 2 to be string, array given in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 98
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0488    3890944  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0488    3891912  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0494    3902496  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0494    3903552  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0494    3914136  17. explode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:98
-
-
-
-                Warning: Invalid argument supplied for foreach() in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 103
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0488    3890944  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0488    3891912  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0494    3902496  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0494    3903552  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-
+                $this->context['user'] = $user;
                 Tests\Templates::exec("loop1-example", $this->context);
                 break;
             }
@@ -533,49 +284,7 @@ namespace {
             }
             foreach([1,2,3] as $auction) {
 
-                Warning: explode() expects parameter 2 to be string, array given in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 98
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0500    3907328  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0500    3908296  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0500    3918880  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0500    3919936  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0500    3930520  17. explode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:98
-
-
-
-                Warning: Invalid argument supplied for foreach() in /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php on line 103
-
-                Call Stack:
-                0.0001     234672   1. {main}() /usr/bin/phpunit:0
-                0.0017     509376   2. PHPUnit_TextUI_Command::main() /usr/bin/phpunit:46
-                0.0017     510000   3. PHPUnit_TextUI_Command->run() /usr/share/php/PHPUnit/TextUI/Command.php:129
-                0.0017     512408   4. PHPUnit_TextUI_Command->handleArguments() /usr/share/php/PHPUnit/TextUI/Command.php:138
-                0.0038     865848   5. PHPUnit_TextUI_Command->handleBootstrap() /usr/share/php/PHPUnit/TextUI/Command.php:606
-                0.0040     874264   6. PHPUnit_Util_Fileloader::checkAndLoad() /usr/share/php/PHPUnit/TextUI/Command.php:778
-                0.0040     874464   7. PHPUnit_Util_Fileloader::load() /usr/share/php/PHPUnit/Util/Fileloader.php:76
-                0.0040     882528   8. include_once('/home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php') /usr/share/php/PHPUnit/Util/Fileloader.php:92
-                0.0074    1486960   9. crodas\SimpleView\Runtime->load() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/tests/bootstrap.php:22
-                0.0454    3679080  10. crodas\SimpleView\Compiler->save() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Runtime.php:86
-                0.0454    3679224  11. crodas\SimpleView\Compiler->getCode() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:123
-                0.0461    3845376  12. class_ed71512c603ba20ba49346284ee12f19b5d744de->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Compiler.php:118
-                0.0500    3907328  13. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:182
-                0.0500    3908296  14. class_399877791885ad1a9fde51bca4deb52107f94699->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-                0.0500    3918880  15. crodas\SimpleView\Templates\Templates::exec() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:443
-                0.0500    3919936  16. class_55a865e988d24c0d11ce50bc8c11519a2d28b743->render() /home/crodas/projects/newest/SimpleViewEngine/SimpleView/lib/SimpleView/Templates.php:579
-
+                $this->context['auction'] = $auction;
                 echo "      ";
                 Tests\Templates::exec('home.tpl.php', $this->context);
                 echo "\n";

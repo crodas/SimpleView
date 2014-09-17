@@ -7,6 +7,10 @@
 
 namespace {
 
+
+    $GLOBALS['file_5419d8e846623'] = array();
+    $GLOBALS['line_5419d8e846623'] = array();
+
     class base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
         protected $parent;
@@ -63,15 +67,74 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Unless.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "if (!(" . ($token[1]) . ")) {\n";
+            $line_5419d8e846623[$_5419d8e846623] = 2;
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
+            $line_5419d8e846623[$_5419d8e846623] = 3;
             echo "}\n";
+
+            array_pop($file_5419d8e846623);
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from Newline.tpl.php
+     */
+    class class_cfa7269ec959308c668047e4aa1cd1d833f91eb6 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Newline.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
+            echo "\$line_" . ($hash) . "[\$_" . ($hash) . "] = ";
+            var_export($token[1]);
+            echo ";\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -88,27 +151,51 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Foreach.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "foreach(" . ($token[1]) . ") {\n";
+            $line_5419d8e846623[$_5419d8e846623] = 2;
             $vars = preg_split("/\bas\b/", $token[1], 2);
             $this->context['vars'] = $vars;
+            $line_5419d8e846623[$_5419d8e846623] = 3;
             $vars = explode("=>", $vars[1]);
             $this->context['vars'] = $vars;
+            $line_5419d8e846623[$_5419d8e846623] = 4;
             echo "\n";
+            $line_5419d8e846623[$_5419d8e846623] = 5;
             foreach($vars as $var) {
 
                 $this->context['var'] = $var;
+                $line_5419d8e846623[$_5419d8e846623] = 6;
                 echo "        \$this->context[";
                 var_export(substr(trim($var),1));
                 echo "] = " . (trim($var)) . ";\n";
+                $line_5419d8e846623[$_5419d8e846623] = 7;
             }
+            $line_5419d8e846623[$_5419d8e846623] = 8;
             crodas\SimpleView\Templates\Templates::exec('body', array('tpl' => $token[2]), $this->context);
+            $line_5419d8e846623[$_5419d8e846623] = 9;
             echo "}\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -125,18 +212,38 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Set.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "    " . ($token[1]) . " = " . ($token[2]) . ";\n";
+            $line_5419d8e846623[$_5419d8e846623] = 2;
             if (preg_match("/^\\$[a-z_][a-z_0-9]*$/i", trim($token[1]))) {
+                $line_5419d8e846623[$_5419d8e846623] = 3;
                 echo "        \$this->context[";
                 var_export(substr(trim($token[1]), 1));
                 echo "] = " . ($token[1]) . ";\n";
+                $line_5419d8e846623[$_5419d8e846623] = 4;
             }
+            $line_5419d8e846623[$_5419d8e846623] = 5;
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -153,42 +260,123 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            echo "<?php\n/**\n *  This file was generated with crodas/SimpleView (https://github.com/crodas/SimpleView)\n *  Do not edit this file.\n *\n */\n\nnamespace {\n\nclass base_template_" . (sha1($namespace)) . "\n{\n    protected \$parent;\n    protected \$child;\n    protected \$context;\n\n    public function yield_parent(\$name, \$args)\n    {\n        \$method = \"section_\" . sha1(\$name);\n\n        if (is_callable(array(\$this->parent, \$method))) {\n            \$this->parent->\$method(array_merge(\$this->context, \$args));\n            return true;\n        }\n\n        if (\$this->parent) {\n            return \$this->parent->yield_parent(\$name, \$args);\n        }\n\n        return false;\n    }\n\n    public function do_yield(\$name, Array \$args = array())\n    {\n        if (\$this->child) {\n            // We have a children template, we are their base\n            // so let's see if they have implemented by any change\n            // this section\n            if (\$this->child->do_yield(\$name, \$args)) {\n                // yes!\n                return true;\n            }\n        }\n\n        // Do I have this section defined?\n        \$method = \"section_\" . sha1(\$name);\n        if (is_callable(array(\$this, \$method))) {\n            // Yes!\n            \$this->\$method(array_merge(\$this->context, \$args));\n            return true;\n        }\n\n        // No :-(\n        return false;\n    }\n\n}\n\n";
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Class.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
+            echo "<?php\n/**\n *  This file was generated with crodas/SimpleView (https://github.com/crodas/SimpleView)\n *  Do not edit this file.\n *\n */\n\nnamespace {\n\n";
+            $line_5419d8e846623[$_5419d8e846623] = 10;
+            $hash = uniqid();
+            $this->context['hash'] = $hash;
+            $line_5419d8e846623[$_5419d8e846623] = 11;
+            echo "\n\$GLOBALS['file_";
+            $line_5419d8e846623[$_5419d8e846623] = 12;
+            echo $hash . "'] = array();\n\$GLOBALS['line_";
+            $line_5419d8e846623[$_5419d8e846623] = 13;
+            echo $hash . "'] = array();\n\nclass base_template_";
+            $line_5419d8e846623[$_5419d8e846623] = 15;
+            echo sha1($namespace) . "\n{\n    protected \$parent;\n    protected \$child;\n    protected \$context;\n\n    public function yield_parent(\$name, \$args)\n    {\n        \$method = \"section_\" . sha1(\$name);\n\n        if (is_callable(array(\$this->parent, \$method))) {\n            \$this->parent->\$method(array_merge(\$this->context, \$args));\n            return true;\n        }\n\n        if (\$this->parent) {\n            return \$this->parent->yield_parent(\$name, \$args);\n        }\n\n        return false;\n    }\n\n    public function do_yield(\$name, Array \$args = array())\n    {\n        if (\$this->child) {\n            // We have a children template, we are their base\n            // so let's see if they have implemented by any change\n            // this section\n            if (\$this->child->do_yield(\$name, \$args)) {\n                // yes!\n                return true;\n            }\n        }\n\n        // Do I have this section defined?\n        \$method = \"section_\" . sha1(\$name);\n        if (is_callable(array(\$this, \$method))) {\n            // Yes!\n            \$this->\$method(array_merge(\$this->context, \$args));\n            return true;\n        }\n\n        // No :-(\n        return false;\n    }\n\n}\n\n";
+            $line_5419d8e846623[$_5419d8e846623] = 63;
             foreach($tpls as $name => $tpl) {
 
                 $this->context['name'] = $name;
                 $this->context['tpl'] = $tpl;
-                echo "    /** \n     *  Template class generated from " . ($tpl->getSource()) . "\n     */\nclass class_" . (sha1($name)) . " extends base_template_" . (sha1($namespace)) . "\n{\n";
+                $line_5419d8e846623[$_5419d8e846623] = 64;
+                echo "    /** \n     *  Template class generated from ";
+                $line_5419d8e846623[$_5419d8e846623] = 65;
+                echo $tpl->getSource() . "\n     */\nclass class_";
+                $line_5419d8e846623[$_5419d8e846623] = 67;
+                echo sha1($name) . " extends base_template_" . (sha1($namespace)) . "\n{\n";
+                $line_5419d8e846623[$_5419d8e846623] = 69;
                 foreach($tpl->getSections() as $name => $code) {
 
                     $this->context['name'] = $name;
                     $this->context['code'] = $code;
-                    echo "    protected function section_" . (sha1($name)) . "(\$context)\n    {\n        extract(\$context);\n";
+                    $line_5419d8e846623[$_5419d8e846623] = 70;
+                    echo "    protected function section_" . (sha1($name)) . "(\$context)\n    {\n        global \$file_";
+                    $line_5419d8e846623[$_5419d8e846623] = 72;
+                    echo $hash . ", \$line_" . ($hash) . ";\n        extract(\$context);\n        \$_";
+                    $line_5419d8e846623[$_5419d8e846623] = 74;
+                    echo $hash . " = array_push(\$file_" . ($hash) . ", ";
+                    var_export($name);
+                    echo ") - 1;\n        \$line_";
+                    $line_5419d8e846623[$_5419d8e846623] = 75;
+                    echo $hash . "[\$_" . ($hash) . "] = 1;\n";
+                    $line_5419d8e846623[$_5419d8e846623] = 76;
                     crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $code), $this->context);
-                    echo "    }\n";
+                    $line_5419d8e846623[$_5419d8e846623] = 77;
+                    echo "        array_pop(\$file_" . ($hash) . ");\n    }\n";
+                    $line_5419d8e846623[$_5419d8e846623] = 79;
                 }
-                echo "\n    public function render(Array \$vars = array(), \$return = false)\n    {\n        \$this->context = \$vars;\n\n";
+                $line_5419d8e846623[$_5419d8e846623] = 80;
+                echo "\n    public function render(Array \$vars = array(), \$return = false)\n    {\n        try { \n            return \$this->_render(\$vars, \$return);\n        } catch (\\Exception \$e) {\n            if (\$return) ob_get_clean();\n            throw new ";
+                $line_5419d8e846623[$_5419d8e846623] = 87;
+                echo $namespace . "\\ExceptionWrapper(\$e, __FILE__);\n        }\n    }\n\n    public function _render(Array \$vars = array(), \$return = false)\n    {\n        global \$file_";
+                $line_5419d8e846623[$_5419d8e846623] = 93;
+                echo $hash . ", \$line_" . ($hash) . ";\n        \$this->context = \$vars;\n\n";
+                $line_5419d8e846623[$_5419d8e846623] = 96;
                 if ($tpl->getParent()) {
+                    $line_5419d8e846623[$_5419d8e846623] = 97;
                     echo "        \$template = " . ($namespace) . "\\Templates::get(" . ($tpl->getParent()) . ");\n        \$template->child = \$this;\n        \$this->parent = \$template;\n        return \$template->render(\$vars, \$return);\n\n";
+                    $line_5419d8e846623[$_5419d8e846623] = 102;
                 }
                 else {
-                    echo "        extract(\$vars);\n        if (\$return) {\n            ob_start();\n        }\n";
+                    $line_5419d8e846623[$_5419d8e846623] = 103;
+                    echo "        extract(\$vars);\n        if (\$return) {\n            ob_start();\n        }\n        \$_";
+                    $line_5419d8e846623[$_5419d8e846623] = 107;
+                    echo $hash . " = array_push(\$file_" . ($hash) . ", ";
+                    var_export($name);
+                    echo ") - 1;\n        \$line_";
+                    $line_5419d8e846623[$_5419d8e846623] = 108;
+                    echo $hash . "[\$_" . ($hash) . "] = 1;\n\n";
+                    $line_5419d8e846623[$_5419d8e846623] = 110;
                     crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $tpl), $this->context);
-                    echo "\n        if (\$return) {\n            return ob_get_clean();\n        }\n\n";
+                    $line_5419d8e846623[$_5419d8e846623] = 111;
+                    echo "\n        array_pop(\$file_";
+                    $line_5419d8e846623[$_5419d8e846623] = 112;
+                    echo $hash . ");\n\n        if (\$return) {\n            return ob_get_clean();\n        }\n\n";
+                    $line_5419d8e846623[$_5419d8e846623] = 118;
                 }
+                $line_5419d8e846623[$_5419d8e846623] = 119;
                 echo "    }\n}\n\n";
+                $line_5419d8e846623[$_5419d8e846623] = 122;
             }
-            echo "}\n\nnamespace " . ($namespace) . " {\n\nclass Templates\n{\n    public static function getAll()\n    {\n        return ";
+            $line_5419d8e846623[$_5419d8e846623] = 123;
+            echo "}\n\nnamespace ";
+            $line_5419d8e846623[$_5419d8e846623] = 125;
+            echo $namespace . " {\n\nuse Exception;\n\nclass ExceptionWrapper extends Exception\n{\n    public \$e;\n    protected \$file;\n\n    public function getSimpleViewTrace()\n    {\n        global \$file_";
+            $line_5419d8e846623[$_5419d8e846623] = 136;
+            echo $hash . ", \$line_" . ($hash) . ";\n\n        \$traces = \$this->e->getTrace();\n        \$i = 0;\n        foreach (\$traces as &\$trace) {\n            if (!empty(\$trace['file']) \n              && \$trace['file'] == \$this->file && !empty(\$file_";
+            $line_5419d8e846623[$_5419d8e846623] = 142;
+            echo $hash . "[\$i])) {\n                \$trace['file'] = \$file_";
+            $line_5419d8e846623[$_5419d8e846623] = 143;
+            echo $hash . "[\$i];\n                \$trace['line'] = \$line_";
+            $line_5419d8e846623[$_5419d8e846623] = 144;
+            echo $hash . "[\$i];\n                ++\$i;\n            }\n            if (empty(\$trace['file'])) {\n                \$trace['file'] = '[internal function]';\n            } \n            if (empty(\$trace['line'])) {\n                \$trace['line'] = '';\n            }\n        }\n\n        return \$traces;\n    }\n\n    public function __toString()\n    {\n        \$traces = \$this->getSimpleViewTrace();\n        \$str    = \"exception '\" . get_class(\$this->e) . \"' in {\$traces[0]['file']}{\$traces[0]['line']}:\\nStack trace:\\n\";\n        foreach (\$traces as \$i => \$trace) {\n            \$str .= \"#{\$i} {\$trace['file']}:{\$trace['line']}\\n\";\n        }\n        ++\$i;\n        \$str .= \"#{\$i} {main}\";\n        return \$str;\n    }\n\n    public function __construct(Exception \$e, \$file)\n    {\n        \$this->e    = \$e;\n        \$this->file = \$file;\n    }\n}\n\n\nclass Templates\n{\n    public static function getAll()\n    {\n        return ";
+            $line_5419d8e846623[$_5419d8e846623] = 182;
             var_export($list);
             echo ";\n    }\n\n    public static function exec(\$name, Array \$context = array(), Array \$global = array())\n    {\n        \$tpl = self::get(\$name);\n        return \$tpl->render(array_merge(\$global, \$context));\n    }\n\n    public static function get(\$name, Array \$context = array())\n    {\n        static \$classes = ";
+            $line_5419d8e846623[$_5419d8e846623] = 193;
             var_export($classes);
             echo ";\n        \$name = strtolower(\$name);\n        if (empty(\$classes[\$name])) {\n            throw new \\RuntimeException(\"Cannot find template \$name\");\n        }\n\n        \$class = \"\\\\\" . \$classes[\$name];\n        return new \$class;\n    }\n}\n\n}\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -205,13 +393,29 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Echo.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "echo " . ($token[1]) . ";\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -228,15 +432,33 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Else.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "else {\n";
+            $line_5419d8e846623[$_5419d8e846623] = 2;
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[1]), $this->context);
+            $line_5419d8e846623[$_5419d8e846623] = 3;
             echo "}\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -253,13 +475,30 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Spaceless.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[1]), $this->context);
+            $line_5419d8e846623[$_5419d8e846623] = 2;
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -276,15 +515,33 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'While.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "while (" . ($token[1]) . ") {\n";
+            $line_5419d8e846623[$_5419d8e846623] = 2;
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
+            $line_5419d8e846623[$_5419d8e846623] = 3;
             echo "}\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -301,13 +558,29 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Yield.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "\$this->do_yield(" . ($token[1]) . ");\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -324,13 +597,29 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Echox.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "echo htmlentities(" . ($token[1]) . ", ENT_QUOTES, 'UTF-8', false);\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -347,18 +636,40 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'If.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "if (" . ($token[1]) . ") {\n";
+            $line_5419d8e846623[$_5419d8e846623] = 2;
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
+            $line_5419d8e846623[$_5419d8e846623] = 3;
             echo "} \n";
+            $line_5419d8e846623[$_5419d8e846623] = 4;
             if (!empty($token[3])) {
+                $line_5419d8e846623[$_5419d8e846623] = 5;
                 crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[3]), $this->context);
+                $line_5419d8e846623[$_5419d8e846623] = 6;
             }
+            $line_5419d8e846623[$_5419d8e846623] = 7;
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -375,19 +686,41 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'ElseIf.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "else if (" . ($token[1]) . ") {\n";
+            $line_5419d8e846623[$_5419d8e846623] = 2;
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
+            $line_5419d8e846623[$_5419d8e846623] = 3;
             echo "} \n";
+            $line_5419d8e846623[$_5419d8e846623] = 4;
             if (!empty($token[3])) {
+                $line_5419d8e846623[$_5419d8e846623] = 5;
                 crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[3]), $this->context);
+                $line_5419d8e846623[$_5419d8e846623] = 6;
             }
+            $line_5419d8e846623[$_5419d8e846623] = 7;
             echo "\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -404,13 +737,29 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Var_export.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "var_export(" . ($token[1]) . ");\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -427,22 +776,45 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Body.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             foreach($tpl->getStmts() as $token) {
 
                 $this->context['token'] = $token;
+                $line_5419d8e846623[$_5419d8e846623] = 2;
                 if ($token instanceof \crodas\SimpleView\Macro\Base) {
+                    $line_5419d8e846623[$_5419d8e846623] = 3;
                     echo "        " . ($token->run($this->context)) . "\n";
+                    $line_5419d8e846623[$_5419d8e846623] = 4;
                 }
                 else {
+                    $line_5419d8e846623[$_5419d8e846623] = 5;
                     crodas\SimpleView\Templates\Templates::exec($token[0], array('token' => $token ), $this->context);
+                    $line_5419d8e846623[$_5419d8e846623] = 6;
                 }
+                $line_5419d8e846623[$_5419d8e846623] = 7;
             }
+            $line_5419d8e846623[$_5419d8e846623] = 8;
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -459,13 +831,29 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Break.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "    break;\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -482,13 +870,29 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Continue.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "    continue;\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -505,13 +909,29 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Parent.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo "\$this->yield_parent(" . ($token[1]) . ", \$context);\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -528,13 +948,29 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_get_clean();
+                throw new crodas\SimpleView\Templates\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d8e846623 = array_push($file_5419d8e846623, 'Include.tpl.php') - 1;
+            $line_5419d8e846623[$_5419d8e846623] = 1;
+
             echo $namespace . "\\Templates::exec(" . ($token[1]) . ", \$this->context);\n";
+
+            array_pop($file_5419d8e846623);
 
             if ($return) {
                 return ob_get_clean();
@@ -547,29 +983,81 @@ namespace {
 
 namespace crodas\SimpleView\Templates {
 
+    use Exception;
+
+    class ExceptionWrapper extends Exception
+    {
+        public $e;
+        protected $file;
+
+        public function getSimpleViewTrace()
+        {
+            global $file_5419d8e846623, $line_5419d8e846623;
+
+            $traces = $this->e->getTrace();
+            $i = 0;
+            foreach ($traces as &$trace) {
+                if (!empty($trace['file'])
+                    && $trace['file'] == $this->file && !empty($file_5419d8e846623[$i])) {
+                    $trace['file'] = $file_5419d8e846623[$i];
+                    $trace['line'] = $line_5419d8e846623[$i];
+                    ++$i;
+                }
+                if (empty($trace['file'])) {
+                    $trace['file'] = '[internal function]';
+                }
+                if (empty($trace['line'])) {
+                    $trace['line'] = '';
+                }
+            }
+
+            return $traces;
+        }
+
+        public function __toString()
+        {
+            $traces = $this->getSimpleViewTrace();
+            $str    = "exception '" . get_class($this->e) . "' in {$traces[0]['file']}{$traces[0]['line']}:\nStack trace:\n";
+            foreach ($traces as $i => $trace) {
+                $str .= "#{$i} {$trace['file']}:{$trace['line']}\n";
+            }
+            ++$i;
+            $str .= "#{$i} {main}";
+            return $str;
+        }
+
+        public function __construct(Exception $e, $file)
+        {
+            $this->e    = $e;
+            $this->file = $file;
+        }
+    }
+
+
     class Templates
     {
         public static function getAll()
         {
             return array (
                 0 => 'unless',
-                1 => 'foreach',
-                2 => 'set',
-                3 => 'class',
-                4 => 'echo',
-                5 => 'else',
-                6 => 'spaceless',
-                7 => 'while',
-                8 => 'yield',
-                9 => 'echox',
-                10 => 'if',
-                11 => 'elseif',
-                12 => 'var_export',
-                13 => 'body',
-                14 => 'break',
-                15 => 'continue',
-                16 => 'parent',
-                17 => 'include',
+                1 => 'newline',
+                2 => 'foreach',
+                3 => 'set',
+                4 => 'class',
+                5 => 'echo',
+                6 => 'else',
+                7 => 'spaceless',
+                8 => 'while',
+                9 => 'yield',
+                10 => 'echox',
+                11 => 'if',
+                12 => 'elseif',
+                13 => 'var_export',
+                14 => 'body',
+                15 => 'break',
+                16 => 'continue',
+                17 => 'parent',
+                18 => 'include',
             );
         }
 
@@ -584,6 +1072,8 @@ namespace crodas\SimpleView\Templates {
             static $classes = array (
                 'unless.tpl.php' => 'class_f5ab41dedb21a24081861ee6a36af5e59365a600',
                 'unless' => 'class_f5ab41dedb21a24081861ee6a36af5e59365a600',
+                'newline.tpl.php' => 'class_cfa7269ec959308c668047e4aa1cd1d833f91eb6',
+                'newline' => 'class_cfa7269ec959308c668047e4aa1cd1d833f91eb6',
                 'foreach.tpl.php' => 'class_55a865e988d24c0d11ce50bc8c11519a2d28b743',
                 'foreach' => 'class_55a865e988d24c0d11ce50bc8c11519a2d28b743',
                 'set.tpl.php' => 'class_c36eec984e05803cb157ccb02bc2517cf30266a3',

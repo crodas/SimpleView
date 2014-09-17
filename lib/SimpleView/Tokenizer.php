@@ -139,6 +139,7 @@ class Tokenizer
                         while (++$i < $len && $text[$i] != "\n");
                     }
                     $endline++;
+                    $tokens[] = array(Parser::T_NEWLINE, $endline);
                 }
 
             } else if (
@@ -163,6 +164,7 @@ class Tokenizer
                 for ($e = $i; $e < $len; $e++) {
                     if ($text[$e] == "\n") {
                         $endline++;
+                        $tokens[] = array(Parser::T_NEWLINE, $endline);
                     }
                     if ($text[$e] == '"' || $text[$e] == "'") {
                         $stop = $text[$e++];
@@ -218,9 +220,13 @@ class Tokenizer
                         // clean up last line
                         $raw_text = rtrim($raw_text, " \t");
                     }
-                    $endline += substr_count($raw_text, "\n");
+                    $newlines = substr_count($raw_text, "\n");
                     if (!empty($raw_text)) {
                         $tokens[] = array(Parser::T_TEXT_RAW, $raw_text, $line);
+                    }
+                    if ($newlines > 0) {
+                        $endline += $newlines;
+                        $tokens[] = array(Parser::T_NEWLINE, $endline);
                     }
                     $i = $pos-1;
                 }

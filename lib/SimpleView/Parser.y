@@ -79,6 +79,7 @@ code(A) ::= T_ECHO(X) . {
     X = trim(X); 
     A = array('echo', X);
 }
+code(A) ::= T_NEWLINE(X). { A = array('newline', X); }
 code(A) ::= T_ESCAPED_ECHO(X) . { A = array('echox', trim(X)); }
 code(A) ::= T_TEXT_RAW(X) . { A = array('text', X); }
 

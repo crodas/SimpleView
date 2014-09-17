@@ -83,7 +83,7 @@ class class_{{sha1($name)}} extends base_template_{{ sha1($namespace) }}
         try { 
             return $this->_render($vars, $return);
         } catch (\Exception $e) {
-            if ($return) ob_clean();
+            if ($return) ob_get_clean();
             throw new {{$namespace}}\ExceptionWrapper($e, __FILE__);
         }
     }

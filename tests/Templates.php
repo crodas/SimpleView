@@ -7,6 +7,10 @@
 
 namespace {
 
+
+    $GLOBALS['file_5419d7ad04801'] = array();
+    $GLOBALS['line_5419d7ad04801'] = array();
+
     class base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
         protected $parent;
@@ -63,27 +67,49 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'loop1.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             foreach($users as $id => $user) {
 
                 $this->context['id'] = $id;
                 $this->context['user'] = $user;
+                $line_5419d7ad04801[$_5419d7ad04801] = 2;
                 Tests\Templates::exec("loop1-example", $this->context);
+                $line_5419d7ad04801[$_5419d7ad04801] = 3;
                 if ($user == 1) {
                     continue;
                 }
+                $line_5419d7ad04801[$_5419d7ad04801] = 6;
             }
+            $line_5419d7ad04801[$_5419d7ad04801] = 7;
             foreach($users as $user) {
 
                 $this->context['user'] = $user;
+                $line_5419d7ad04801[$_5419d7ad04801] = 8;
                 Tests\Templates::exec("loop1-example", $this->context);
                 break;
             }
+            $line_5419d7ad04801[$_5419d7ad04801] = 11;
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -100,13 +126,30 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'if1.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             Tests\Templates::exec('if', $this->context);
+            $line_5419d7ad04801[$_5419d7ad04801] = 2;
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -123,31 +166,55 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'loop.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             foreach($users as $id => $user1) {
 
                 $this->context['id'] = $id;
                 $this->context['user1'] = $user1;
+                $line_5419d7ad04801[$_5419d7ad04801] = 2;
                 $user = $user1;
                 $this->context['user'] = $user;
+                $line_5419d7ad04801[$_5419d7ad04801] = 3;
                 echo "    hi " . ($user) . "\n";
+                $line_5419d7ad04801[$_5419d7ad04801] = 4;
                 $foo = 'xxx';
                 $this->context['foo'] = $foo;
+                $line_5419d7ad04801[$_5419d7ad04801] = 5;
                 if ($user == 1) {
                     continue;
                 }
+                $line_5419d7ad04801[$_5419d7ad04801] = 8;
             }
+            $line_5419d7ad04801[$_5419d7ad04801] = 9;
             foreach($users as $user1) {
 
                 $this->context['user1'] = $user1;
+                $line_5419d7ad04801[$_5419d7ad04801] = 10;
                 echo "    hi " . ($user1) . "\n";
                 break;
             }
+            $line_5419d7ad04801[$_5419d7ad04801] = 13;
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -163,13 +230,31 @@ namespace {
     {
         protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
         {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             extract($context);
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'foobar') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 4;
             $this->yield_parent('foobar', $context);
+            $line_5419d7ad04801[$_5419d7ad04801] = 5;
             echo "    hi there!\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 6;
+            array_pop($file_5419d7ad04801);
         }
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             $template = Tests\Templates::get("layout.tpl.php");
@@ -188,15 +273,34 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'while.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             while ($i < 10) {
+                $line_5419d7ad04801[$_5419d7ad04801] = 2;
                 echo "    hi " . (++$i) . "\n";
+                $line_5419d7ad04801[$_5419d7ad04801] = 3;
             }
+            $line_5419d7ad04801[$_5419d7ad04801] = 4;
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -213,13 +317,29 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'home.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             echo "Hello world\n";
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -236,30 +356,52 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'loop2.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             foreach($users as $id => $user) {
 
                 $this->context['id'] = $id;
                 $this->context['user'] = $user;
                 echo "\n";
+                $line_5419d7ad04801[$_5419d7ad04801] = 2;
                 Tests\Templates::exec("loop1-example", $this->context);
+                $line_5419d7ad04801[$_5419d7ad04801] = 3;
                 echo "    ";
                 if ($user == 1) {
                     echo "\n";
                     continue;
                 }
+                $line_5419d7ad04801[$_5419d7ad04801] = 6;
             }
+            $line_5419d7ad04801[$_5419d7ad04801] = 7;
             foreach($users as $user) {
 
                 $this->context['user'] = $user;
+                $line_5419d7ad04801[$_5419d7ad04801] = 8;
                 Tests\Templates::exec("loop1-example", $this->context);
                 break;
             }
+            $line_5419d7ad04801[$_5419d7ad04801] = 11;
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -276,20 +418,79 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'mixed.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             foreach([1,2,3] as $auction) {
 
                 $this->context['auction'] = $auction;
+                $line_5419d7ad04801[$_5419d7ad04801] = 2;
                 echo "      ";
                 Tests\Templates::exec('home.tpl.php', $this->context);
                 echo "\n";
+                $line_5419d7ad04801[$_5419d7ad04801] = 3;
             }
             echo " \n";
+
+            array_pop($file_5419d7ad04801);
+
+            if ($return) {
+                return ob_get_clean();
+            }
+
+        }
+    }
+
+    /** 
+     *  Template class generated from exception.tpl.php
+     */
+    class class_bc5d54e4756cc431ce2b175b6469a7e430ac5a1f extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
+    {
+
+        public function render(Array $vars = array(), $return = false)
+        {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
+            $this->context = $vars;
+
+            extract($vars);
+            if ($return) {
+                ob_start();
+            }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'exception.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
+            echo "Hi there\n!\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 3;
+            echo failure() . "\nbye\n";
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -306,16 +507,36 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'unless.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             echo "Hi " . ($user['name']) . "\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 2;
             if (!($user['has_session'])) {
+                $line_5419d7ad04801[$_5419d7ad04801] = 3;
                 echo "    you must login\n";
+                $line_5419d7ad04801[$_5419d7ad04801] = 4;
             }
+            $line_5419d7ad04801[$_5419d7ad04801] = 5;
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -332,22 +553,42 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'if.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             echo "Hi ";
             echo htmlentities($name, ENT_QUOTES, 'UTF-8', false);
             echo "\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 2;
             if ($age < 18) {
                 echo "\n    You cannot be here\n";
+                $line_5419d7ad04801[$_5419d7ad04801] = 4;
             }
             else {
+                $line_5419d7ad04801[$_5419d7ad04801] = 5;
                 echo "    Welcome!\n";
+                $line_5419d7ad04801[$_5419d7ad04801] = 6;
             }
             echo "\n";
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -364,14 +605,30 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'at.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             var_export(['foo', 'bar']);
             echo "\n";
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -387,28 +644,60 @@ namespace {
     {
         protected function section_594fd1615a341c77829e83ed988f137e1ba96231($context)
         {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             extract($context);
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'header') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 3;
             echo "<h1>Hi</h1>\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 4;
+            array_pop($file_5419d7ad04801);
         }
         protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
         {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             extract($context);
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'foobar') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 8;
             echo "    Nothing here\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 9;
+            array_pop($file_5419d7ad04801);
         }
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'foobar') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             echo "\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 2;
             $this->do_yield('header');
+            $line_5419d7ad04801[$_5419d7ad04801] = 5;
             echo "\n<content>\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 7;
             $this->do_yield('foobar');
+            $line_5419d7ad04801[$_5419d7ad04801] = 10;
             echo "</content>\n";
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -425,18 +714,39 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-        
-            echo "cesar\n";
-            $asset_url = '//foobar.com/assets/css/out.653d843f.min.css';
-            echo "     <link href=\"" . ($asset_url) . "\" type=\"text/css\" rel=\"stylesheet\" />\n";
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'asset.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
 
+        
+            $line_5419d7ad04801[$_5419d7ad04801] = 2;
+            echo "cesar\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 3;
+            $asset_url = '//foobar.com/assets/css/out.653d843f.min.css';
+            $line_5419d7ad04801[$_5419d7ad04801] = 4;
+            echo "     <link href=\"" . ($asset_url) . "\" type=\"text/css\" rel=\"stylesheet\" />\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 5;
+
+            $line_5419d7ad04801[$_5419d7ad04801] = 6;
             echo "     <link href=\"" . ('//foobar.com/assets/css/out1.653d843f.min.css') . "\" type=\"text/css\" rel=\"stylesheet\" />\nrodas\n";
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -453,13 +763,29 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'loop1-example.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
             echo "    hi " . ($user) . "\n";
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -476,17 +802,39 @@ namespace {
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'spaceless.tpl.php') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+
+            $line_5419d7ad04801[$_5419d7ad04801] = 2;
             echo "<h2>hi there</h2><h3>foo</h3>";
+            $line_5419d7ad04801[$_5419d7ad04801] = 4;
             if (true) {
+                $line_5419d7ad04801[$_5419d7ad04801] = 5;
                 echo "<h1>hi there</h1><b>dasda</b><h2>foo</h2>";
+                $line_5419d7ad04801[$_5419d7ad04801] = 8;
             }
+            $line_5419d7ad04801[$_5419d7ad04801] = 9;
+            $line_5419d7ad04801[$_5419d7ad04801] = 10;
             echo "\n";
+
+            array_pop($file_5419d7ad04801);
 
             if ($return) {
                 return ob_get_clean();
@@ -502,19 +850,44 @@ namespace {
     {
         protected function section_594fd1615a341c77829e83ed988f137e1ba96231($context)
         {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             extract($context);
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'header') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 4;
             $this->yield_parent('header', $context);
+            $line_5419d7ad04801[$_5419d7ad04801] = 5;
             echo "<h1>Bye</h1>\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 6;
+            array_pop($file_5419d7ad04801);
         }
         protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
         {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             extract($context);
+            $_5419d7ad04801 = array_push($file_5419d7ad04801, 'foobar') - 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 1;
+            $line_5419d7ad04801[$_5419d7ad04801] = 9;
             $this->yield_parent('foobar', $context);
+            $line_5419d7ad04801[$_5419d7ad04801] = 10;
             echo "    Bye there!\n";
+            $line_5419d7ad04801[$_5419d7ad04801] = 11;
+            array_pop($file_5419d7ad04801);
         }
 
         public function render(Array $vars = array(), $return = false)
         {
+            try {
+                return $this->_render($vars, $return);
+            } catch (\Exception $e) {
+                if ($return) ob_clean();
+                throw new Tests\ExceptionWrapper($e, __FILE__);
+            }
+        }
+
+        public function _render(Array $vars = array(), $return = false)
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
             $this->context = $vars;
 
             $template = Tests\Templates::get("extends");
@@ -529,6 +902,57 @@ namespace {
 
 namespace Tests {
 
+    use Exception;
+
+    class ExceptionWrapper extends Exception
+    {
+        public $e;
+        protected $file;
+
+        public function getSimpleViewTrace()
+        {
+            global $file_5419d7ad04801, $line_5419d7ad04801;
+
+            $traces = $this->e->getTrace();
+            $i = 0;
+            foreach ($traces as &$trace) {
+                if (!empty($trace['file'])
+                    && $trace['file'] == $this->file && !empty($file_5419d7ad04801[$i])) {
+                    $trace['file'] = $file_5419d7ad04801[$i];
+                    $trace['line'] = $line_5419d7ad04801[$i];
+                    ++$i;
+                }
+                if (empty($trace['file'])) {
+                    $trace['file'] = '[internal function]';
+                }
+                if (empty($trace['line'])) {
+                    $trace['line'] = '';
+                }
+            }
+
+            return $traces;
+        }
+
+        public function __toString()
+        {
+            $traces = $this->getSimpleViewTrace();
+            $str    = "exception '" . get_class($this->e) . "' in {$traces[0]['file']}{$traces[0]['line']}:\nStack trace:\n";
+            foreach ($traces as $i => $trace) {
+                $str .= "#{$i} {$trace['file']}:{$trace['line']}\n";
+            }
+            ++$i;
+            $str .= "#{$i} {main}";
+            return $str;
+        }
+
+        public function __construct(Exception $e, $file)
+        {
+            $this->e    = $e;
+            $this->file = $file;
+        }
+    }
+
+
     class Templates
     {
         public static function getAll()
@@ -542,14 +966,15 @@ namespace Tests {
                 5 => 'home',
                 6 => 'loop2',
                 7 => 'mixed',
-                8 => 'unless',
-                9 => 'if',
-                10 => 'at',
-                11 => 'layout',
-                12 => 'asset',
-                13 => 'loop1-example',
-                14 => 'spaceless',
-                15 => 'extends_extends',
+                8 => 'exception',
+                9 => 'unless',
+                10 => 'if',
+                11 => 'at',
+                12 => 'layout',
+                13 => 'asset',
+                14 => 'loop1-example',
+                15 => 'spaceless',
+                16 => 'extends_extends',
             );
         }
 
@@ -578,6 +1003,8 @@ namespace Tests {
                 'loop2' => 'class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4',
                 'mixed.tpl.php' => 'class_a1e3a95c79cab9e71f533a0b4f6234e4c760646d',
                 'mixed' => 'class_a1e3a95c79cab9e71f533a0b4f6234e4c760646d',
+                'exception.tpl.php' => 'class_bc5d54e4756cc431ce2b175b6469a7e430ac5a1f',
+                'exception' => 'class_bc5d54e4756cc431ce2b175b6469a7e430ac5a1f',
                 'unless.tpl.php' => 'class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8',
                 'unless' => 'class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8',
                 'if.tpl.php' => 'class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00',

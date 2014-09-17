@@ -1,5 +1,10 @@
 <?php
 
+function failure()
+{
+    throw new \RuntimeException;
+}
+
 class MainTest extends \phpunit_framework_testcase
 {
     public static function provider()
@@ -22,8 +27,13 @@ class MainTest extends \phpunit_framework_testcase
      */
     public function testCompile($tpl, $args, $expected)
     {
-        $output = \Tests\Templates::get($tpl)->render($args, true);
-        $this->assertEquals($expected, $output);
+        try {
+            $output = \Tests\Templates::get($tpl)->render($args, true);
+            $this->assertEquals($expected, $output);
+        } catch (Tests\ExceptionWrapper $e) {
+            $traces = $e->getSimpleViewTrace();
+            $this->assertNotEquals($traces[0]['file'], __DIR__ . '/Templates.php');
+        }
     }
 
     public function testLoop() 

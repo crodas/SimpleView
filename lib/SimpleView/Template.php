@@ -140,7 +140,7 @@ class Template
 
         $block  = &$this->codes;
 
-        foreach ($stmts as $stmt) {
+        foreach ($stmts as $id => $stmt) {
             switch ($stmt[0]) {
             case 'text':
                 if (is_array(end($block)) && end($block)[0] == 'echo') {
@@ -201,6 +201,24 @@ class Template
                     throw new \RuntimeException("Unexpected {$stmt[3]}, expecting @end, @stop or @endforeach");
                 }
                 break;
+            case 'newline':
+                $skip = false;
+
+                foreach ([$id-1, $id+1] as $i) {
+                    if (!empty($stmts[$i])) {
+                        $next = $stmts[$i];
+                        if (in_array($next[0], array('break', 'continue'))) {
+                            $skip = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (empty($skip)) {
+                    $block[] = array('newline', $stmt[1]);
+                }
+                break;
+
             case 'section_and_show':
                 $section = $this->getString($stmt[1]);
                 $this->sections[$section] = new Template($stmt[2], $this->env, $section);

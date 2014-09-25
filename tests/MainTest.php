@@ -36,6 +36,12 @@ class MainTest extends \phpunit_framework_testcase
         }
     }
 
+    public function testSection()
+    {
+        $tpl = \Tests\Templates::get('extends');
+        $this->assertEquals(trim($tpl->renderSection('foobar')), "hi there!");
+    }
+
     public function testLoop() 
     {
         $user = array('name' => 'foobar', 'has_session' => false);

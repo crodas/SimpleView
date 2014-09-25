@@ -8,8 +8,8 @@
 namespace {
 
 
-    $GLOBALS['file_5419d8e846623'] = array();
-    $GLOBALS['line_5419d8e846623'] = array();
+    $GLOBALS['file_5423c209b95c2'] = array();
+    $GLOBALS['line_5423c209b95c2'] = array();
 
     class base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
@@ -65,6 +65,20 @@ namespace {
     class class_f5ab41dedb21a24081861ee6a36af5e59365a600 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -77,23 +91,23 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Unless.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Unless.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "if (!(" . ($token[1]) . ")) {\n";
-            $line_5419d8e846623[$_5419d8e846623] = 2;
+            $line_5423c209b95c2[$_5423c209b95c2] = 2;
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
-            $line_5419d8e846623[$_5419d8e846623] = 3;
+            $line_5423c209b95c2[$_5423c209b95c2] = 3;
             echo "}\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -108,6 +122,20 @@ namespace {
     class class_cfa7269ec959308c668047e4aa1cd1d833f91eb6 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -120,21 +148,21 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Newline.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Newline.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "\$line_" . ($hash) . "[\$_" . ($hash) . "] = ";
             var_export($token[1]);
             echo ";\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -149,6 +177,20 @@ namespace {
     class class_55a865e988d24c0d11ce50bc8c11519a2d28b743 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -161,41 +203,41 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Foreach.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Foreach.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "foreach(" . ($token[1]) . ") {\n";
-            $line_5419d8e846623[$_5419d8e846623] = 2;
+            $line_5423c209b95c2[$_5423c209b95c2] = 2;
             $vars = preg_split("/\bas\b/", $token[1], 2);
             $this->context['vars'] = $vars;
-            $line_5419d8e846623[$_5419d8e846623] = 3;
+            $line_5423c209b95c2[$_5423c209b95c2] = 3;
             $vars = explode("=>", $vars[1]);
             $this->context['vars'] = $vars;
-            $line_5419d8e846623[$_5419d8e846623] = 4;
+            $line_5423c209b95c2[$_5423c209b95c2] = 4;
             echo "\n";
-            $line_5419d8e846623[$_5419d8e846623] = 5;
+            $line_5423c209b95c2[$_5423c209b95c2] = 5;
             foreach($vars as $var) {
 
                 $this->context['var'] = $var;
-                $line_5419d8e846623[$_5419d8e846623] = 6;
+                $line_5423c209b95c2[$_5423c209b95c2] = 6;
                 echo "        \$this->context[";
                 var_export(substr(trim($var),1));
                 echo "] = " . (trim($var)) . ";\n";
-                $line_5419d8e846623[$_5419d8e846623] = 7;
+                $line_5423c209b95c2[$_5423c209b95c2] = 7;
             }
-            $line_5419d8e846623[$_5419d8e846623] = 8;
+            $line_5423c209b95c2[$_5423c209b95c2] = 8;
             crodas\SimpleView\Templates\Templates::exec('body', array('tpl' => $token[2]), $this->context);
-            $line_5419d8e846623[$_5419d8e846623] = 9;
+            $line_5423c209b95c2[$_5423c209b95c2] = 9;
             echo "}\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -210,6 +252,20 @@ namespace {
     class class_c36eec984e05803cb157ccb02bc2517cf30266a3 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -222,28 +278,28 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Set.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Set.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "    " . ($token[1]) . " = " . ($token[2]) . ";\n";
-            $line_5419d8e846623[$_5419d8e846623] = 2;
+            $line_5423c209b95c2[$_5423c209b95c2] = 2;
             if (preg_match("/^\\$[a-z_][a-z_0-9]*$/i", trim($token[1]))) {
-                $line_5419d8e846623[$_5419d8e846623] = 3;
+                $line_5423c209b95c2[$_5423c209b95c2] = 3;
                 echo "        \$this->context[";
                 var_export(substr(trim($token[1]), 1));
                 echo "] = " . ($token[1]) . ";\n";
-                $line_5419d8e846623[$_5419d8e846623] = 4;
+                $line_5423c209b95c2[$_5423c209b95c2] = 4;
             }
-            $line_5419d8e846623[$_5419d8e846623] = 5;
+            $line_5423c209b95c2[$_5423c209b95c2] = 5;
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -258,6 +314,20 @@ namespace {
     class class_ed71512c603ba20ba49346284ee12f19b5d744de extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -270,113 +340,128 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Class.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Class.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "<?php\n/**\n *  This file was generated with crodas/SimpleView (https://github.com/crodas/SimpleView)\n *  Do not edit this file.\n *\n */\n\nnamespace {\n\n";
-            $line_5419d8e846623[$_5419d8e846623] = 10;
+            $line_5423c209b95c2[$_5423c209b95c2] = 10;
             $hash = uniqid();
             $this->context['hash'] = $hash;
-            $line_5419d8e846623[$_5419d8e846623] = 11;
+            $line_5423c209b95c2[$_5423c209b95c2] = 11;
             echo "\n\$GLOBALS['file_";
-            $line_5419d8e846623[$_5419d8e846623] = 12;
+            $line_5423c209b95c2[$_5423c209b95c2] = 12;
             echo $hash . "'] = array();\n\$GLOBALS['line_";
-            $line_5419d8e846623[$_5419d8e846623] = 13;
+            $line_5423c209b95c2[$_5423c209b95c2] = 13;
             echo $hash . "'] = array();\n\nclass base_template_";
-            $line_5419d8e846623[$_5419d8e846623] = 15;
+            $line_5423c209b95c2[$_5423c209b95c2] = 15;
             echo sha1($namespace) . "\n{\n    protected \$parent;\n    protected \$child;\n    protected \$context;\n\n    public function yield_parent(\$name, \$args)\n    {\n        \$method = \"section_\" . sha1(\$name);\n\n        if (is_callable(array(\$this->parent, \$method))) {\n            \$this->parent->\$method(array_merge(\$this->context, \$args));\n            return true;\n        }\n\n        if (\$this->parent) {\n            return \$this->parent->yield_parent(\$name, \$args);\n        }\n\n        return false;\n    }\n\n    public function do_yield(\$name, Array \$args = array())\n    {\n        if (\$this->child) {\n            // We have a children template, we are their base\n            // so let's see if they have implemented by any change\n            // this section\n            if (\$this->child->do_yield(\$name, \$args)) {\n                // yes!\n                return true;\n            }\n        }\n\n        // Do I have this section defined?\n        \$method = \"section_\" . sha1(\$name);\n        if (is_callable(array(\$this, \$method))) {\n            // Yes!\n            \$this->\$method(array_merge(\$this->context, \$args));\n            return true;\n        }\n\n        // No :-(\n        return false;\n    }\n\n}\n\n";
-            $line_5419d8e846623[$_5419d8e846623] = 63;
+            $line_5423c209b95c2[$_5423c209b95c2] = 63;
             foreach($tpls as $name => $tpl) {
 
                 $this->context['name'] = $name;
                 $this->context['tpl'] = $tpl;
-                $line_5419d8e846623[$_5419d8e846623] = 64;
+                $line_5423c209b95c2[$_5423c209b95c2] = 64;
                 echo "    /** \n     *  Template class generated from ";
-                $line_5419d8e846623[$_5419d8e846623] = 65;
+                $line_5423c209b95c2[$_5423c209b95c2] = 65;
                 echo $tpl->getSource() . "\n     */\nclass class_";
-                $line_5419d8e846623[$_5419d8e846623] = 67;
+                $line_5423c209b95c2[$_5423c209b95c2] = 67;
                 echo sha1($name) . " extends base_template_" . (sha1($namespace)) . "\n{\n";
-                $line_5419d8e846623[$_5419d8e846623] = 69;
+                $line_5423c209b95c2[$_5423c209b95c2] = 69;
                 foreach($tpl->getSections() as $name => $code) {
 
                     $this->context['name'] = $name;
                     $this->context['code'] = $code;
-                    $line_5419d8e846623[$_5419d8e846623] = 70;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 70;
                     echo "    protected function section_" . (sha1($name)) . "(\$context)\n    {\n        global \$file_";
-                    $line_5419d8e846623[$_5419d8e846623] = 72;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 72;
                     echo $hash . ", \$line_" . ($hash) . ";\n        extract(\$context);\n        \$_";
-                    $line_5419d8e846623[$_5419d8e846623] = 74;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 74;
                     echo $hash . " = array_push(\$file_" . ($hash) . ", ";
                     var_export($name);
                     echo ") - 1;\n        \$line_";
-                    $line_5419d8e846623[$_5419d8e846623] = 75;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 75;
                     echo $hash . "[\$_" . ($hash) . "] = 1;\n";
-                    $line_5419d8e846623[$_5419d8e846623] = 76;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 76;
                     crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $code), $this->context);
-                    $line_5419d8e846623[$_5419d8e846623] = 77;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 77;
                     echo "        array_pop(\$file_" . ($hash) . ");\n    }\n";
-                    $line_5419d8e846623[$_5419d8e846623] = 79;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 79;
                 }
-                $line_5419d8e846623[$_5419d8e846623] = 80;
-                echo "\n    public function render(Array \$vars = array(), \$return = false)\n    {\n        try { \n            return \$this->_render(\$vars, \$return);\n        } catch (\\Exception \$e) {\n            if (\$return) ob_get_clean();\n            throw new ";
-                $line_5419d8e846623[$_5419d8e846623] = 87;
+                $line_5423c209b95c2[$_5423c209b95c2] = 80;
+                echo "\n    public function renderSection(\$name, Array \$args = array(), \$fail_on_missing = true)\n    {\n        ob_start();\n        switch (\$name) {\n";
+                $line_5423c209b95c2[$_5423c209b95c2] = 85;
+                foreach($tpl->getSections() as $name => $code) {
+
+                    $this->context['name'] = $name;
+                    $this->context['code'] = $code;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 86;
+                    echo "        case ";
+                    var_export($name);
+                    echo ":\n            try {\n                \$this->section_";
+                    $line_5423c209b95c2[$_5423c209b95c2] = 88;
+                    echo sha1($name) . "(\$args);\n            } catch (Exception \$e) {\n                ob_get_clean();\n                throw \$e;\n            }\n            break;\n\n";
+                    $line_5423c209b95c2[$_5423c209b95c2] = 95;
+                }
+                $line_5423c209b95c2[$_5423c209b95c2] = 96;
+                echo "\n        default:\n            if (\$fail_on_missing) {\n                throw new \\RuntimeException(\"Cannot find section {\$name}\");\n            }\n        }\n\n        return ob_get_clean();\n    }\n\n    public function render(Array \$vars = array(), \$return = false)\n    {\n        try { \n            return \$this->_render(\$vars, \$return);\n        } catch (\\Exception \$e) {\n            if (\$return) ob_get_clean();\n            throw new ";
+                $line_5423c209b95c2[$_5423c209b95c2] = 112;
                 echo $namespace . "\\ExceptionWrapper(\$e, __FILE__);\n        }\n    }\n\n    public function _render(Array \$vars = array(), \$return = false)\n    {\n        global \$file_";
-                $line_5419d8e846623[$_5419d8e846623] = 93;
+                $line_5423c209b95c2[$_5423c209b95c2] = 118;
                 echo $hash . ", \$line_" . ($hash) . ";\n        \$this->context = \$vars;\n\n";
-                $line_5419d8e846623[$_5419d8e846623] = 96;
+                $line_5423c209b95c2[$_5423c209b95c2] = 121;
                 if ($tpl->getParent()) {
-                    $line_5419d8e846623[$_5419d8e846623] = 97;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 122;
                     echo "        \$template = " . ($namespace) . "\\Templates::get(" . ($tpl->getParent()) . ");\n        \$template->child = \$this;\n        \$this->parent = \$template;\n        return \$template->render(\$vars, \$return);\n\n";
-                    $line_5419d8e846623[$_5419d8e846623] = 102;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 127;
                 }
                 else {
-                    $line_5419d8e846623[$_5419d8e846623] = 103;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 128;
                     echo "        extract(\$vars);\n        if (\$return) {\n            ob_start();\n        }\n        \$_";
-                    $line_5419d8e846623[$_5419d8e846623] = 107;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 132;
                     echo $hash . " = array_push(\$file_" . ($hash) . ", ";
                     var_export($name);
                     echo ") - 1;\n        \$line_";
-                    $line_5419d8e846623[$_5419d8e846623] = 108;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 133;
                     echo $hash . "[\$_" . ($hash) . "] = 1;\n\n";
-                    $line_5419d8e846623[$_5419d8e846623] = 110;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 135;
                     crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $tpl), $this->context);
-                    $line_5419d8e846623[$_5419d8e846623] = 111;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 136;
                     echo "\n        array_pop(\$file_";
-                    $line_5419d8e846623[$_5419d8e846623] = 112;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 137;
                     echo $hash . ");\n\n        if (\$return) {\n            return ob_get_clean();\n        }\n\n";
-                    $line_5419d8e846623[$_5419d8e846623] = 118;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 143;
                 }
-                $line_5419d8e846623[$_5419d8e846623] = 119;
+                $line_5423c209b95c2[$_5423c209b95c2] = 144;
                 echo "    }\n}\n\n";
-                $line_5419d8e846623[$_5419d8e846623] = 122;
+                $line_5423c209b95c2[$_5423c209b95c2] = 147;
             }
-            $line_5419d8e846623[$_5419d8e846623] = 123;
+            $line_5423c209b95c2[$_5423c209b95c2] = 148;
             echo "}\n\nnamespace ";
-            $line_5419d8e846623[$_5419d8e846623] = 125;
+            $line_5423c209b95c2[$_5423c209b95c2] = 150;
             echo $namespace . " {\n\nuse Exception;\n\nclass ExceptionWrapper extends Exception\n{\n    public \$e;\n    protected \$file;\n\n    public function getSimpleViewTrace()\n    {\n        global \$file_";
-            $line_5419d8e846623[$_5419d8e846623] = 136;
+            $line_5423c209b95c2[$_5423c209b95c2] = 161;
             echo $hash . ", \$line_" . ($hash) . ";\n\n        \$traces = \$this->e->getTrace();\n        \$i = 0;\n        foreach (\$traces as &\$trace) {\n            if (!empty(\$trace['file']) \n              && \$trace['file'] == \$this->file && !empty(\$file_";
-            $line_5419d8e846623[$_5419d8e846623] = 142;
+            $line_5423c209b95c2[$_5423c209b95c2] = 167;
             echo $hash . "[\$i])) {\n                \$trace['file'] = \$file_";
-            $line_5419d8e846623[$_5419d8e846623] = 143;
+            $line_5423c209b95c2[$_5423c209b95c2] = 168;
             echo $hash . "[\$i];\n                \$trace['line'] = \$line_";
-            $line_5419d8e846623[$_5419d8e846623] = 144;
+            $line_5423c209b95c2[$_5423c209b95c2] = 169;
             echo $hash . "[\$i];\n                ++\$i;\n            }\n            if (empty(\$trace['file'])) {\n                \$trace['file'] = '[internal function]';\n            } \n            if (empty(\$trace['line'])) {\n                \$trace['line'] = '';\n            }\n        }\n\n        return \$traces;\n    }\n\n    public function __toString()\n    {\n        \$traces = \$this->getSimpleViewTrace();\n        \$str    = \"exception '\" . get_class(\$this->e) . \"' in {\$traces[0]['file']}{\$traces[0]['line']}:\\nStack trace:\\n\";\n        foreach (\$traces as \$i => \$trace) {\n            \$str .= \"#{\$i} {\$trace['file']}:{\$trace['line']}\\n\";\n        }\n        ++\$i;\n        \$str .= \"#{\$i} {main}\";\n        return \$str;\n    }\n\n    public function __construct(Exception \$e, \$file)\n    {\n        \$this->e    = \$e;\n        \$this->file = \$file;\n    }\n}\n\n\nclass Templates\n{\n    public static function getAll()\n    {\n        return ";
-            $line_5419d8e846623[$_5419d8e846623] = 182;
+            $line_5423c209b95c2[$_5423c209b95c2] = 207;
             var_export($list);
             echo ";\n    }\n\n    public static function exec(\$name, Array \$context = array(), Array \$global = array())\n    {\n        \$tpl = self::get(\$name);\n        return \$tpl->render(array_merge(\$global, \$context));\n    }\n\n    public static function get(\$name, Array \$context = array())\n    {\n        static \$classes = ";
-            $line_5419d8e846623[$_5419d8e846623] = 193;
+            $line_5423c209b95c2[$_5423c209b95c2] = 218;
             var_export($classes);
             echo ";\n        \$name = strtolower(\$name);\n        if (empty(\$classes[\$name])) {\n            throw new \\RuntimeException(\"Cannot find template \$name\");\n        }\n\n        \$class = \"\\\\\" . \$classes[\$name];\n        return new \$class;\n    }\n}\n\n}\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -391,6 +476,20 @@ namespace {
     class class_1708ebe9d99ba4e58c0ae7fffeacd2f3eee56157 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -403,19 +502,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Echo.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Echo.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "echo " . ($token[1]) . ";\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -430,6 +529,20 @@ namespace {
     class class_55654f0db518414907f78793b7d027601d43ad01 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -442,23 +555,23 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Else.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Else.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "else {\n";
-            $line_5419d8e846623[$_5419d8e846623] = 2;
+            $line_5423c209b95c2[$_5423c209b95c2] = 2;
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[1]), $this->context);
-            $line_5419d8e846623[$_5419d8e846623] = 3;
+            $line_5423c209b95c2[$_5423c209b95c2] = 3;
             echo "}\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -473,6 +586,20 @@ namespace {
     class class_e5f3aacac71e677703efc7f7d2621463a25e5059 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -485,20 +612,20 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Spaceless.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Spaceless.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[1]), $this->context);
-            $line_5419d8e846623[$_5419d8e846623] = 2;
+            $line_5423c209b95c2[$_5423c209b95c2] = 2;
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -513,6 +640,20 @@ namespace {
     class class_6b1bcd97e93ed2c0cb9aac64a2ca1db0d5c1bbfd extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -525,23 +666,23 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'While.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'While.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "while (" . ($token[1]) . ") {\n";
-            $line_5419d8e846623[$_5419d8e846623] = 2;
+            $line_5423c209b95c2[$_5423c209b95c2] = 2;
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
-            $line_5419d8e846623[$_5419d8e846623] = 3;
+            $line_5423c209b95c2[$_5423c209b95c2] = 3;
             echo "}\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -556,6 +697,20 @@ namespace {
     class class_a7fd4ba6aa8322c865f773ab9961440df3ccad7e extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -568,19 +723,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Yield.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Yield.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "\$this->do_yield(" . ($token[1]) . ");\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -595,6 +750,20 @@ namespace {
     class class_b3f21f4b7452906b330612b966219cc089b11145 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -607,19 +776,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Echox.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Echox.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "echo htmlentities(" . ($token[1]) . ", ENT_QUOTES, 'UTF-8', false);\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -634,6 +803,20 @@ namespace {
     class class_47c00cca182fe3bc9f62a5b97ca88b8096be84f9 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -646,30 +829,30 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'If.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'If.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "if (" . ($token[1]) . ") {\n";
-            $line_5419d8e846623[$_5419d8e846623] = 2;
+            $line_5423c209b95c2[$_5423c209b95c2] = 2;
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
-            $line_5419d8e846623[$_5419d8e846623] = 3;
+            $line_5423c209b95c2[$_5423c209b95c2] = 3;
             echo "} \n";
-            $line_5419d8e846623[$_5419d8e846623] = 4;
+            $line_5423c209b95c2[$_5423c209b95c2] = 4;
             if (!empty($token[3])) {
-                $line_5419d8e846623[$_5419d8e846623] = 5;
+                $line_5423c209b95c2[$_5423c209b95c2] = 5;
                 crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[3]), $this->context);
-                $line_5419d8e846623[$_5419d8e846623] = 6;
+                $line_5423c209b95c2[$_5423c209b95c2] = 6;
             }
-            $line_5419d8e846623[$_5419d8e846623] = 7;
+            $line_5423c209b95c2[$_5423c209b95c2] = 7;
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -684,6 +867,20 @@ namespace {
     class class_29c582cf88090afb569826fab26c5ff2408174a6 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -696,31 +893,31 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'ElseIf.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'ElseIf.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "else if (" . ($token[1]) . ") {\n";
-            $line_5419d8e846623[$_5419d8e846623] = 2;
+            $line_5423c209b95c2[$_5423c209b95c2] = 2;
             crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[2]), $this->context);
-            $line_5419d8e846623[$_5419d8e846623] = 3;
+            $line_5423c209b95c2[$_5423c209b95c2] = 3;
             echo "} \n";
-            $line_5419d8e846623[$_5419d8e846623] = 4;
+            $line_5423c209b95c2[$_5423c209b95c2] = 4;
             if (!empty($token[3])) {
-                $line_5419d8e846623[$_5419d8e846623] = 5;
+                $line_5423c209b95c2[$_5423c209b95c2] = 5;
                 crodas\SimpleView\Templates\Templates::exec("body", array('tpl' => $token[3]), $this->context);
-                $line_5419d8e846623[$_5419d8e846623] = 6;
+                $line_5423c209b95c2[$_5423c209b95c2] = 6;
             }
-            $line_5419d8e846623[$_5419d8e846623] = 7;
+            $line_5423c209b95c2[$_5423c209b95c2] = 7;
             echo "\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -735,6 +932,20 @@ namespace {
     class class_4c7ae9b989b5399767f582c58a57086e7e11e353 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -747,19 +958,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Var_export.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Var_export.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "var_export(" . ($token[1]) . ");\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -774,6 +985,20 @@ namespace {
     class class_399877791885ad1a9fde51bca4deb52107f94699 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -786,35 +1011,35 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Body.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Body.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             foreach($tpl->getStmts() as $token) {
 
                 $this->context['token'] = $token;
-                $line_5419d8e846623[$_5419d8e846623] = 2;
+                $line_5423c209b95c2[$_5423c209b95c2] = 2;
                 if ($token instanceof \crodas\SimpleView\Macro\Base) {
-                    $line_5419d8e846623[$_5419d8e846623] = 3;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 3;
                     echo "        " . ($token->run($this->context)) . "\n";
-                    $line_5419d8e846623[$_5419d8e846623] = 4;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 4;
                 }
                 else {
-                    $line_5419d8e846623[$_5419d8e846623] = 5;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 5;
                     crodas\SimpleView\Templates\Templates::exec($token[0], array('token' => $token ), $this->context);
-                    $line_5419d8e846623[$_5419d8e846623] = 6;
+                    $line_5423c209b95c2[$_5423c209b95c2] = 6;
                 }
-                $line_5419d8e846623[$_5419d8e846623] = 7;
+                $line_5423c209b95c2[$_5423c209b95c2] = 7;
             }
-            $line_5419d8e846623[$_5419d8e846623] = 8;
+            $line_5423c209b95c2[$_5423c209b95c2] = 8;
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -829,6 +1054,20 @@ namespace {
     class class_f438effbfd0e1abc280c3a5fd5c49a6b609fdece extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -841,19 +1080,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Break.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Break.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "    break;\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -868,6 +1107,20 @@ namespace {
     class class_a5a85b8b99262519741caf9201827cb2a6a2b36f extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -880,19 +1133,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Continue.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Continue.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "    continue;\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -907,6 +1160,20 @@ namespace {
     class class_5d7cda60ed67317c63462a7a3f97c1eaa6a18d4e extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -919,19 +1186,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Parent.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Parent.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo "\$this->yield_parent(" . ($token[1]) . ", \$context);\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -946,6 +1213,20 @@ namespace {
     class class_6ab34a3d879c7067d4dc67f5af3a8dd380cd3156 extends base_template_a7583170cd46360a631dc3d57f152bbeb4c37551
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -958,19 +1239,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e846623 = array_push($file_5419d8e846623, 'Include.tpl.php') - 1;
-            $line_5419d8e846623[$_5419d8e846623] = 1;
+            $_5423c209b95c2 = array_push($file_5423c209b95c2, 'Include.tpl.php') - 1;
+            $line_5423c209b95c2[$_5423c209b95c2] = 1;
 
             echo $namespace . "\\Templates::exec(" . ($token[1]) . ", \$this->context);\n";
 
-            array_pop($file_5419d8e846623);
+            array_pop($file_5423c209b95c2);
 
             if ($return) {
                 return ob_get_clean();
@@ -992,15 +1273,15 @@ namespace crodas\SimpleView\Templates {
 
         public function getSimpleViewTrace()
         {
-            global $file_5419d8e846623, $line_5419d8e846623;
+            global $file_5423c209b95c2, $line_5423c209b95c2;
 
             $traces = $this->e->getTrace();
             $i = 0;
             foreach ($traces as &$trace) {
                 if (!empty($trace['file'])
-                    && $trace['file'] == $this->file && !empty($file_5419d8e846623[$i])) {
-                    $trace['file'] = $file_5419d8e846623[$i];
-                    $trace['line'] = $line_5419d8e846623[$i];
+                    && $trace['file'] == $this->file && !empty($file_5423c209b95c2[$i])) {
+                    $trace['file'] = $file_5423c209b95c2[$i];
+                    $trace['line'] = $line_5423c209b95c2[$i];
                     ++$i;
                 }
                 if (empty($trace['file'])) {

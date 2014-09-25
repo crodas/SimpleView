@@ -8,8 +8,8 @@
 namespace {
 
 
-    $GLOBALS['file_5419d8e8609cd'] = array();
-    $GLOBALS['line_5419d8e8609cd'] = array();
+    $GLOBALS['file_5423c209d8102'] = array();
+    $GLOBALS['line_5423c209d8102'] = array();
 
     class base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
@@ -65,6 +65,20 @@ namespace {
     class class_6be9d3fcb52ec7a4482d27fd52c23cd71db0613d extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -77,39 +91,39 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'loop1.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'loop1.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             foreach($users as $id => $user) {
 
                 $this->context['id'] = $id;
                 $this->context['user'] = $user;
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+                $line_5423c209d8102[$_5423c209d8102] = 2;
                 Tests\Templates::exec("loop1-example", $this->context);
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 3;
+                $line_5423c209d8102[$_5423c209d8102] = 3;
                 if ($user == 1) {
                     continue;
                 }
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 6;
+                $line_5423c209d8102[$_5423c209d8102] = 6;
             }
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 7;
+            $line_5423c209d8102[$_5423c209d8102] = 7;
             foreach($users as $user) {
 
                 $this->context['user'] = $user;
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 8;
+                $line_5423c209d8102[$_5423c209d8102] = 8;
                 Tests\Templates::exec("loop1-example", $this->context);
                 break;
             }
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 11;
+            $line_5423c209d8102[$_5423c209d8102] = 11;
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -124,6 +138,20 @@ namespace {
     class class_253d6a60b264956df48ba486a3d7908285d7ece5 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -136,20 +164,20 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'if1.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'if1.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             Tests\Templates::exec('if', $this->context);
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+            $line_5423c209d8102[$_5423c209d8102] = 2;
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -164,6 +192,20 @@ namespace {
     class class_d481f16a4eb3add789581f97f6600c2a74a9d0a8 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -176,45 +218,45 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'loop.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'loop.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             foreach($users as $id => $user1) {
 
                 $this->context['id'] = $id;
                 $this->context['user1'] = $user1;
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+                $line_5423c209d8102[$_5423c209d8102] = 2;
                 $user = $user1;
                 $this->context['user'] = $user;
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 3;
+                $line_5423c209d8102[$_5423c209d8102] = 3;
                 echo "    hi " . ($user) . "\n";
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 4;
+                $line_5423c209d8102[$_5423c209d8102] = 4;
                 $foo = 'xxx';
                 $this->context['foo'] = $foo;
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 5;
+                $line_5423c209d8102[$_5423c209d8102] = 5;
                 if ($user == 1) {
                     continue;
                 }
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 8;
+                $line_5423c209d8102[$_5423c209d8102] = 8;
             }
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 9;
+            $line_5423c209d8102[$_5423c209d8102] = 9;
             foreach($users as $user1) {
 
                 $this->context['user1'] = $user1;
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 10;
+                $line_5423c209d8102[$_5423c209d8102] = 10;
                 echo "    hi " . ($user1) . "\n";
                 break;
             }
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 13;
+            $line_5423c209d8102[$_5423c209d8102] = 13;
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -230,16 +272,39 @@ namespace {
     {
         protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             extract($context);
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'foobar') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 4;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'foobar') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $line_5423c209d8102[$_5423c209d8102] = 4;
             $this->yield_parent('foobar', $context);
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 5;
+            $line_5423c209d8102[$_5423c209d8102] = 5;
             echo "    hi there!\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 6;
-            array_pop($file_5419d8e8609cd);
+            $line_5423c209d8102[$_5423c209d8102] = 6;
+            array_pop($file_5423c209d8102);
+        }
+
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+            case 'foobar':
+                try {
+                    $this->section_8843d7f92416211de9ebb963ff4ce28125932878($args);
+                } catch (Exception $e) {
+                    ob_get_clean();
+                    throw $e;
+                }
+                break;
+
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
         }
 
         public function render(Array $vars = array(), $return = false)
@@ -254,7 +319,7 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             $template = Tests\Templates::get("layout.tpl.php");
@@ -271,6 +336,20 @@ namespace {
     class class_6e15d2af65fcf7798021e9323798f193499ac09d extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -283,24 +362,24 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'while.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'while.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             while ($i < 10) {
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+                $line_5423c209d8102[$_5423c209d8102] = 2;
                 echo "    hi " . (++$i) . "\n";
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 3;
+                $line_5423c209d8102[$_5423c209d8102] = 3;
             }
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 4;
+            $line_5423c209d8102[$_5423c209d8102] = 4;
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -315,6 +394,20 @@ namespace {
     class class_6caefdda43fcb619b729c17289d5237e623d208b extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -327,19 +420,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'home.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'home.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             echo "Hello world\n";
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -354,6 +447,20 @@ namespace {
     class class_98c6e7085f21cfb73dcc0bf79490f712a83fa4e4 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -366,42 +473,42 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'loop2.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'loop2.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             foreach($users as $id => $user) {
 
                 $this->context['id'] = $id;
                 $this->context['user'] = $user;
                 echo "\n";
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+                $line_5423c209d8102[$_5423c209d8102] = 2;
                 Tests\Templates::exec("loop1-example", $this->context);
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 3;
+                $line_5423c209d8102[$_5423c209d8102] = 3;
                 echo "    ";
                 if ($user == 1) {
                     echo "\n";
                     continue;
                 }
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 6;
+                $line_5423c209d8102[$_5423c209d8102] = 6;
             }
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 7;
+            $line_5423c209d8102[$_5423c209d8102] = 7;
             foreach($users as $user) {
 
                 $this->context['user'] = $user;
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 8;
+                $line_5423c209d8102[$_5423c209d8102] = 8;
                 Tests\Templates::exec("loop1-example", $this->context);
                 break;
             }
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 11;
+            $line_5423c209d8102[$_5423c209d8102] = 11;
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -416,6 +523,20 @@ namespace {
     class class_a1e3a95c79cab9e71f533a0b4f6234e4c760646d extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -428,28 +549,28 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'mixed.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'mixed.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             foreach([1,2,3] as $auction) {
 
                 $this->context['auction'] = $auction;
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+                $line_5423c209d8102[$_5423c209d8102] = 2;
                 echo "      ";
                 Tests\Templates::exec('home.tpl.php', $this->context);
                 echo "\n";
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 3;
+                $line_5423c209d8102[$_5423c209d8102] = 3;
             }
             echo " \n";
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -464,6 +585,20 @@ namespace {
     class class_bc5d54e4756cc431ce2b175b6469a7e430ac5a1f extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -476,21 +611,21 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'exception.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'exception.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             echo "Hi there\n!\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 3;
+            $line_5423c209d8102[$_5423c209d8102] = 3;
             echo failure() . "\nbye\n";
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -505,6 +640,20 @@ namespace {
     class class_06bb1727fc549c9b2df4fe8a4d8f08d53ca2a1c8 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -517,26 +666,26 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'unless.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'unless.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             echo "Hi " . ($user['name']) . "\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+            $line_5423c209d8102[$_5423c209d8102] = 2;
             if (!($user['has_session'])) {
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 3;
+                $line_5423c209d8102[$_5423c209d8102] = 3;
                 echo "    you must login\n";
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 4;
+                $line_5423c209d8102[$_5423c209d8102] = 4;
             }
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 5;
+            $line_5423c209d8102[$_5423c209d8102] = 5;
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -551,6 +700,20 @@ namespace {
     class class_75b4a0fe9cd1d6711cc7dec092e958edbe1efc00 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -563,32 +726,32 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'if.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'if.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             echo "Hi ";
             echo htmlentities($name, ENT_QUOTES, 'UTF-8', false);
             echo "\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+            $line_5423c209d8102[$_5423c209d8102] = 2;
             if ($age < 18) {
                 echo "\n    You cannot be here\n";
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 4;
+                $line_5423c209d8102[$_5423c209d8102] = 4;
             }
             else {
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 5;
+                $line_5423c209d8102[$_5423c209d8102] = 5;
                 echo "    Welcome!\n";
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 6;
+                $line_5423c209d8102[$_5423c209d8102] = 6;
             }
             echo "\n";
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -603,6 +766,20 @@ namespace {
     class class_eef20d69ae52eb9005a515c213ab9554791979c9 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -615,20 +792,20 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'at.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'at.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             var_export(['foo', 'bar']);
             echo "\n";
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -644,25 +821,57 @@ namespace {
     {
         protected function section_594fd1615a341c77829e83ed988f137e1ba96231($context)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             extract($context);
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'header') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 3;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'header') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $line_5423c209d8102[$_5423c209d8102] = 3;
             echo "<h1>Hi</h1>\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 4;
-            array_pop($file_5419d8e8609cd);
+            $line_5423c209d8102[$_5423c209d8102] = 4;
+            array_pop($file_5423c209d8102);
         }
         protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             extract($context);
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'foobar') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 8;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'foobar') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $line_5423c209d8102[$_5423c209d8102] = 8;
             echo "    Nothing here\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 9;
-            array_pop($file_5419d8e8609cd);
+            $line_5423c209d8102[$_5423c209d8102] = 9;
+            array_pop($file_5423c209d8102);
+        }
+
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+            case 'header':
+                try {
+                    $this->section_594fd1615a341c77829e83ed988f137e1ba96231($args);
+                } catch (Exception $e) {
+                    ob_get_clean();
+                    throw $e;
+                }
+                break;
+
+            case 'foobar':
+                try {
+                    $this->section_8843d7f92416211de9ebb963ff4ce28125932878($args);
+                } catch (Exception $e) {
+                    ob_get_clean();
+                    throw $e;
+                }
+                break;
+
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
         }
 
         public function render(Array $vars = array(), $return = false)
@@ -677,27 +886,27 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'foobar') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'foobar') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             echo "\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+            $line_5423c209d8102[$_5423c209d8102] = 2;
             $this->do_yield('header');
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 5;
+            $line_5423c209d8102[$_5423c209d8102] = 5;
             echo "\n<content>\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 7;
+            $line_5423c209d8102[$_5423c209d8102] = 7;
             $this->do_yield('foobar');
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 10;
+            $line_5423c209d8102[$_5423c209d8102] = 10;
             echo "</content>\n";
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -712,6 +921,20 @@ namespace {
     class class_5c4c356a54a8ae3f2564a8edd5d2c39440cf8eed extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -724,29 +947,29 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'asset.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'asset.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
         
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+            $line_5423c209d8102[$_5423c209d8102] = 2;
             echo "cesar\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 3;
+            $line_5423c209d8102[$_5423c209d8102] = 3;
             $asset_url = '//foobar.com/assets/css/out.653d843f.min.css';
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 4;
+            $line_5423c209d8102[$_5423c209d8102] = 4;
             echo "     <link href=\"" . ($asset_url) . "\" type=\"text/css\" rel=\"stylesheet\" />\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 5;
+            $line_5423c209d8102[$_5423c209d8102] = 5;
 
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 6;
+            $line_5423c209d8102[$_5423c209d8102] = 6;
             echo "     <link href=\"" . ('//foobar.com/assets/css/out1.653d843f.min.css') . "\" type=\"text/css\" rel=\"stylesheet\" />\nrodas\n";
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -761,6 +984,20 @@ namespace {
     class class_f29db6e6f1c21db1b05b51162242fe0eafe8c136 extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -773,19 +1010,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'loop1-example.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'loop1-example.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
             echo "    hi " . ($user) . "\n";
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -800,6 +1037,20 @@ namespace {
     class class_066a64416ed54365eebbe9d553e59243995aa6ae extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
 
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
@@ -812,29 +1063,29 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'spaceless.tpl.php') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'spaceless.tpl.php') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
 
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 2;
+            $line_5423c209d8102[$_5423c209d8102] = 2;
             echo "<h2>hi there</h2><h3>foo</h3>";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 4;
+            $line_5423c209d8102[$_5423c209d8102] = 4;
             if (true) {
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 5;
+                $line_5423c209d8102[$_5423c209d8102] = 5;
                 echo "<h1>hi there</h1><b>dasda</b><h2>foo</h2>";
-                $line_5419d8e8609cd[$_5419d8e8609cd] = 8;
+                $line_5423c209d8102[$_5423c209d8102] = 8;
             }
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 9;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 10;
+            $line_5423c209d8102[$_5423c209d8102] = 9;
+            $line_5423c209d8102[$_5423c209d8102] = 10;
             echo "\n";
 
-            array_pop($file_5419d8e8609cd);
+            array_pop($file_5423c209d8102);
 
             if ($return) {
                 return ob_get_clean();
@@ -850,29 +1101,61 @@ namespace {
     {
         protected function section_594fd1615a341c77829e83ed988f137e1ba96231($context)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             extract($context);
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'header') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 4;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'header') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $line_5423c209d8102[$_5423c209d8102] = 4;
             $this->yield_parent('header', $context);
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 5;
+            $line_5423c209d8102[$_5423c209d8102] = 5;
             echo "<h1>Bye</h1>\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 6;
-            array_pop($file_5419d8e8609cd);
+            $line_5423c209d8102[$_5423c209d8102] = 6;
+            array_pop($file_5423c209d8102);
         }
         protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             extract($context);
-            $_5419d8e8609cd = array_push($file_5419d8e8609cd, 'foobar') - 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 1;
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 9;
+            $_5423c209d8102 = array_push($file_5423c209d8102, 'foobar') - 1;
+            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $line_5423c209d8102[$_5423c209d8102] = 9;
             $this->yield_parent('foobar', $context);
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 10;
+            $line_5423c209d8102[$_5423c209d8102] = 10;
             echo "    Bye there!\n";
-            $line_5419d8e8609cd[$_5419d8e8609cd] = 11;
-            array_pop($file_5419d8e8609cd);
+            $line_5423c209d8102[$_5423c209d8102] = 11;
+            array_pop($file_5423c209d8102);
+        }
+
+        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+        {
+            ob_start();
+            switch ($name) {
+            case 'header':
+                try {
+                    $this->section_594fd1615a341c77829e83ed988f137e1ba96231($args);
+                } catch (Exception $e) {
+                    ob_get_clean();
+                    throw $e;
+                }
+                break;
+
+            case 'foobar':
+                try {
+                    $this->section_8843d7f92416211de9ebb963ff4ce28125932878($args);
+                } catch (Exception $e) {
+                    ob_get_clean();
+                    throw $e;
+                }
+                break;
+
+
+            default:
+                if ($fail_on_missing) {
+                    throw new \RuntimeException("Cannot find section {$name}");
+                }
+            }
+
+            return ob_get_clean();
         }
 
         public function render(Array $vars = array(), $return = false)
@@ -887,7 +1170,7 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
             $this->context = $vars;
 
             $template = Tests\Templates::get("extends");
@@ -911,15 +1194,15 @@ namespace Tests {
 
         public function getSimpleViewTrace()
         {
-            global $file_5419d8e8609cd, $line_5419d8e8609cd;
+            global $file_5423c209d8102, $line_5423c209d8102;
 
             $traces = $this->e->getTrace();
             $i = 0;
             foreach ($traces as &$trace) {
                 if (!empty($trace['file'])
-                    && $trace['file'] == $this->file && !empty($file_5419d8e8609cd[$i])) {
-                    $trace['file'] = $file_5419d8e8609cd[$i];
-                    $trace['line'] = $line_5419d8e8609cd[$i];
+                    && $trace['file'] == $this->file && !empty($file_5423c209d8102[$i])) {
+                    $trace['file'] = $file_5423c209d8102[$i];
+                    $trace['line'] = $line_5423c209d8102[$i];
                     ++$i;
                 }
                 if (empty($trace['file'])) {

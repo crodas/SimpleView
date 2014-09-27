@@ -149,7 +149,9 @@ class class_{{sha1($name)}} extends base_template_{{ sha1($namespace) }}
 
 namespace {{$namespace}} {
 
+@if (!empty($namespace))
 use Exception;
+@end
 
 class ExceptionWrapper extends Exception
 {

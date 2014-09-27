@@ -8,8 +8,8 @@
 namespace {
 
 
-    $GLOBALS['file_5423c209d8102'] = array();
-    $GLOBALS['line_5423c209d8102'] = array();
+    $GLOBALS['file_542639adad75e'] = array();
+    $GLOBALS['line_542639adad75e'] = array();
 
     class base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
     {
@@ -91,39 +91,39 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'loop1.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'loop1.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             foreach($users as $id => $user) {
 
                 $this->context['id'] = $id;
                 $this->context['user'] = $user;
-                $line_5423c209d8102[$_5423c209d8102] = 2;
+                $line_542639adad75e[$_542639adad75e] = 2;
                 Tests\Templates::exec("loop1-example", $this->context);
-                $line_5423c209d8102[$_5423c209d8102] = 3;
+                $line_542639adad75e[$_542639adad75e] = 3;
                 if ($user == 1) {
                     continue;
                 }
-                $line_5423c209d8102[$_5423c209d8102] = 6;
+                $line_542639adad75e[$_542639adad75e] = 6;
             }
-            $line_5423c209d8102[$_5423c209d8102] = 7;
+            $line_542639adad75e[$_542639adad75e] = 7;
             foreach($users as $user) {
 
                 $this->context['user'] = $user;
-                $line_5423c209d8102[$_5423c209d8102] = 8;
+                $line_542639adad75e[$_542639adad75e] = 8;
                 Tests\Templates::exec("loop1-example", $this->context);
                 break;
             }
-            $line_5423c209d8102[$_5423c209d8102] = 11;
+            $line_542639adad75e[$_542639adad75e] = 11;
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -164,20 +164,20 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'if1.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'if1.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             Tests\Templates::exec('if', $this->context);
-            $line_5423c209d8102[$_5423c209d8102] = 2;
+            $line_542639adad75e[$_542639adad75e] = 2;
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -218,45 +218,45 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'loop.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'loop.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             foreach($users as $id => $user1) {
 
                 $this->context['id'] = $id;
                 $this->context['user1'] = $user1;
-                $line_5423c209d8102[$_5423c209d8102] = 2;
+                $line_542639adad75e[$_542639adad75e] = 2;
                 $user = $user1;
                 $this->context['user'] = $user;
-                $line_5423c209d8102[$_5423c209d8102] = 3;
+                $line_542639adad75e[$_542639adad75e] = 3;
                 echo "    hi " . ($user) . "\n";
-                $line_5423c209d8102[$_5423c209d8102] = 4;
+                $line_542639adad75e[$_542639adad75e] = 4;
                 $foo = 'xxx';
                 $this->context['foo'] = $foo;
-                $line_5423c209d8102[$_5423c209d8102] = 5;
+                $line_542639adad75e[$_542639adad75e] = 5;
                 if ($user == 1) {
                     continue;
                 }
-                $line_5423c209d8102[$_5423c209d8102] = 8;
+                $line_542639adad75e[$_542639adad75e] = 8;
             }
-            $line_5423c209d8102[$_5423c209d8102] = 9;
+            $line_542639adad75e[$_542639adad75e] = 9;
             foreach($users as $user1) {
 
                 $this->context['user1'] = $user1;
-                $line_5423c209d8102[$_5423c209d8102] = 10;
+                $line_542639adad75e[$_542639adad75e] = 10;
                 echo "    hi " . ($user1) . "\n";
                 break;
             }
-            $line_5423c209d8102[$_5423c209d8102] = 13;
+            $line_542639adad75e[$_542639adad75e] = 13;
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -272,16 +272,16 @@ namespace {
     {
         protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             extract($context);
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'foobar') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
-            $line_5423c209d8102[$_5423c209d8102] = 4;
+            $_542639adad75e = array_push($file_542639adad75e, 'foobar') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
+            $line_542639adad75e[$_542639adad75e] = 4;
             $this->yield_parent('foobar', $context);
-            $line_5423c209d8102[$_5423c209d8102] = 5;
+            $line_542639adad75e[$_542639adad75e] = 5;
             echo "    hi there!\n";
-            $line_5423c209d8102[$_5423c209d8102] = 6;
-            array_pop($file_5423c209d8102);
+            $line_542639adad75e[$_542639adad75e] = 6;
+            array_pop($file_542639adad75e);
         }
 
         public function renderSection($name, Array $args = array(), $fail_on_missing = true)
@@ -319,7 +319,7 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             $template = Tests\Templates::get("layout.tpl.php");
@@ -362,24 +362,24 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'while.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'while.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             while ($i < 10) {
-                $line_5423c209d8102[$_5423c209d8102] = 2;
+                $line_542639adad75e[$_542639adad75e] = 2;
                 echo "    hi " . (++$i) . "\n";
-                $line_5423c209d8102[$_5423c209d8102] = 3;
+                $line_542639adad75e[$_542639adad75e] = 3;
             }
-            $line_5423c209d8102[$_5423c209d8102] = 4;
+            $line_542639adad75e[$_542639adad75e] = 4;
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -420,19 +420,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'home.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'home.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             echo "Hello world\n";
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -473,42 +473,42 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'loop2.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'loop2.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             foreach($users as $id => $user) {
 
                 $this->context['id'] = $id;
                 $this->context['user'] = $user;
                 echo "\n";
-                $line_5423c209d8102[$_5423c209d8102] = 2;
+                $line_542639adad75e[$_542639adad75e] = 2;
                 Tests\Templates::exec("loop1-example", $this->context);
-                $line_5423c209d8102[$_5423c209d8102] = 3;
+                $line_542639adad75e[$_542639adad75e] = 3;
                 echo "    ";
                 if ($user == 1) {
                     echo "\n";
                     continue;
                 }
-                $line_5423c209d8102[$_5423c209d8102] = 6;
+                $line_542639adad75e[$_542639adad75e] = 6;
             }
-            $line_5423c209d8102[$_5423c209d8102] = 7;
+            $line_542639adad75e[$_542639adad75e] = 7;
             foreach($users as $user) {
 
                 $this->context['user'] = $user;
-                $line_5423c209d8102[$_5423c209d8102] = 8;
+                $line_542639adad75e[$_542639adad75e] = 8;
                 Tests\Templates::exec("loop1-example", $this->context);
                 break;
             }
-            $line_5423c209d8102[$_5423c209d8102] = 11;
+            $line_542639adad75e[$_542639adad75e] = 11;
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -549,28 +549,28 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'mixed.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'mixed.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             foreach([1,2,3] as $auction) {
 
                 $this->context['auction'] = $auction;
-                $line_5423c209d8102[$_5423c209d8102] = 2;
+                $line_542639adad75e[$_542639adad75e] = 2;
                 echo "      ";
                 Tests\Templates::exec('home.tpl.php', $this->context);
                 echo "\n";
-                $line_5423c209d8102[$_5423c209d8102] = 3;
+                $line_542639adad75e[$_542639adad75e] = 3;
             }
             echo " \n";
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -611,21 +611,21 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'exception.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'exception.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             echo "Hi there\n!\n";
-            $line_5423c209d8102[$_5423c209d8102] = 3;
+            $line_542639adad75e[$_542639adad75e] = 3;
             echo failure() . "\nbye\n";
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -666,26 +666,26 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'unless.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'unless.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             echo "Hi " . ($user['name']) . "\n";
-            $line_5423c209d8102[$_5423c209d8102] = 2;
+            $line_542639adad75e[$_542639adad75e] = 2;
             if (!($user['has_session'])) {
-                $line_5423c209d8102[$_5423c209d8102] = 3;
+                $line_542639adad75e[$_542639adad75e] = 3;
                 echo "    you must login\n";
-                $line_5423c209d8102[$_5423c209d8102] = 4;
+                $line_542639adad75e[$_542639adad75e] = 4;
             }
-            $line_5423c209d8102[$_5423c209d8102] = 5;
+            $line_542639adad75e[$_542639adad75e] = 5;
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -726,32 +726,32 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'if.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'if.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             echo "Hi ";
             echo htmlentities($name, ENT_QUOTES, 'UTF-8', false);
             echo "\n";
-            $line_5423c209d8102[$_5423c209d8102] = 2;
+            $line_542639adad75e[$_542639adad75e] = 2;
             if ($age < 18) {
                 echo "\n    You cannot be here\n";
-                $line_5423c209d8102[$_5423c209d8102] = 4;
+                $line_542639adad75e[$_542639adad75e] = 4;
             }
             else {
-                $line_5423c209d8102[$_5423c209d8102] = 5;
+                $line_542639adad75e[$_542639adad75e] = 5;
                 echo "    Welcome!\n";
-                $line_5423c209d8102[$_5423c209d8102] = 6;
+                $line_542639adad75e[$_542639adad75e] = 6;
             }
             echo "\n";
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -792,20 +792,20 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'at.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'at.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             var_export(['foo', 'bar']);
             echo "\n";
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -821,25 +821,25 @@ namespace {
     {
         protected function section_594fd1615a341c77829e83ed988f137e1ba96231($context)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             extract($context);
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'header') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
-            $line_5423c209d8102[$_5423c209d8102] = 3;
+            $_542639adad75e = array_push($file_542639adad75e, 'header') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
+            $line_542639adad75e[$_542639adad75e] = 3;
             echo "<h1>Hi</h1>\n";
-            $line_5423c209d8102[$_5423c209d8102] = 4;
-            array_pop($file_5423c209d8102);
+            $line_542639adad75e[$_542639adad75e] = 4;
+            array_pop($file_542639adad75e);
         }
         protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             extract($context);
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'foobar') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
-            $line_5423c209d8102[$_5423c209d8102] = 8;
+            $_542639adad75e = array_push($file_542639adad75e, 'foobar') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
+            $line_542639adad75e[$_542639adad75e] = 8;
             echo "    Nothing here\n";
-            $line_5423c209d8102[$_5423c209d8102] = 9;
-            array_pop($file_5423c209d8102);
+            $line_542639adad75e[$_542639adad75e] = 9;
+            array_pop($file_542639adad75e);
         }
 
         public function renderSection($name, Array $args = array(), $fail_on_missing = true)
@@ -886,27 +886,27 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'foobar') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'foobar') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             echo "\n";
-            $line_5423c209d8102[$_5423c209d8102] = 2;
+            $line_542639adad75e[$_542639adad75e] = 2;
             $this->do_yield('header');
-            $line_5423c209d8102[$_5423c209d8102] = 5;
+            $line_542639adad75e[$_542639adad75e] = 5;
             echo "\n<content>\n";
-            $line_5423c209d8102[$_5423c209d8102] = 7;
+            $line_542639adad75e[$_542639adad75e] = 7;
             $this->do_yield('foobar');
-            $line_5423c209d8102[$_5423c209d8102] = 10;
+            $line_542639adad75e[$_542639adad75e] = 10;
             echo "</content>\n";
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -947,29 +947,29 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'asset.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'asset.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
         
-            $line_5423c209d8102[$_5423c209d8102] = 2;
+            $line_542639adad75e[$_542639adad75e] = 2;
             echo "cesar\n";
-            $line_5423c209d8102[$_5423c209d8102] = 3;
+            $line_542639adad75e[$_542639adad75e] = 3;
             $asset_url = '//foobar.com/assets/css/out.653d843f.min.css';
-            $line_5423c209d8102[$_5423c209d8102] = 4;
+            $line_542639adad75e[$_542639adad75e] = 4;
             echo "     <link href=\"" . ($asset_url) . "\" type=\"text/css\" rel=\"stylesheet\" />\n";
-            $line_5423c209d8102[$_5423c209d8102] = 5;
+            $line_542639adad75e[$_542639adad75e] = 5;
 
-            $line_5423c209d8102[$_5423c209d8102] = 6;
+            $line_542639adad75e[$_542639adad75e] = 6;
             echo "     <link href=\"" . ('//foobar.com/assets/css/out1.653d843f.min.css') . "\" type=\"text/css\" rel=\"stylesheet\" />\nrodas\n";
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -1010,19 +1010,19 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'loop1-example.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'loop1-example.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
             echo "    hi " . ($user) . "\n";
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -1063,29 +1063,29 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             extract($vars);
             if ($return) {
                 ob_start();
             }
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'spaceless.tpl.php') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
+            $_542639adad75e = array_push($file_542639adad75e, 'spaceless.tpl.php') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
 
-            $line_5423c209d8102[$_5423c209d8102] = 2;
+            $line_542639adad75e[$_542639adad75e] = 2;
             echo "<h2>hi there</h2><h3>foo</h3>";
-            $line_5423c209d8102[$_5423c209d8102] = 4;
+            $line_542639adad75e[$_542639adad75e] = 4;
             if (true) {
-                $line_5423c209d8102[$_5423c209d8102] = 5;
+                $line_542639adad75e[$_542639adad75e] = 5;
                 echo "<h1>hi there</h1><b>dasda</b><h2>foo</h2>";
-                $line_5423c209d8102[$_5423c209d8102] = 8;
+                $line_542639adad75e[$_542639adad75e] = 8;
             }
-            $line_5423c209d8102[$_5423c209d8102] = 9;
-            $line_5423c209d8102[$_5423c209d8102] = 10;
+            $line_542639adad75e[$_542639adad75e] = 9;
+            $line_542639adad75e[$_542639adad75e] = 10;
             echo "\n";
 
-            array_pop($file_5423c209d8102);
+            array_pop($file_542639adad75e);
 
             if ($return) {
                 return ob_get_clean();
@@ -1101,29 +1101,29 @@ namespace {
     {
         protected function section_594fd1615a341c77829e83ed988f137e1ba96231($context)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             extract($context);
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'header') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
-            $line_5423c209d8102[$_5423c209d8102] = 4;
+            $_542639adad75e = array_push($file_542639adad75e, 'header') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
+            $line_542639adad75e[$_542639adad75e] = 4;
             $this->yield_parent('header', $context);
-            $line_5423c209d8102[$_5423c209d8102] = 5;
+            $line_542639adad75e[$_542639adad75e] = 5;
             echo "<h1>Bye</h1>\n";
-            $line_5423c209d8102[$_5423c209d8102] = 6;
-            array_pop($file_5423c209d8102);
+            $line_542639adad75e[$_542639adad75e] = 6;
+            array_pop($file_542639adad75e);
         }
         protected function section_8843d7f92416211de9ebb963ff4ce28125932878($context)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             extract($context);
-            $_5423c209d8102 = array_push($file_5423c209d8102, 'foobar') - 1;
-            $line_5423c209d8102[$_5423c209d8102] = 1;
-            $line_5423c209d8102[$_5423c209d8102] = 9;
+            $_542639adad75e = array_push($file_542639adad75e, 'foobar') - 1;
+            $line_542639adad75e[$_542639adad75e] = 1;
+            $line_542639adad75e[$_542639adad75e] = 9;
             $this->yield_parent('foobar', $context);
-            $line_5423c209d8102[$_5423c209d8102] = 10;
+            $line_542639adad75e[$_542639adad75e] = 10;
             echo "    Bye there!\n";
-            $line_5423c209d8102[$_5423c209d8102] = 11;
-            array_pop($file_5423c209d8102);
+            $line_542639adad75e[$_542639adad75e] = 11;
+            array_pop($file_542639adad75e);
         }
 
         public function renderSection($name, Array $args = array(), $fail_on_missing = true)
@@ -1170,7 +1170,7 @@ namespace {
 
         public function _render(Array $vars = array(), $return = false)
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
             $this->context = $vars;
 
             $template = Tests\Templates::get("extends");
@@ -1194,15 +1194,15 @@ namespace Tests {
 
         public function getSimpleViewTrace()
         {
-            global $file_5423c209d8102, $line_5423c209d8102;
+            global $file_542639adad75e, $line_542639adad75e;
 
             $traces = $this->e->getTrace();
             $i = 0;
             foreach ($traces as &$trace) {
                 if (!empty($trace['file'])
-                    && $trace['file'] == $this->file && !empty($file_5423c209d8102[$i])) {
-                    $trace['file'] = $file_5423c209d8102[$i];
-                    $trace['line'] = $line_5423c209d8102[$i];
+                    && $trace['file'] == $this->file && !empty($file_542639adad75e[$i])) {
+                    $trace['file'] = $file_542639adad75e[$i];
+                    $trace['line'] = $line_542639adad75e[$i];
                     ++$i;
                 }
                 if (empty($trace['file'])) {

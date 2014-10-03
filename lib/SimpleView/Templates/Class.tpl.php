@@ -78,29 +78,48 @@ class class_{{sha1($name)}} extends base_template_{{ sha1($namespace) }}
     }
     @end
 
-    public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+    public function hasSection($name)
     {
-        ob_start();
-        switch ($name) {
-        @foreach ($tpl->getSections() as $name => $code)
-        case {{@$name}}:
-            try {
-                $this->section_{{sha1($name)}}($args);
-            } catch (Exception $e) {
-                ob_get_clean();
-                throw $e;
+        @if ($tpl->getSections())
+            switch ($name) {
+            @foreach ($tpl->getSections() as $name => $code)
+                case {{@$name}}:
+            @end
+                return true;
             }
-            break;
-
         @end
 
-        default:
+        return false;
+    }
+
+
+    public function renderSection($name, Array $args = array(), $fail_on_missing = true)
+    {
+        if (!$this->hasSection($name)) {
             if ($fail_on_missing) {
                 throw new \RuntimeException("Cannot find section {$name}");
             }
+            return "";
         }
 
-        return ob_get_clean();
+        @if ($tpl->getSections())
+            ob_start();
+            switch ($name) {
+            @foreach ($tpl->getSections() as $name => $code)
+            case {{@$name}}:
+                try {
+                    $this->section_{{sha1($name)}}($args);
+                } catch (Exception $e) {
+                    ob_get_clean();
+                    throw $e;
+                }
+                break;
+    
+            @end
+            }
+    
+            return ob_get_clean();
+        @end
     }
 
     public function render(Array $vars = array(), $return = false)

@@ -228,6 +228,22 @@ class Templates
         return {{@$list}};
     }
 
+    public static function getAllSections($name, $fail = true)
+    {
+        switch ($name) {
+        @foreach ($sections as $name => $tpls)
+        case {{@$name}}:
+            return {{@$tpls}};
+        @end
+        default:
+            if ($fail) {
+                throw new \RuntimeException("Cannot find section {$name}");
+            }
+
+            return array();
+        }
+    }
+
     public static function exec($name, Array $context = array(), Array $global = array())
     {
         $tpl = self::get($name);

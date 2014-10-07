@@ -100,16 +100,22 @@ class Compiler
     {
         $classes = array();
         $tpls    = array();
+        $sections = array();
         foreach ($this->compiled as $name => $tpl) {
             $zname    = strtolower($name);
             $parts  = explode(".", $zname);
             $class  = 'class_' . sha1($name);
             $tpls[] = $parts[0];
+            foreach (array_keys($tpl->getSections()) as $section) {
+                $sections[$section][] = $zname;
+            }
             $classes[$zname] = $class;
             $classes[$parts[0]] = $class;
             $classes[$zname]    = $class;
         }
+
         $args = array(
+            'sections' => $sections,
             'tpls' => $this->compiled, 
             'classes' => $classes, 
             'namespace' => $this->ns,

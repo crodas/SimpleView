@@ -52,6 +52,10 @@ class Asset extends Base
         if (empty($this->args['output'])) {
             throw new \RuntimeException("output argument is missing");
         }
+        if (!class_exists('Asset')) {
+            throw new \RuntimeException("You need to install cordas/asset with composer (version ~0.1)");
+        }
+
 
         $output = $this->args['output'];
         unset($this->args['output']);

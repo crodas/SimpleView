@@ -1,8 +1,10 @@
 <?php
 
+class foobar extends RuntimeException {}
+
 function failure()
 {
-    throw new \RuntimeException;
+    throw new foobar;
 }
 
 class MainTest extends \phpunit_framework_testcase
@@ -30,9 +32,8 @@ class MainTest extends \phpunit_framework_testcase
         try {
             $output = \Tests\Templates::get($tpl)->render($args, true);
             $this->assertEquals($expected, $output);
-        } catch (Tests\ExceptionWrapper $e) {
-            $traces = $e->getSimpleViewTrace();
-            $this->assertNotEquals($traces[0]['file'], __DIR__ . '/Templates.php');
+        } catch (foobar $e) {
+            $this->assertTrue(True);
         }
     }
 

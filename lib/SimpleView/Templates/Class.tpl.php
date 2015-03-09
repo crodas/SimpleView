@@ -104,6 +104,7 @@ class class_{{sha1($name)}} extends base_template_{{ sha1($namespace) }}
                     $this->section_{{sha1($name)}}($args);
                 } catch (Exception $e) {
                     ob_get_clean();
+                    $this->enhanceException($e, $name);
                     throw $e;
                 }
                 break;
@@ -115,12 +116,33 @@ class class_{{sha1($name)}} extends base_template_{{ sha1($namespace) }}
         @end
     }
 
+    public function enhanceException(Exception $e, $section = NULL)
+    {
+        if (!empty($e->enhanced)) {
+            return;
+        }
+
+        $message = $e->getMessage() . "( IN " . {{@$name}};
+        if ($section) {
+            $message .= " | section: {$section}";
+        } 
+        $message .= ")";
+
+        $object   = new ReflectionObject($e);
+        $property = $object->getProperty('message');
+        $property->setAccessible(true);
+        $property->setValue($e, $message);
+
+        $e->enhanced = true;
+    }
+
     public function render(Array $vars = array(), $return = false)
     {
         try {
             return $this->_render($vars, $return);
         } catch (Exception $e) {
             if ($return) ob_get_clean();
+            $this->enhanceException($e);
             throw $e;
         }
     }

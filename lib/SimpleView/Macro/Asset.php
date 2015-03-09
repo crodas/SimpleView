@@ -40,6 +40,7 @@ use Simple_View_Parser as Parser;
 use crodas\SimpleView\Templates\Templates;
 use Asset as CAsset;
 
+
 class Asset extends Base
 {
     public static function getNames()
@@ -103,6 +104,10 @@ class AssetInline extends Asset
         }
 
         $fs = $this->env->get('watcher');
+
+        if (!class_exists('Asset')) {
+            throw new \RuntimeException("cannot find asset class, don't forget to install crodas/asset");
+        }
 
         CAsset::on('file', function($file) use ($fs) {
             $args = $file->getArguments();

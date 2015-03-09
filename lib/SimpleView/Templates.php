@@ -80,12 +80,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Unless.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Unless.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -134,12 +159,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Newline.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Newline.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -185,12 +235,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Foreach.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Foreach.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -251,12 +326,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Set.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Set.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -308,12 +408,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Class.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Class.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -370,11 +495,13 @@ namespace {
                         echo "            case ";
                         var_export($name);
                         echo ":\n                try {\n                    \$this->section_";
-                        echo sha1($name) . "(\$args);\n                } catch (Exception \$e) {\n                    ob_get_clean();\n                    throw \$e;\n                }\n                break;\n    \n";
+                        echo sha1($name) . "(\$args);\n                } catch (Exception \$e) {\n                    ob_get_clean();\n                    \$this->enhanceException(\$e, \$name);\n                    throw \$e;\n                }\n                break;\n    \n";
                     }
                     echo "            }\n    \n            return ob_get_clean();\n";
                 }
-                echo "    }\n\n    public function render(Array \$vars = array(), \$return = false)\n    {\n        try {\n            return \$this->_render(\$vars, \$return);\n        } catch (Exception \$e) {\n            if (\$return) ob_get_clean();\n            throw \$e;\n        }\n    }\n\n    public function _render(Array \$vars = array(), \$return = false)\n    {\n        \$this->context = \$vars;\n\n";
+                echo "    }\n\n    public function enhanceException(Exception \$e, \$section = NULL)\n    {\n        if (!empty(\$e->enhanced)) {\n            return;\n        }\n\n        \$message = \$e->getMessage() . \"( IN \" . ";
+                var_export($name);
+                echo ";\n        if (\$section) {\n            \$message .= \" | section: {\$section}\";\n        } \n        \$message .= \")\";\n\n        \$object   = new ReflectionObject(\$e);\n        \$property = \$object->getProperty('message');\n        \$property->setAccessible(true);\n        \$property->setValue(\$e, \$message);\n\n        \$e->enhanced = true;\n    }\n\n    public function render(Array \$vars = array(), \$return = false)\n    {\n        try {\n            return \$this->_render(\$vars, \$return);\n        } catch (Exception \$e) {\n            if (\$return) ob_get_clean();\n            \$this->enhanceException(\$e);\n            throw \$e;\n        }\n    }\n\n    public function _render(Array \$vars = array(), \$return = false)\n    {\n        \$this->context = \$vars;\n\n";
                 if ($tpl->getParent()) {
                     echo "        \$template = " . ($namespace) . "\\Templates::get(" . ($tpl->getParent()) . ");\n        \$template->child = \$this;\n        \$this->parent = \$template;\n        return \$template->render(\$vars, \$return);\n\n";
                 }
@@ -434,12 +561,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Echo.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Echo.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -486,12 +638,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Else.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Else.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -540,12 +717,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Spaceless.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Spaceless.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -592,12 +794,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'While.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('While.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -646,12 +873,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Yield.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Yield.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -698,12 +950,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Echox.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Echox.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -750,12 +1027,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'If.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('If.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -807,12 +1109,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'ElseIf.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('ElseIf.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -865,12 +1192,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Var_export.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Var_export.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -917,12 +1269,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Body.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Body.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -978,12 +1355,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Break.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Break.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -1030,12 +1432,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Continue.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Continue.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -1082,12 +1509,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Parent.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Parent.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }
@@ -1134,12 +1586,37 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'Include.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $exception = $e->getMessage() . "('Include.tpl.php')";
+                $obj = new \ReflectionObject($e);
+                $prop = $obj->getProperty('message');
+                $prop->setAccessible(true);
+                $prop->setValue($e, $exception);
                 throw $e;
             }
         }

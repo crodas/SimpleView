@@ -4,7 +4,7 @@ class foobar extends RuntimeException {}
 
 function failure()
 {
-    throw new foobar;
+    throw new foobar("foobar");
 }
 
 class MainTest extends \phpunit_framework_testcase

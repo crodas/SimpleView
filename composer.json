@@ -5,8 +5,10 @@
         "symfony/finder": "*",
         "symfony/console": "*",
         "crodas/watch-files": "*",
-        "crodas/asset": "~0.1",
         "crodas/service-provider": "~0.1"
+    },
+    "suggest": {
+        "crodas/asset": "To use assets with the view"
     },
 	"autoload": {
 		"classmap": [

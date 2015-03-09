@@ -5,8 +5,10 @@
         "symfony/finder": "*",
         "symfony/console": "*",
         "crodas/watch-files": "*",
-        "crodas/asset": "~0.1",
         "crodas/service-provider": "~0.1"
+    },
+    "suggest": {
+        "crodas/asset": "To use assets with the view"
     },
 	"autoload": {
 		"classmap": [
@@ -14,7 +16,7 @@
         ]
     },
     "license": "BSD-4-Clause",
-    "version": "v0.1.36",
+    "version": "v0.1.37",
     "authors": [
         {
             "name": "César D. Rodas",

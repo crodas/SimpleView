@@ -80,12 +80,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'loop1.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -146,12 +167,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'if1.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -198,12 +240,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'loop.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -283,6 +346,7 @@ namespace {
                     $this->section_8843d7f92416211de9ebb963ff4ce28125932878($args);
                 } catch (Exception $e) {
                     ob_get_clean();
+                    $this->enhanceException($e, $name);
                     throw $e;
                 }
                 break;
@@ -292,12 +356,33 @@ namespace {
             return ob_get_clean();
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'foobar';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -338,12 +423,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'while.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -392,12 +498,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'home.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -444,12 +571,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'loop2.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -513,12 +661,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'mixed.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -572,12 +741,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'exception.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -625,12 +815,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'unless.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -680,12 +891,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'if.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -741,12 +973,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'at.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -814,6 +1067,7 @@ namespace {
                     $this->section_594fd1615a341c77829e83ed988f137e1ba96231($args);
                 } catch (Exception $e) {
                     ob_get_clean();
+                    $this->enhanceException($e, $name);
                     throw $e;
                 }
                 break;
@@ -823,6 +1077,7 @@ namespace {
                     $this->section_8843d7f92416211de9ebb963ff4ce28125932878($args);
                 } catch (Exception $e) {
                     ob_get_clean();
+                    $this->enhanceException($e, $name);
                     throw $e;
                 }
                 break;
@@ -832,12 +1087,33 @@ namespace {
             return ob_get_clean();
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'foobar';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -856,63 +1132,6 @@ namespace {
             echo "\n<content>\n";
             $this->do_yield('foobar');
             echo "</content>\n";
-
-            if ($return) {
-                return ob_get_clean();
-            }
-
-        }
-    }
-
-    /** 
-     *  Template class generated from asset.tpl.php
-     */
-    class class_5c4c356a54a8ae3f2564a8edd5d2c39440cf8eed extends base_template_39fdec1194d94212b871a28b2aa04a73cd40fce1
-    {
-
-        public function hasSection($name)
-        {
-
-            return false;
-        }
-
-
-        public function renderSection($name, Array $args = array(), $fail_on_missing = true)
-        {
-            if (!$this->hasSection($name)) {
-                if ($fail_on_missing) {
-                    throw new \RuntimeException("Cannot find section {$name}");
-                }
-                return "";
-            }
-
-        }
-
-        public function render(Array $vars = array(), $return = false)
-        {
-            try {
-                return $this->_render($vars, $return);
-            } catch (Exception $e) {
-                if ($return) ob_get_clean();
-                throw $e;
-            }
-        }
-
-        public function _render(Array $vars = array(), $return = false)
-        {
-            $this->context = $vars;
-
-            extract($vars);
-            if ($return) {
-                ob_start();
-            }
-
-        
-            echo "cesar\n";
-            $asset_url = '//foobar.com/assets/css/out.653d843f.min.css';
-            echo "     <link href=\"" . ($asset_url) . "\" type=\"text/css\" rel=\"stylesheet\" />\n";
-
-            echo "     <link href=\"" . ('//foobar.com/assets/css/out1.653d843f.min.css') . "\" type=\"text/css\" rel=\"stylesheet\" />\nrodas\n";
 
             if ($return) {
                 return ob_get_clean();
@@ -945,12 +1164,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'loop1-example.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -997,12 +1237,33 @@ namespace {
 
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'spaceless.tpl.php';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -1075,6 +1336,7 @@ namespace {
                     $this->section_594fd1615a341c77829e83ed988f137e1ba96231($args);
                 } catch (Exception $e) {
                     ob_get_clean();
+                    $this->enhanceException($e, $name);
                     throw $e;
                 }
                 break;
@@ -1084,6 +1346,7 @@ namespace {
                     $this->section_8843d7f92416211de9ebb963ff4ce28125932878($args);
                 } catch (Exception $e) {
                     ob_get_clean();
+                    $this->enhanceException($e, $name);
                     throw $e;
                 }
                 break;
@@ -1093,12 +1356,33 @@ namespace {
             return ob_get_clean();
         }
 
+        public function enhanceException(Exception $e, $section = NULL)
+        {
+            if (!empty($e->enhanced)) {
+                return;
+            }
+
+            $message = $e->getMessage() . "( IN " . 'foobar';
+            if ($section) {
+                $message .= " | section: {$section}";
+            }
+            $message .= ")";
+
+            $object   = new ReflectionObject($e);
+            $property = $object->getProperty('message');
+            $property->setAccessible(true);
+            $property->setValue($e, $message);
+
+            $e->enhanced = true;
+        }
+
         public function render(Array $vars = array(), $return = false)
         {
             try {
                 return $this->_render($vars, $return);
             } catch (Exception $e) {
                 if ($return) ob_get_clean();
+                $this->enhanceException($e);
                 throw $e;
             }
         }
@@ -1138,10 +1422,9 @@ namespace Tests {
                 10 => 'if',
                 11 => 'at',
                 12 => 'layout',
-                13 => 'asset',
-                14 => 'loop1-example',
-                15 => 'spaceless',
-                16 => 'extends_extends',
+                13 => 'loop1-example',
+                14 => 'spaceless',
+                15 => 'extends_extends',
             );
         }
 
@@ -1203,8 +1486,6 @@ namespace Tests {
                 'at' => 'class_eef20d69ae52eb9005a515c213ab9554791979c9',
                 'layout.tpl.php' => 'class_bf6970c3f5699b979a3692d8261f22d15fadad5a',
                 'layout' => 'class_bf6970c3f5699b979a3692d8261f22d15fadad5a',
-                'asset.tpl.php' => 'class_5c4c356a54a8ae3f2564a8edd5d2c39440cf8eed',
-                'asset' => 'class_5c4c356a54a8ae3f2564a8edd5d2c39440cf8eed',
                 'loop1-example.tpl.php' => 'class_f29db6e6f1c21db1b05b51162242fe0eafe8c136',
                 'loop1-example' => 'class_f29db6e6f1c21db1b05b51162242fe0eafe8c136',
                 'spaceless.tpl.php' => 'class_066a64416ed54365eebbe9d553e59243995aa6ae',
